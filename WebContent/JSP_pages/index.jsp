@@ -58,6 +58,8 @@
                                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Sign in</a>
                             </li>
                         </ul>
+                        
+                        <form method="post" action="../welcome.html" onsubmit="return validateEmail(document.getElementById('email').value)">
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <h3 class="register-heading">Create your account</h3>
@@ -128,6 +130,7 @@
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>	<script type="text/javascript">
 	</script>
