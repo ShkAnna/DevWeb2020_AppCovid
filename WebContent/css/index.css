@@ -1,0 +1,64 @@
+#signin{
+	 border: thick double #3D504F;
+	 position: relative;
+  	bottom : 300 px;
+   position: relative;
+  bottom: 80px;
+  left: 950px;
+  width: 400px;
+  height: 450px;
+   font-family: "Times New Roman", Times, serif;
+  font-size: 1.2em;
+  background-color: #F9F9F9;
+}
+
+#first{
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.2em;
+  border: thick double #3D504F;
+   position: relative;
+   left: 13em;
+    top: 50px;
+  width: 400px;
+  height: 100px;
+    color: #32a1ce;
+	
+}
+
+ h1{
+ text-align:center;
+ color : #3D504F;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 3.2em;
+  text-decoration: underline;
+ }
+ body{
+ background-color: #F9F9F9;
+ }
+ .buttonSign {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #32a1ce;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: #FFFDE7;
+    background-image: linear-gradient(to top left,
+                                      rgba(0, 0, 0, .2),
+                                      rgba(0, 0, 0, .2) 30%,
+                                      rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+ 
+ form{
+ color : #32a1ce;
+  font-family: "Times New Roman", Times, serif;
+	}
+	
+.gif {
+	float:left;
+	 margin:0 10px 0 20px; 
+	}
