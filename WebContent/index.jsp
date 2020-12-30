@@ -1,4 +1,4 @@
-<%@ page import="${pageContext.request.contextPath}/src/BeanPackage.Utilisateur" %>
+<%@ page import="BeanPackage.Utilisateur" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     
 <!DOCTYPE html>
