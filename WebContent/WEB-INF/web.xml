@@ -8,4 +8,5 @@
         <error-code>404</error-code>
         <location>/WEB-INF/404.jsp</location>
     </error-page>
+    <absolute-ordering></absolute-ordering>
 </web-app>

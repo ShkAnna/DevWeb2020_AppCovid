@@ -20,13 +20,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-@WebServlet(name = "SignInServlet", value = "/inscription")
+@WebServlet(name = "SignInUserServlet", value = "/inscription")
 @MultipartConfig
-public class SignInServelet extends HttpServlet {
+public class SignInUserServlet extends HttpServlet {
     private Map<String, String> erreurs;
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/signin.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/signInUser.jsp" ).forward( request, response );
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -93,11 +93,11 @@ public class SignInServelet extends HttpServlet {
            
 
             con.createUser(utilisateur);
-            this.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+            this.getServletContext().getRequestDispatcher("/profil.jsp").forward(request, response);
         }else {
             request.setAttribute("erreurs", erreurs);
             // Redirection vers le formulaire
-            this.getServletContext().getRequestDispatcher("/WEB-INF/signin.jsp").forward(request, response);
+            this.getServletContext().getRequestDispatcher("/WEB-INF/signInUser.jsp").forward(request, response);
         }
     }
 

@@ -9,9 +9,9 @@
 
     <title>Covid</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    	<meta name="robots" content="noindex">
-    	 <link href="${pageContext.request.contextPath}/resources/css/index.css" rel="stylesheet">
-         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <meta name="robots" content="noindex">
+     <link href="${pageContext.request.contextPath}/resources/css/index.css" rel="stylesheet">
+     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   
   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript">
