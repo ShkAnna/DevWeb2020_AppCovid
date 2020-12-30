@@ -1,73 +1,52 @@
 package ServletPackage;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.PrintWriter;
-import java.sql.ResultSet;
+import SQLPackage.SQLConnector;
 
+import BeanPackage.Utilisateur;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.text.ParseException;
 
-import BeanPackage.UserBean;
-import SQLPackage.SQLConnector;
-/**
- * Servlet implementation class LoginServlet
- */
+@WebServlet(name = "loginServlet", value = "/login-servlet")
+public class LoginServlet  extends HttpServlet {
 
-public class LoginServlet extends HttpServlet {
-	
-	private static final long serialVersionUID = 1L;
-
-	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginServlet() {
-        super();
-        
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/index.jsp" ).forward( request, response );
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.sendRedirect("/projetTest/bean_servlet");
-	}
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		String login = request.getParameter("login");
-		String password = request.getParameter("password");
-		
-		HttpSession session = request.getSession();
-		SQLConnector sc = new SQLConnector();
-		
-		if((login != "") && (login != null) && (password != "") && (password != null) ) {
-			
-			
-			UserBean current_user = sc.getUser(login,password);
+        String login = request.getParameter("login");
+        String pass = request.getParameter("password");
 
-			session.setAttribute("current_user",current_user);
-			request.setAttribute("current_user",current_user);
+        SQLConnector connector = new SQLConnector();
+        HttpSession session = request.getSession();
 
-		}
-		else {
-			session.setAttribute("current_user",null);
-			request.setAttribute("current_user",null);
-		}
-		
-		response.sendRedirect("/projetTest/bean_servlet");
-	}
+        try {
+            Utilisateur user = connector.getUser(login,pass);
+           
+            if(user == null || user.getPseudo() == null){
+               
+                this.getServletContext().getRequestDispatcher( "/index.jsp" ).forward( request, response );
+            }
+            else{
+            	
+    			session.setAttribute("current_user",user);
+    			request.setAttribute("current_user",user);
+    			response.sendRedirect("/AppCovid/profil-servlet");
 
+
+            }
+                      
+        } catch (SQLException | ParseException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
 }
