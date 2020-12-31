@@ -32,6 +32,6 @@ public class ProfilServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/profil.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/profil.jsp" ).forward( request, response );
     }
 }
