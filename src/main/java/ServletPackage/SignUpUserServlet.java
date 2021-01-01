@@ -33,7 +33,6 @@ public class SignUpUserServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/signUpUser.jsp" ).forward( request, response );
-    	//response.getWriter().append("TESTServed at: ").append(request.getContextPath());
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,14 +47,19 @@ public class SignUpUserServlet extends HttpServlet {
         Part pictureData = request.getPart("picture");
         String picture;
         SQLConnector con = new SQLConnector();
-
-        if(pictureData.getSize() > 0) {
-            picture = "./WebContent/images" + pseudo + "." + pictureData.getSubmittedFileName().split(Pattern.quote("."))[1];
-        }else{
-            picture = "./WebContent/images/photoProfil.png";
+        if(pictureData != null) {
+        	 picture = "./WebContent/images" + pseudo + "." + pictureData.getSubmittedFileName().split(Pattern.quote("."))[1];
+        } else {
+        	picture = "./WebContent/images/photoProfil.png";
         }
+        
         String birthdate = request.getParameter("birthdate");
-        birthdate = birthdate.replace('-','/');
+        if(birthdate != null) {
+        	birthdate = birthdate.replace('-','/');
+        } else {
+        	 setErreur("password", "Please choose correct birthdate");
+        }
+        
 
         try {
             con.isRegistered(email);
@@ -100,7 +104,8 @@ public class SignUpUserServlet extends HttpServlet {
            
 
             con.createUser(utilisateur);
-            this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/profil.jsp").forward(request, response);
+			response.sendRedirect("/AppCovid/dashboard-user-servlet");
+            //this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/profil.jsp").forward(request, response);
         }else {
             request.setAttribute("erreurs", erreurs);
             // Redirection vers le formulaire
