@@ -63,7 +63,7 @@
 						<a class="col-3 col-lg-2 left-sign text-center"  aria-selected="false" href="sign-up-user">Sign up</a>
 						<a class="col-3 col-lg-2 right-sign text-center"  aria-selected="true" href="sign-in-user">Sign in</a>		
 				</div>
-				<div class ="row h-50 align-items-center">
+				<div class ="row align-items-center" style="height:60%;">
 					<div class="col-12 tab-content" id="myTabContent">
 						<form method="post" action="sign-in-user">
 							<div class="form-row justify-content-center" style="margin-bottom: 1rem !important;">

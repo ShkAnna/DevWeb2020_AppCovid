@@ -1,5 +1,6 @@
 <%@ page import="BeanPackage.Utilisateur" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
 <!DOCTYPE html>
 <html lang="en">
@@ -94,24 +95,52 @@
 						<a class="col-3 col-lg-2 left-sign text-center"  aria-selected="true" href="sign-up-user">Sign up</a>
 						<a class="col-3 col-lg-2 right-sign text-center"  aria-selected="false" href="sign-in-user">Sign in</a>		
 				</div>
-				<div class ="row h-50 align-items-center">
+				<div class ="row align-items-center" style="height:80%;">
 					<div class="col-12 tab-content" id="myTabContent">
 						<form method="post" enctype="multipart/form-data" action="sign-up-user">
 							<div class="form-row justify-content-center" style="margin-bottom: 1rem !important;">
 								<h3>Create your account</h3>
 							</div>
 							<div class="form-row justify-content-center"  style="margin-bottom: 1rem !important;">
-								<div class="col-3">
-									<input  placeholder="Login *" class="form-control rounded-lg" type="text" id="login" name="login" value="${param.login}" required>
-           							<span class="erreur">${erreurs['login']}</span>
+								<div class="col-3" style="margin-right: 3rem !important;">
+									<div class="row">
+										<input  placeholder="Login *" class="form-control rounded-lg" type="text" id="login" name="login" value="<c:out value="${param.login}"/>" required>
+	           							<span class="erreur">${erreurs['login']}</span>
+									</div>
+									<div class="row">
+										<input placeholder="Password *" class="form-control rounded-lg" type="password" id="password" name="password" required>
+          								<span class="erreur">${erreurs['password']}</span>
+									</div>
+									<div class="row">
+										<input placeholder="Confirm Password *" class="form-control rounded-lg" type="password" id="password_CHECK" name="password_CHECK" required>
+									</div>
+									<div class="row justify-content-center" style="margin-top: 1rem !important;">
+										<label for="birthdate">Date de naissance </label>
+									    <input type="date" id="birthdate" name="birthdate" value="2018-07-22" min="1900-01-01">
+									    <div class="errorBirthdate" style="display:none;"></div>
+									</div>
 								</div>
 								<div class="col-3">
-									<input placeholder="Password *" class="form-control rounded-lg" type="password" id="password" name="password" required>
-          							
+									<div class="row">
+										<input placeholder="Nom *" class="form-control rounded-lg" type="text" id="name" name="name" value="<c:out value="${param.name}"/>" required>
+           							 	<span class="erreur">${erreurs['name']}</span>
+									</div>
+									<div class="row">
+										<input placeholder="Prenom *" class="form-control rounded-lg" type="text" id="surname" name="surname" value="<c:out value="${param.surname}"/>" required>
+           								<span class="erreur">${erreurs['surname']}</span>									</div>
+									<div class="row">
+										<input  placeholder="Email *" class="form-control rounded-lg" type="email" id="mail" name="mail" value="<c:out value="${param.mail}"/>" required>
+								        <span class="erreur">${erreurs['mail']}</span>
+								        <div class="errorMail" style="display:none;"></div>
+									</div>
+									<div class="row = justify-content-center" style="margin-top: 1rem !important;">
+										<label for="picture">Photo de profil</label>
+            							<input type="file" id="picture" name="picture" accept="image/png, image/jpeg">
+									</div>
 								</div>
 							</div>
 							<div class="form-row justify-content-center" style="margin-bottom: 1rem !important;">
-								<button class="btn btn-primary rounded-lg" style="font-weight: bold;" type="submit">Sign in</button>
+								<button class="btn btn-primary rounded-lg" style="font-weight: bold;" type="submit">Sign up</button>
 							</div>
 						</form>
 					</div>
