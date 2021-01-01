@@ -1,13 +1,67 @@
-.container {
-	max-width:none;
+a[aria-selected="true"]{
+  background-color: white;
+  color: #7fb62d;
 }
+
+a, .btn-primary {
+	color:inherit;
+	outline:none;
+	font-weight: bold;
+}
+.a-modif {
+	background-color: #CAEA7B;
+	border:1px solid #CAEA7B;
+	border-radius: 20px 20px 20px 20px;
+	padding: 1rem 0rem;
+	text-decoration:none;
+}
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+.a-modif:hover{
+	background-color: #a1c83f;
+	color:white;
+}
+.container {
+	color:#495057;
+}
+.contain{
+	color:#495057;
+	border:5px solid #CAEA7B;
+	border-radius: 20px 20px 20px 20px;
+	border-style: solid none solid solid;
+}
+
+.left-sign {
+	background-color: #CAEA7B;
+	border:1px solid #CAEA7B;
+	border-radius: 20px 0 0 20px;
+}
+.right-sign {
+	background-color: #CAEA7B;
+	border:1px solid #CAEA7B;
+	border-radius: 0 20px 20px 0;
+}
+form .erreur {
+    color: #900;
+}
+form .requis {
+    color: #c00;
+}
+
 .register{
-    background: -webkit-linear-gradient(left, #E9FCB6, #D9E5B8);
+    background:#CAEA7B;
+    margin-top: 3%;
     padding: 3%;
+    color:#495057;
+	border:5px solid #CAEA7B;
+	border-radius: 20px 20px 20px 20px;
+	border-style: solid none solid solid;
 }
 .register-left{
     text-align: center;
-    color: black;
+    margin-top: 4%;
 }
 .register-left input{
     border: none;
@@ -52,7 +106,7 @@
     
 }
 .btnRegister{
-    float: right;
+
     margin-top: 10%;
     border: none;
     border-radius: 1.5rem;
@@ -66,6 +120,7 @@
 .register .nav-tabs{
     margin-top: 3%;
     border: none;
+    background: #E9FCB6;
     border-radius: 1.5rem;
     width: 28%;
     float: right;
@@ -78,7 +133,7 @@
     color: black;
     border-top-right-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
-
+    background: #E9FCB6;
 }
 .register .nav-tabs .nav-link:hover{
     border: none;
@@ -94,6 +149,8 @@
 }
 .register-heading{
     text-align: center;
+    margin-top: 8%;
+    margin-bottom: -15%;
     color: #495057;
     
 }

@@ -13,8 +13,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "profilServlet", value = "/profil-servlet")
-public class ProfilServlet extends HttpServlet {
+@WebServlet("/dashboard-user-servlet")
+public class DashboardUserServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
     private List<Activity> listActivities;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,6 +33,6 @@ public class ProfilServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/profil.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/dashboardUser.jsp" ).forward( request, response );
     }
 }

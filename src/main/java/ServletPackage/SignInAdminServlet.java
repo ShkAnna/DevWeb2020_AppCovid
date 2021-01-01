@@ -1,36 +1,36 @@
 package ServletPackage;
 
-import SQLPackage.SQLConnector;
-import BeanPackage.Utilisateur;
-
+import java.io.IOException;
+import java.sql.SQLException;
+import java.text.ParseException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Pattern;
 
-//@WebServlet(name = "SignInUserServlet", value = "/inscription")
-@WebServlet("/sign-in-user")
-@MultipartConfig
-public class SignInUserServlet extends HttpServlet {
+import BeanPackage.Utilisateur;
+import SQLPackage.SQLConnector;
+
+/**
+ * Servlet implementation class SignInAdminServlet
+ */
+@WebServlet("/sign-in-admin")
+public class SignInAdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public SignInAdminServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/signInUser.jsp" ).forward( request, response );
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/signInAdmin.jsp" ).forward( request, response );
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -46,13 +46,13 @@ public class SignInUserServlet extends HttpServlet {
            
             if(user == null || user.getPseudo() == null){
                
-                this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/signInUser.jsp" ).forward( request, response );
+                this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/signInAdmin.jsp" ).forward( request, response );
             }
             else{
             	
     			session.setAttribute("current_user",user);
     			request.setAttribute("current_user",user);
-    			response.sendRedirect("/AppCovid/dashboard-user-servlet");
+    			response.sendRedirect("/AppCovid/dashboard-admin-servlet");
 
 
             }
@@ -62,4 +62,5 @@ public class SignInUserServlet extends HttpServlet {
         }
 
     }
+
 }

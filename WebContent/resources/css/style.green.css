@@ -41,7 +41,7 @@ https://bootstrapious.com/p/bootstrap-4-dashboard
 a {
   display: inline-block;
   text-decoration: none;
-  color: #fff;
+  color: inherit;
 }
 
 body {
@@ -1884,9 +1884,9 @@ STYLE SWITCHER FOR DEMO
 }
 
 .btn:focus, .btn.focus {
-  outline: 0;
-  -webkit-box-shadow: 0 0 0 0.2rem rgba(51, 179, 90, 0.25);
-  box-shadow: 0 0 0 0.2rem rgba(51, 179, 90, 0.25);
+  outline: none;
+  -webkit-box-shadow: 0 0 0 0.2rem rgb(161, 200, 63);
+  box-shadow: 0 0 0 0.2rem rgb(161, 200, 63);
 }
 
 .btn.disabled, .btn:disabled {
@@ -1898,20 +1898,21 @@ STYLE SWITCHER FOR DEMO
 }
 
 .btn-primary {
-  color: color-yiq(#33b35a);
-  background-color: #33b35a;
-  border-color: #33b35a;
+  color: #495057;
+  background-color: #CAEA7B;
+  border-color: #CAEA7B;
 }
 
 .btn-primary:hover {
-  color: color-yiq(#2b954b);
-  background-color: #2b954b;
-  border-color: #288b46;
+  color: color-yiq(#a1c83f);
+  background-color: #a1c83f;
+  border-color: #a1c83f;
 }
 
 .btn-primary:focus, .btn-primary.focus {
   -webkit-box-shadow: 0 0 0 0.2rem rgba(51, 179, 90, 0.5);
   box-shadow: 0 0 0 0.2rem rgba(51, 179, 90, 0.5);
+  outline: none;
 }
 
 .btn-primary.disabled, .btn-primary:disabled {
@@ -2459,13 +2460,14 @@ body {
 }
 
 a {
-  color: #33b35a;
+  font-weight: bold;
   text-decoration: none;
 }
 
 a:focus, a:hover {
-  color: #22773c;
-  text-decoration: underline;
+  background-color: #a1c83f	;
+  color: white;
+  text-decoration: none;
 }
 
 h1,

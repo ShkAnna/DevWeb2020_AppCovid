@@ -33,12 +33,8 @@
 					</div>
 				</div>
 				<div class="row justify-content-center">
-					<div class="col-3 text-center">
-						<a href="sign-in-user" class="btn btn-primary btn-lg rounded-lg">Sign In as User</a>
-					</div>
-					<div class="col-3 text-center">
-						<a href="sign-in-admin" class="btn btn-primary btn-lg rounded-lg">Sign In as Admin</a>
-					</div>
+					<a  href="sign-in-user" class="col-3 text-center a-modif">Sign In as User</a>
+					<a href="sign-in-admin" class="col-3 text-center a-modif" style="margin-left:5%;">Sign In as Admin</a>
 				</div>
 			</div>
 		</div>

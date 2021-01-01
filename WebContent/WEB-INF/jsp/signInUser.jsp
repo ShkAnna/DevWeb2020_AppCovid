@@ -15,7 +15,7 @@
   		<!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/custom.css">
     
-       	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Fontastic Custom icon font-->
@@ -54,38 +54,35 @@
 				<p>
 					La free app web Covid pour protéger 
 					non seulement votre santé mais 
-					aussi ceux qui t'entourent.
+					aussi ceux qui vous'entourent.
 				</p>
-				<img src="images/covid2.png" width="300" height="300">		                      
+				<img src="images/covid2.png" width="280" height="280">		                      
 			</div>
-			<div class="col-9 register-right">
-				<div class="row justify-content-end" style="margin-right:-1%;">
-				<ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-					<li class="nav-item">
-						<a href="sign-up-user" aria-selected="false">Sign up</a>
-					</li>
-					<li class="nav-item">
-						<a href="sign-in-user" aria-selected="true">Sign in</a>
-					</li>
-				</ul>                  
+			<div class="col-md-9 register-right">
+				<div class="row justify-content-end" style="margin-top: 1rem !important;margin-bottom: 1rem !important;margin-right: 0rem !important;">
+						<a class="col-3 col-lg-2 left-sign text-center"  aria-selected="false" href="sign-up-user">Sign up</a>
+						<a class="col-3 col-lg-2 right-sign text-center"  aria-selected="true" href="sign-in-user">Sign in</a>		
 				</div>
-				<form method="post" action="sign-in-user">
-					<h2  class="register-heading">Glad to see you!</h2>
-					<div class="row justify-content-center" style="margin-top:20px;">
-						<div class="col-4 text-center">
-							<input placeholder="Login " type="text" id="login" name="login" required>                                
-						</div>
-						<div class="col-4 text-center">
-							<input placeholder="Password" type="password" id="password" name="password" required>
-						</div>
+				<div class ="row h-50 align-items-center">
+					<div class="col-12 tab-content" id="myTabContent">
+						<form method="post" action="sign-in-user">
+							<div class="form-row justify-content-center" style="margin-bottom: 1rem !important;">
+								<h3>Glad to see you!</h3>
+							</div>
+							<div class="form-row justify-content-center"  style="margin-bottom: 1rem !important;">
+								<div class="col-3">
+									<input type="text" class="form-control rounded-lg" id="login" name="login" placeholder="Login">
+								</div>
+								<div class="col-3">
+									<input type="password" class="form-control rounded-lg" id="password" placeholder="Password">
+								</div>
+							</div>
+							<div class="form-row justify-content-center" style="margin-bottom: 1rem !important;">
+								<button class="btn btn-primary rounded-lg" style="font-weight: bold;" type="submit">Sign in</button>
+							</div>
+						</form>
 					</div>
-					<div class= "row justify-content-center" style="margin-top:20px;">
-						<div class="col-12 text-center">
-							<input type="submit" class="btn btn-primary btn-md rounded-lg" style="padding:0.5rem 1rem;" value="Sign in"/>
-						</div>
-					</div>
-				</form>
-				
+				</div>
 			</div>
 		</div>	
 	</div>
