@@ -1,5 +1,8 @@
 <%@ page import="BeanPackage.Utilisateur" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% Utilisateur current_user = (Utilisateur) session.getAttribute("current_user"); %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
     
 <!DOCTYPE html>
 <html>

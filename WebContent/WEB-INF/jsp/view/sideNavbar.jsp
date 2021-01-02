@@ -1,4 +1,9 @@
-<!-- Side Navbar -->
+<%@ page import="BeanPackage.Utilisateur" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% Utilisateur current_user = (Utilisateur) session.getAttribute("current_user"); %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ 
+ <!-- Side Navbar -->
 <nav class="side-navbar">
   <div class="side-navbar-wrapper">
     <!-- Sidebar Header    -->
@@ -6,7 +11,7 @@
       <!-- User Info-->
       <div class="sidenav-header-inner text-center">
       	<img src="${pageContext.request.contextPath}/images/photoProfil.png" alt="person" class="img-fluid rounded-circle">
-        <h2 class="h5">Nathan Andrews</h2>
+        <h2 class="h5"><%out.print(current_user.getPrenom());%> <%out.print(current_user.getNom());%></h2>
         <div id="stateNotif" class="stateNotSick">Pas malade</div>
         <!-- <span>Web Developer</span> -->
       </div>
@@ -23,7 +28,7 @@
       <h5 class="sidenav-heading">Main</h5>
       <ul id="side-main-menu" class="side-menu list-unstyled">                  
         <li class="active"><a href="dashboard-user"> <i class="fa fa-home"></i>Menu principal</a></li>
-        <li><a href="activities"> <i class="fa fa-history"></i>Mes activités</a></li>
+        <li><a href="activities"> <i class="fa fa-history"></i>Mes activitÃ©s</a></li>
         <li><a href="friends"> <i class="fa fa-users"></i>Mes amis</a></li>
         <li><a href="notifications"><i class="fa fa-bell"></i>Mes notifications
             <div class="badge badge-warning">6 New</div></a>
@@ -31,7 +36,7 @@
       </ul>
     </div>
     <div class="admin-menu">
-      <h5 class="sidenav-heading">Réglages</h5>
+      <h5 class="sidenav-heading">RÃ©glages</h5>
       <ul id="side-admin-menu" class="side-menu list-unstyled"> 
         <li> <a href="profil-user"> <i class="fa fa-user"> </i>Profil</a></li>
       </ul>

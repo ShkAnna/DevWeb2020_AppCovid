@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import BeanPackage.Utilisateur;
@@ -94,6 +95,9 @@ public class SignUpUserServlet extends HttpServlet {
            
 
             con.createUser(utilisateur);
+            HttpSession session = request.getSession();
+            session.setAttribute("current_user",utilisateur);
+			request.setAttribute("current_user",utilisateur);
         	response.sendRedirect("/DevWeb2020_AppCovid/dashboard-user-servlet");
             //this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/profil.jsp").forward(request, response);
         }else {
