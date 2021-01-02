@@ -43,6 +43,40 @@ a:hover, a:visited, a:link, a:active
 	border:1px solid #CAEA7B;
 	border-radius: 0 20px 20px 0;
 }
+
+.appOff {
+	margin-top: 1rem !important;
+	color: #E14557;
+}
+
+.appOn {
+	margin-top: 1rem !important;
+	color: #70af1c;
+}
+
+.stateNotSick {
+	background-color: #CAEA7B;
+	border:1px solid #CAEA7B;
+	border-radius: 20px 20px 20px 20px;
+	color:#495057;
+	margin-top: 1rem !important;
+}
+.stateSick {
+	background-color: #E14557;
+	border:1px solid #E14557;
+	border-radius: 20px 20px 20px 20px;
+	color: white;
+	margin-top: 1rem !important;
+}
+
+.a-menu:hover,  .a-menu:link, .a-menu:active{
+	background: none;
+	color: #a1c83f;
+}
+.btn:focus, .btn-primary:focus {
+	background-color: #7fb62d;
+}
+
 form .erreur {
     color: #900;
 }

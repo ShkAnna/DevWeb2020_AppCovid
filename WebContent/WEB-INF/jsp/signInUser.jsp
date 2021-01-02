@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
    	<meta name="robots" content="noindex">
    	
-  		<!-- Custom stylesheet - for your changes-->
+  	<!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/custom.css">
     
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css">
