@@ -23,21 +23,19 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-//@WebServlet(name = "SignInUserServlet", value = "/inscription")
-@WebServlet("/sign-in-user")
+@WebServlet(name = "SignInUserServlet", value = "/sign-in-user")
 @MultipartConfig
 public class SignInUserServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/signInUser.jsp" ).forward( request, response );
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
+    	request.setCharacterEncoding("UTF-8");
         String login = request.getParameter("login");
         String pass = request.getParameter("password");
-
+   
         SQLConnector connector = new SQLConnector();
         HttpSession session = request.getSession();
 
@@ -45,14 +43,13 @@ public class SignInUserServlet extends HttpServlet {
             Utilisateur user = connector.getUser(login,pass);
            
             if(user == null || user.getPseudo() == null){
-               
                 this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/signInUser.jsp" ).forward( request, response );
             }
             else{
             	
     			session.setAttribute("current_user",user);
     			request.setAttribute("current_user",user);
-    			response.sendRedirect("/AppCovid/dashboard-user-servlet");
+    			response.sendRedirect("/DevWeb2020_AppCovid/dashboard-user-servlet");
 
 
             }

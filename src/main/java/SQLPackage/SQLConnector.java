@@ -142,7 +142,7 @@ public class SQLConnector {
         String query = "Select * FROM appcovid.users WHERE login='" + login + "' ;";
         ResultSet result = doRequest(query);
         result.next();
-        if (!result.getString("login").isEmpty() && passwordHasher.login(result.getString("user_password"), pass)) {
+        if (!result.getString("login").isEmpty() && passwordHasher.login(result.getString("user_password"), pass)) {        
             utilisateur = new Utilisateur();
             utilisateur.setId(result.getString("id_user"));
             utilisateur.setPseudo(result.getString("login"));
@@ -180,6 +180,48 @@ public class SQLConnector {
         return utilisateur;
     }
 
+    public Utilisateur getAdmin(String login) throws SQLException {
+        Utilisateur utilisateur = null;
+        String query = "SELECT * FROM appcovid.users WHERE login='" + login + "' ;";
+        ResultSet result = doRequest(query);
+        result.next();
+        if (!result.getString("login").isEmpty()) {
+            utilisateur = new Utilisateur();
+            utilisateur.setId(result.getString("id_user"));
+            utilisateur.setPseudo(result.getString("login"));
+            utilisateur.setPrenom(result.getString("first_name"));
+            utilisateur.setNom(result.getString("name"));
+            utilisateur.setEmail(result.getString("email"));
+            utilisateur.setDateDeNaissance(result.getString("birthdate"));
+            utilisateur.setProfilPicture(result.getString("picture"));
+            utilisateur.setPositif(!result.getString("is_positif").equals("0"));
+            utilisateur.setAdmin(!result.getString("is_admin").equals("1"));
+        }
+        this.closeCon();
+        return utilisateur;
+    }
+    
+    public Utilisateur getAdmin(String login, String pass) throws SQLException, ParseException {
+        Utilisateur utilisateur = null;
+        String query = "Select * FROM appcovid.users WHERE login='" + login + "' ;";
+        ResultSet result = doRequest(query);
+        result.next();
+        if (!result.getString("login").isEmpty() && passwordHasher.login(result.getString("user_password"), pass)) {        
+            utilisateur = new Utilisateur();
+            utilisateur.setId(result.getString("id_user"));
+            utilisateur.setPseudo(result.getString("login"));
+            utilisateur.setPrenom(result.getString("first_name"));
+            utilisateur.setNom(result.getString("name"));
+            utilisateur.setEmail(result.getString("email"));
+            utilisateur.setDateDeNaissance(result.getString("birthdate"));
+            utilisateur.setProfilPicture(result.getString("picture"));
+            utilisateur.setPositif(!result.getString("is_positif").equals("0"));
+            utilisateur.setAdmin(!result.getString("is_admin").equals("1"));
+        }
+        this.closeCon();
+        return utilisateur;
+    }
+    
     
     public void deleteUser(String id){
         String query = "DELETE FROM appcovid.users WHERE id_user = "+id+";";

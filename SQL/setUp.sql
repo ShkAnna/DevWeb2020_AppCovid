@@ -96,4 +96,4 @@ CREATE TABLE Notification
         REFERENCES Users(id_user)
         ON UPDATE CASCADE ON DELETE CASCADE
 );
-INSERT INTO appcovid.user(login,user_password,name,first_name,email,is_admin,picture) VALUES('admin','d033e22ae348aeb5660fc2140aec35850c4da997','MrAdmin','Admin','admin@admin.fr','/pfp/default.png',TRUE);
+INSERT INTO appcovid.users(login,user_password,name,first_name,email,is_admin,picture) VALUES('admin','2760aab76f29aab3445aa48da30f651131867dee','MrAdmin','Admin','admin@admin.fr','/pfp/default.png',TRUE);

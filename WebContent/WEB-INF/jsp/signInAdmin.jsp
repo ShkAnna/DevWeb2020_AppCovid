@@ -59,29 +59,29 @@
 				<img src="images/covid2.png" width="280" height="280">		                      
 			</div>
 			<div class="col-md-9 register-right">
-			<div class="row justify-content-end" style="margin-top: 1rem !important;margin-bottom: 1rem !important;margin-right: 0rem !important;">
-					<!-- <a class="col-3 col-lg-2 left-sign text-center" aria-selected="false" href="sign-up-user">Sign up</a> -->
-					<a class="col-3 col-lg-2 right-sign text-center" aria-selected="true" href="sign-in-admin" style ="border-radius: 20px 20px 20px 20px;">Sign in</a>		
-			</div>
-			<div class ="row h-50 align-items-center">
-				<div class="col-12 tab-content" id="myTabContent">
-					<form method="post" action="sign-in-admin">
-						<div class="form-row justify-content-center" style="margin-bottom: 1rem !important;">
-						<h3>Glad to see you!</h3>
-						</div>
-					  <div class="form-row justify-content-center"  style="margin-bottom: 1rem !important;">
-					    <div class="col-3">
-					      <input type="text" class="form-control rounded-lg" id="login" placeholder="Login">
-					    </div>
-					    <div class="col-3">
-					      <input type="password" class="form-control rounded-lg" id="password" placeholder="Password">
-					    </div>
-					  </div>
-					  <div class="form-row justify-content-center" style="margin-bottom: 1rem !important;">
-					  	<button class="btn btn-primary rounded-lg" style="font-weight: bold;" type="submit">Sign in</button>
-					  </div>
-					</form>
+				<div class="row justify-content-end" style="margin-top: 1rem !important;margin-bottom: 1rem !important;margin-right: 0rem !important;">
+						<a class="col-3 col-lg-2 left-sign text-center"  aria-selected="false" href="sign-up-user">Sign up</a>
+						<a class="col-3 col-lg-2 right-sign text-center"  aria-selected="true" href="sign-in-user">Sign in</a>		
 				</div>
+				<div class ="row align-items-center" style="height:60%;">
+					<div class="col-12 tab-content" id="myTabContent">
+						<form method="post" action="sign-in-admin">
+							<div class="form-row justify-content-center" style="margin-bottom: 1rem !important;">
+								<h3>Glad to see you!</h3>
+							</div>
+							<div class="form-row justify-content-center"  style="margin-bottom: 1rem !important;">
+								<div class="col-3">
+									<input type="text" class="form-control rounded-lg" id="login" name="login" placeholder="Login">
+								</div>
+								<div class="col-3">
+									<input type="password" id="password" name="password"  class="form-control rounded-lg"  placeholder="Password">
+								</div>
+							</div>
+							<div class="form-row justify-content-center" style="margin-bottom: 1rem !important;">
+								<button class="btn btn-primary rounded-lg" style="font-weight: bold;" type="submit">Sign in</button>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>	

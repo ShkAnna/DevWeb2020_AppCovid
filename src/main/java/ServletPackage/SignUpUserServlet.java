@@ -1,10 +1,11 @@
 package ServletPackage;
 
 import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
-
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,41 +19,29 @@ import SQLPackage.SQLConnector;
 /**
  * Servlet implementation class SignUpUserServlet
  */
-@WebServlet("/sign-up-user")
+@WebServlet(name = "SignUpUserServlet", value = "/sign-up-user")
+@MultipartConfig
 public class SignUpUserServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SignUpUserServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-    private Map<String, String> erreurs;
+	 private Map<String, String> erreurs;
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/signUpUser.jsp" ).forward( request, response );
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	request.setCharacterEncoding("UTF-8");
         erreurs = new HashMap<String, String>();
-        /* Récupération des champs du formulaire. */
         String email = request.getParameter("mail");
         String motDePasse = request.getParameter("password");
         String confirmation = request.getParameter("password_CHECK");
         String nom = request.getParameter("name");
         String prenom = request.getParameter("surname");
         String pseudo = request.getParameter("login");
-        Part pictureData = request.getPart("picture");
+        Part pictureData = request.getPart("picture");  
         String picture;
         SQLConnector con = new SQLConnector();
-        if(pictureData != null) {
-        	 picture = "./WebContent/images" + pseudo + "." + pictureData.getSubmittedFileName().split(Pattern.quote("."))[1];
-        } else {
-        	picture = "./WebContent/images/photoProfil.png";
-        }
-        
+        picture = "./WebContent/images/photoProfil.png";
+               
         String birthdate = request.getParameter("birthdate");
         if(birthdate != null) {
         	birthdate = birthdate.replace('-','/');
@@ -91,6 +80,7 @@ public class SignUpUserServlet extends HttpServlet {
             setErreur("login", e.getMessage());
         }
 
+     
         //S'il n'y a aucune erreur, on ajoute à la BDD
         if(erreurs.isEmpty()){
             Utilisateur utilisateur = new Utilisateur();
@@ -104,10 +94,11 @@ public class SignUpUserServlet extends HttpServlet {
            
 
             con.createUser(utilisateur);
-			response.sendRedirect("/AppCovid/dashboard-user-servlet");
+        	response.sendRedirect("/DevWeb2020_AppCovid/dashboard-user-servlet");
             //this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/profil.jsp").forward(request, response);
         }else {
             request.setAttribute("erreurs", erreurs);
+          
             // Redirection vers le formulaire
             this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/signUpUser.jsp").forward(request, response);
         }

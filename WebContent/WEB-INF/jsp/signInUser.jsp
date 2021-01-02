@@ -74,7 +74,7 @@
 									<input type="text" class="form-control rounded-lg" id="login" name="login" placeholder="Login">
 								</div>
 								<div class="col-3">
-									<input type="password" class="form-control rounded-lg" id="password" placeholder="Password">
+									<input type="password" id="password" name="password"  class="form-control rounded-lg"  placeholder="Password">
 								</div>
 							</div>
 							<div class="form-row justify-content-center" style="margin-bottom: 1rem !important;">

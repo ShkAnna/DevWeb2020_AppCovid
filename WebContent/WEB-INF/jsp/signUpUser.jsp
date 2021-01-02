@@ -46,34 +46,8 @@
 	    });
 	</script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/checksScripts.js"></script>
-	<script>
-	    $(document).ready(function(){
-	        $("form").submit(function(e){
-	            if(!checkEmail($("#mail").val())){
-	                displayError(".errorMail","Cette adresse email n'est pas valide");
-	                e.preventDefault(e);
-	            }
-	            if(!checkLogin($("#login").val())){
-	                displayError(".errorLogin","Votre pseudo doit avoir entre 4 et 50 charactères ");
-	                e.preventDefault(e);
-	            }
-	            if(!checkName($("#name").val())){
-	                displayError(".errorName","Vous devez entrez un nom valide");
-	                e.preventDefault(e);
-	            }
-	            if(!checkName($("#surname").val())){
-	                displayError(".errorSurname","Vous devez entrez un prénom valide");
-	                e.preventDefault(e);
-	            }
-	            if(!checkDate(new Date($("#birthdate").val()))){
-	                displayError(".errorBirthdate","Vous devez entrez un date d'anniversaire valide");
-	                e.preventDefault(e);
-	            }
-	            return true;
-	        });
-	    });
-	</script>
+	
+	
     
 	
 </head>
@@ -104,12 +78,12 @@
 							<div class="form-row justify-content-center"  style="margin-bottom: 1rem !important;">
 								<div class="col-3" style="margin-right: 3rem !important;">
 									<div class="row">
-										<input  placeholder="Login *" class="form-control rounded-lg" type="text" id="login" name="login" value="<c:out value="${param.login}"/>" required>
+										<input type="text" id="login" name="login" value="<c:out value="${param.login}"/>"  placeholder="Login *" class="form-control rounded-lg" required>
 	           							<span class="erreur">${erreurs['login']}</span>
 									</div>
 									<div class="row">
-										<input placeholder="Password *" class="form-control rounded-lg" type="password" id="password" name="password" required>
-          								<span class="erreur">${erreurs['password']}</span>
+									<input type="password" id="password" name="password"  class="form-control rounded-lg"  placeholder="Password">
+							
 									</div>
 									<div class="row">
 										<input placeholder="Confirm Password *" class="form-control rounded-lg" type="password" id="password_CHECK" name="password_CHECK" required>
