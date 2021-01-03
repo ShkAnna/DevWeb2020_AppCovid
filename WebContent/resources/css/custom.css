@@ -8,6 +8,34 @@ a, .btn-primary {
 	outline:none;
 	font-weight: bold;
 }
+.table > tbody > tr > td {
+     vertical-align: middle;
+}
+.btn.btn-del:focus, .btn.btn-del:hover {
+	background-color: none;
+	background: none;
+	color: white;
+	-webkit-box-shadow: 0 0 0 0.2rem #E14557;
+  	box-shadow: 0 0 0 0.2rem #E14557;
+}
+
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
 .a-modif {
 	background-color: #CAEA7B;
 	border:1px solid #CAEA7B;
