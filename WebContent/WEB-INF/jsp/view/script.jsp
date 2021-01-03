@@ -1,9 +1,9 @@
 
     
     <!-- JavaScript files-->
+    
     <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    
     
     <script src="${pageContext.request.contextPath}/resources/js/grasp_mobile_progress_circle-1.0.0.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/vendor/jquery.cookie/jquery.cookie.js"> </script>
@@ -35,29 +35,6 @@
 	  	  //modal.find('.modal-title').text('New message to ' + user);
 	  	  //$(this).find('.modal-username').text(user);
 	  	})
-	  	//pie
-	    var ctxP = document.getElementById("pieChart").getContext('2d');
-	    var myPieChart = new Chart(ctxP, {
-	      type: 'pie',
-	      data: {
-	        labels: ["Malades", "Pas malades"],
-	        datasets: [{
-	          data: [300, 50],
-	          backgroundColor: ["#F7464A", "#A1C83F"],
-	          hoverBackgroundColor: ["#FF5A5E", "#c6e086"]
-	        }]
-	      },
-	      options: {
-	          responsive: true,
-	          legend: {
-	            position: 'right',
-	            labels: {
-	              padding: 20,
-	              boxWidth: 10
-	            }
-	          }
-	        }
-	      });
   	
 		window.alert = function(){};
 	    var defaultCSS = document.getElementById('bootstrap-css');

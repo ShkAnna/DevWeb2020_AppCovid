@@ -205,7 +205,11 @@
 			</div>
 		</div>
 	</section>
-	<script>
+	
+    <jsp:include page="/WEB-INF/jsp/view/footer.jsp" />
+    </div>
+  	<jsp:include page="/WEB-INF/jsp/view/script.jsp" />
+  	<script>
 	  	window.onload = function() {
 	  	  changeActiveLi();
 	  	};
@@ -221,9 +225,30 @@
 	  		    element.classList.add("active");
 	  		   });
 	  	}
+
+	  	//pie
+	    var ctxP = document.getElementById("pieChart").getContext('2d');
+	    var myPieChart = new Chart(ctxP, {
+	      type: 'pie',
+	      data: {
+	        labels: ["Malades", "Pas malades"],
+	        datasets: [{
+	          data: [300, 50],
+	          backgroundColor: ["#F7464A", "#A1C83F"],
+	          hoverBackgroundColor: ["#FF5A5E", "#c6e086"]
+	        }]
+	      },
+	      options: {
+	          responsive: true,
+	          legend: {
+	            position: 'right',
+	            labels: {
+	              padding: 20,
+	              boxWidth: 10
+	            }
+	          }
+	        }
+	      });
   	</script>
-    <jsp:include page="/WEB-INF/jsp/view/footer.jsp" />
-    </div>
-  	<jsp:include page="/WEB-INF/jsp/view/script.jsp" />
   </body>
 </html>

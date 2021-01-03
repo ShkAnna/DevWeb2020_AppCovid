@@ -139,6 +139,6 @@
 	</section>
     <jsp:include page="/WEB-INF/jsp/view/footer.jsp" />
     </div>
-  	<jsp:include page="/WEB-INF/jsp/view/script.jsp" />
+  	<jsp:include page="/WEB-INF/jsp/view/script.jsp" />	
   </body>
 </html>
