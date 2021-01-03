@@ -205,7 +205,23 @@
 			</div>
 		</div>
 	</section>
-    
+	<script>
+	  	window.onload = function() {
+	  	  changeActiveLi();
+	  	};
+	  	function changeActiveLi() {
+	  		var navChange = document.getElementById("side-main-menu");
+	  		var active = navChange.getElementsByClassName("active");
+	  		Array.prototype.forEach.call(active, function forElement(element) {
+	  		    element.classList.remove("active");
+	  		   });
+	  		var notActive = navChange.getElementsByClassName("friends");
+	  		console.log(notActive);
+	  		Array.prototype.forEach.call(notActive, function forElement(element) {
+	  		    element.classList.add("active");
+	  		   });
+	  	}
+  	</script>
     <jsp:include page="/WEB-INF/jsp/view/footer.jsp" />
     </div>
   	<jsp:include page="/WEB-INF/jsp/view/script.jsp" />
