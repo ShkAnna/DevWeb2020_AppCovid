@@ -1,8 +1,10 @@
 
     
     <!-- JavaScript files-->
+    
     <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
     <script src="${pageContext.request.contextPath}/resources/js/grasp_mobile_progress_circle-1.0.0.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/vendor/jquery.cookie/jquery.cookie.js"> </script>
     <script src="${pageContext.request.contextPath}/resources/vendor/chart.js/Chart.min.js"></script>
@@ -10,14 +12,31 @@
     <script src="${pageContext.request.contextPath}/resources/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
     <!-- Main File-->
     <script src="${pageContext.request.contextPath}/resources/js/front.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/jquery.coronatracker/jquery-3.4.1.min.js" charset="utf-8"></script>
+    <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/jquery.coronatracker/jquery-3.4.1.min.js" charset="utf-8"></script> -->
     <script src="${pageContext.request.contextPath}/resources/jquery.coronatracker/js/jquery.coronatracker.js" charset="utf-8"></script>
     <script src="${pageContext.request.contextPath}/resources/jquery.coronatracker/jquery-jvectormap-2.0.5/jquery-jvectormap-2.0.5.min.js" charset="utf-8"></script>
     <script src="${pageContext.request.contextPath}/resources/jquery.coronatracker/jquery-jvectormap-2.0.5/jquery-jvectormap-world-mill-en.js" charset="utf-8"></script>
   
   <script type="text/javascript">
-    	window.alert = function(){};
+  
+	  	$('#modalDeleteUser').on('show.bs.modal', function (event) {
+	  	  var button = $(event.relatedTarget); // Button that triggered the modal
+	  	  var user = button.data('username'); // Extract info from data-* attributes
+	  	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+	  	  //modal.find('.modal-title').text('New message to ' + user);
+	  	  $(this).find('.modal-username').text(user);
+	  	})
+	  	
+	  	$('#modalAddUser').on('show.bs.modal', function (event) {
+	  	  //var button = $(event.relatedTarget); // Button that triggered the modal
+	  	  //var user = button.data('username'); // Extract info from data-* attributes
+	  	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+	  	  //modal.find('.modal-title').text('New message to ' + user);
+	  	  //$(this).find('.modal-username').text(user);
+	  	})
+  	
+		window.alert = function(){};
 	    var defaultCSS = document.getElementById('bootstrap-css');
 	    function changeCSS(css){
 	        if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />'); 
@@ -71,6 +90,6 @@
                 Btn_Id.classList.remove("btn-danger");
                 Btn_Id.classList.add("btn-primary");
             }
-        }    
+        }
        
     </script>

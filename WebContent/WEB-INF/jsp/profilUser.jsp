@@ -28,7 +28,7 @@
 <div class="container bootstrap snippet">
     <div class="row">
   		<div class="col-sm-10"><h1>Bienvenue <%out.print(current_user.getPseudo());%> </h1></div>
-    	<div class="col-sm-2"><a href="logout-servlet" class="pull-right"><img class="im1" src="images/logout.png" width="50" height="50"></a></div>
+    	<div class="col-sm-2"><a href="dashboard-user-servlet" class="pull-right">Menu Princpal<img class="im1" src="images/retour.png" width="50" height="50"></a></div>
     </div>
     <div class="row">
   		<div class="col-sm-3"><!--left col-->
