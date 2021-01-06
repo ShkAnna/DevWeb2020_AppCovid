@@ -84,6 +84,13 @@ form .requis {
     color: #c00;
 }
 
+.colspace {
+	display:flex;
+	width:50%;
+	overflow-y: scroll;
+	white-space: nowrap;
+}
+
 .register{
     background:#CAEA7B;
     margin-top: 3%;

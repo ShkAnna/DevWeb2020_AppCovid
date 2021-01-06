@@ -50,7 +50,7 @@
 						        <div class="card-body" style="color:#0099cc;margin-top:-1rem">
 						          	<div class="table-responsive" style="height:30vh;overflow-y:scroll;">
 						            	<table class="table table-striped table-hover text-center" style="font-size: 1rem;">
-						               		<thead >
+						               		<thead>
 						                 		<tr>
 						                 			<th></th>
 								                   	<th>Pseudo</th>
@@ -59,27 +59,24 @@
 							                 	</tr>
 						               		</thead>
 						               		<tbody style="font-weight:bold;">
-							              	<c:forEach items="${friends}" var="item">
-			               						<tr>
-							               			<td>
-							               				<img src="${pageContext.request.contextPath}/images/photoProfil.png" alt="person" width="50" height="50" class="img rounded-circle">
-							               			</td>
-							               	 	<td>
-										            ${item.pseudo} -
-										            ${item.nom} -
-										            ${item.prenom}
-			          						  </td>
-          						 			   <td><i class="fa fa-check" style="color:#70af1c;"></i></td>
-							                   		<td>
-														<button type="button" class="btn btn-del" data-toggle="modal" data-target="#modalDeleteUser" data-username="USER-NAME">
-															<i class="fa fa-trash" style="color:#E14557;"></i>
-														</button>
-							                   		</td>
-							                 	</tr>
-											</c:forEach>
-							                 	
-							                 	
-							              
+								              	<c:forEach items="${friends}" var="item">
+				               						<tr>
+								               			<td>
+								               				<img src="${pageContext.request.contextPath}/images/photoProfil.png" alt="person" width="50" height="50" class="img rounded-circle">
+								               			</td>
+									               	 	<td>
+												            ${item.pseudo} -
+												            ${item.nom} -
+												            ${item.prenom}
+					          						  	</td>
+	          						 			   		<td><i class="fa fa-check" style="color:#70af1c;"></i></td>
+								                   		<td>
+															<button type="button" class="btn btn-del" data-toggle="modal" data-target="#modalDeleteUser" data-username="USER-NAME">
+																<i class="fa fa-trash" style="color:#E14557;"></i>
+															</button>
+								                   		</td>
+								                 	</tr>
+												</c:forEach>
 							               	</tbody>
 						             	</table>
 						         	</div>
@@ -110,21 +107,18 @@
 				                 	</tr>
 			               		</thead>
 			               		<tbody style="font-weight:bold;">
-				               		
 				                 	<c:forEach items="${friends}" var="item">
 			               				<tr>
-							               			<td>
-				               				<img src="${pageContext.request.contextPath}/images/photoProfil.png" alt="person" width="50" height="50" class="img rounded-circle">
-				               			</td>
-							               	 	<td>
-										            ${item.pseudo} -
-										            ${item.nom} -
-										            ${item.prenom}
-			          						  </td>
-							                 	</tr>
-											</c:forEach>
-				                 	
-				                 	
+							            	<td>
+				               					<img src="${pageContext.request.contextPath}/images/photoProfil.png" alt="person" width="50" height="50" class="img rounded-circle">
+				               				</td>
+							            	<td>
+									            ${item.pseudo} -
+									            ${item.nom} -
+									            ${item.prenom}
+			          						 </td>
+							             </tr>
+									</c:forEach>
 				               	</tbody>
 			             	</table>
 			         	</div>
