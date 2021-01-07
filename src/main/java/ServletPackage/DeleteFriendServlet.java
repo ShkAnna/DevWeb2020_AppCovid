@@ -27,7 +27,7 @@ public class DeleteFriendServlet extends HttpServlet {
             throwables.printStackTrace();
         }
         sqlConnector.deleteFriend(utilisateur.getId(), friend.getId());
-        sqlConnector.createNotification(utilisateur, friend, utilisateur.getPrenom()+ " "+utilisateur.getNom()+" vous a retier de sa liste d amis.", "0");
+        sqlConnector.createNotification(utilisateur, friend, "vous a retier de sa liste d amis.", "0");
         response.sendRedirect("/DevWeb2020_AppCovid/friends-user");
 
     }

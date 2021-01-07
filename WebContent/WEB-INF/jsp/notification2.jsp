@@ -105,13 +105,16 @@
 								                   	<th></th>
 							                 	</tr>
 						               		</thead>
-						               		<tbody style="font-weight:bold;">
+						               			<tbody style="font-weight:bold;">						               		
+						               							<c:forEach items="${notifs}" var="item">			               		
 			               						<tr>
+			               					
+			               					
 							               			<td>
 							               				<img src="${pageContext.request.contextPath}/images/photoProfil.png" alt="person" width="50" height="50" class="img rounded-circle">
 							               			</td>
 							               	 		<td>
-										        		Saraaaaaaaaaa
+										        		${item.pseudoAsking}
 			          						  		</td>
 			          						  		<td>
 										        		10  	
@@ -122,20 +125,14 @@
 			          						  		<td>
 										        		<button class="btn btn-danger rounded-lg" style="font-weight: bold;" type="submit" name="buttonRefuseFriend" onclick="window.location.href='refuseFriend?id=${item.idAsking}&idNotif=${item.id}'">Refuser</button>
 			          						  		</td>
+			          						  		 
+			          						  
 							                 	</tr>
+							                 					  </c:forEach>				                 	
+							                 	
 							               	</tbody>
 						             	</table>
-						            	<!--<c:forEach items="${notifs}" var="item">
-								        <span>  ${item.message} </span>
-								        <c:choose>
-								            <c:when test="${item.friendRequest}">-->
-								                <!--</c:when>
-								            <c:otherwise>-->
-								               
-								           <!--  </c:otherwise>
-								        </c:choose>
-								        <br>
-								    </c:forEach>-->
+						            
 						         	</div>
 				       			</div>
 			    			</div>
@@ -166,48 +163,36 @@
 				          		<table class="table table-striped table-hover text-center" style="font-size: 1rem;">
 				               		<thead style="display:none;" >
 				               		</thead>
+				               		
+				               		
 				               		<tbody style="font-weight:bold;">
+				               			<c:forEach items="${notifs}" var="item">			  
 	               						<tr>
 					               			<td>
 					               				<img src="${pageContext.request.contextPath}/images/photoProfil.png" alt="person" width="50" height="50" class="img rounded-circle">
 					               			</td>
 					               	 		<td>
-								        		Saraaaaaaaaaa   	
+										        ${item.pseudoAsking}
+			          						  </td>
+	          						  		<td>
+								        		${item.message} 	
 	          						  		</td>
 	          						  		<td>
-								        		vous a supprimé de la liste de ses amis  	
+								        		${item.date}
 	          						  		</td>
 	          						  		<td>
-								        		12/01/2020	
-	          						  		</td>
-	          						  		<td>
-								        		12:02 	
+								        		${item.time}
 	          						  		</td>
 	          						  		<td>
 	          						  			<button class="btn btn-secondary rounded-lg" style="font-weight: bold;border-color:#0099cc;background-color:#0099cc;" type="button" data-toggle="modal" data-target="#modalAddUser">Effacer</button>
 	          						  		</td>
 					                 	</tr>
-					                 	<tr>
-					               			<td>
-					               				<img src="${pageContext.request.contextPath}/images/photoProfil.png" alt="person" width="50" height="50" class="img rounded-circle">
-					               			</td>
-					               	 		<td>
-								        		Sara    	
-	          						  		</td>
-	          						  		<td>
-								        		a accepté votre demande  	
-	          						  		</td>
-	          						  		<td>
-								        		11/01/2020	
-	          						  		</td>
-	          						  		<td>
-								        		09:02 	
-	          						  		</td>
-	          						  		<td>
-	          						 			<button class="btn btn-secondary rounded-lg" style="font-weight: bold;border-color:#0099cc;background-color:#0099cc;" type="submit" name="buttonDeleteNotif" onclick="window.location.href='deleteNotif?id=${item.id}'">Effacer</button>
-	          						  		</td>
-					                 	</tr>
+					                 						                 	
+					                 	</c:forEach>	
 					               	</tbody>
+					               	
+					               	
+					               	
 				             	</table>
 				         	</div>
 		       			</div>

@@ -43,7 +43,7 @@
 						        			<h4  style="color:#E14557;">Mes amis</h4>
 						        		</div>
 						        		<div class="col-auto">
-						        			<button class="btn btn-primary rounded-lg" style="font-weight: bold;" type="button" data-toggle="modal" data-target="#modalAddUser">Ajouter</button>
+						        			 <button class="btn btn-primary rounded-lg" style="font-weight: bold;" type="button" data-toggle="modal" data-target="#modalAddUser" > Ajouter</button>
 						        		</div>
 						        	</div>
 						        </div>
@@ -65,9 +65,7 @@
 								               				<img src="${pageContext.request.contextPath}/images/photoProfil.png" alt="person" width="50" height="50" class="img rounded-circle">
 								               			</td>
 									               	 	<td>
-												            ${item.pseudo} -
-												            ${item.nom} -
-												            ${item.prenom}
+												            ${item.pseudo} 												            
 					          						  	</td>
 	          						 			   		<td><i class="fa fa-check" style="color:#70af1c;"></i></td>
 								                   		<td>

@@ -29,8 +29,7 @@ public class AcceptFriendServlet extends HttpServlet {
         }
         sqlConnector.createFriendship(utilisateur,friend);
         sqlConnector.deleteNotif(idNotif);
-        sqlConnector.createNotification(utilisateur,friend, utilisateur.getNom() + " " + utilisateur.getPrenom() +" a accepter votre invitaton.", "0");
-        response.sendRedirect("/DevWeb2020_AppCovid/friends-user");
-
+        sqlConnector.createNotification(utilisateur,friend," a accepter votre invitaton.", "0");
+        response.sendRedirect("/DevWeb2020_AppCovid/notifications");
     }
 }

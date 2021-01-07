@@ -1,6 +1,6 @@
 <%@ page import="BeanPackage.Utilisateur" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<% Utilisateur current_user = (Utilisateur) session.getAttribute("current_user"); %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
  
  <!-- Side Navbar -->
@@ -10,7 +10,8 @@
     <div class="sidenav-header d-flex align-items-center justify-content-center">
       <!-- User Info-->
       <div class="sidenav-header-inner text-center">
-      	
+      	 	<img src="${pageContext.request.contextPath}/images/photoProfil.png" alt="person" class="img-fluid rounded-circle">
+        <h2 class="h5"><%out.print(current_user.getPrenom());%> <%out.print(current_user.getNom());%></h2>
         <div id="stateNotif" class="stateNotSick">Pas malade</div>
         <!-- <span>Web Developer</span> -->
       </div>

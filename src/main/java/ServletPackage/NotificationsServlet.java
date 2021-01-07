@@ -18,7 +18,7 @@ import java.util.List;
 public class NotificationsServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        /*List<Notification> list = null;
+        List<Notification> list = null;
         SQLConnector con = new SQLConnector();
         HttpSession session = request.getSession();
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("current_user");
@@ -28,7 +28,7 @@ public class NotificationsServlet extends HttpServlet {
             e.printStackTrace();
         }
         request.setAttribute("notifs", list);
-        */
+        
         this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/notification2.jsp" ).forward( request, response );
     }
 }

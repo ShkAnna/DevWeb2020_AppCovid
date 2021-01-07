@@ -87,13 +87,15 @@ CREATE TABLE Notification
     message TEXT NOT NULL,
     friendRequest BOOL NOT NULL DEFAULT TRUE,
     send_date DATETIME,
+    seen BOOL NOT NULL DEFAULT FALSE,
 
     FOREIGN KEY (id_user_asking)
-        REFERENCES Users(id_user)
+        REFERENCES CNUser(id_user)
         ON UPDATE CASCADE ON DELETE CASCADE,
 
     FOREIGN KEY (id_user_other)
-        REFERENCES Users(id_user)
+        REFERENCES CNUser(id_user)
         ON UPDATE CASCADE ON DELETE CASCADE
 );
+
 INSERT INTO appcovid.users(login,user_password,name,first_name,email,is_admin,picture) VALUES('admin','2760aab76f29aab3445aa48da30f651131867dee','MrAdmin','Admin','admin@admin.fr','/pfp/default.png',TRUE);

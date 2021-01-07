@@ -18,9 +18,10 @@ import java.util.List;
  */
 @WebServlet("/friends-user")
 public class FriendsUserServlet extends HttpServlet {
+	private List<Utilisateur> friends;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 SQLConnector con = new SQLConnector();
+			SQLConnector con = new SQLConnector();
 	        HttpSession session = request.getSession();
 	        Utilisateur utilisateur = (Utilisateur) session.getAttribute("current_user");
 	        List<Utilisateur> listUsers = null;
@@ -50,6 +51,13 @@ public class FriendsUserServlet extends HttpServlet {
 	            listUsers.removeAll(listAsked);
 	        }
 
+	        try {
+	            friends = con.getFriends(utilisateur);
+	        } catch (SQLException throwables) {
+	            throwables.printStackTrace();
+	        }
+	        request.setAttribute("friends", friends);
+	        
 	        request.setAttribute("users", listUsers);
 	       
 		 this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/friendsUser.jsp" ).forward( request, response );

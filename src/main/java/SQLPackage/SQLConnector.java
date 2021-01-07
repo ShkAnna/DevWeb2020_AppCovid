@@ -9,7 +9,9 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.math.BigInteger;
 import java.sql.*;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -264,12 +266,21 @@ public class SQLConnector {
         ResultSet result = doRequest(query);
         result.next();
         if (!result.getString("id_notification").isEmpty()) {
+        	String name = "Select * FROM appcovid.users WHERE id_user='" + result.getString("id_user_asking") + "' ;";
+            ResultSet resultname = doRequest(name);
+            resultname.next();
             notification = new Notification();
             notification.setId(result.getString("id_notification"));
             notification.setIdAsking(result.getString("id_user_asking"));
             notification.setIdOther(result.getString("id_user_other"));
             notification.setMessage(result.getString("message"));
             notification.setFriendRequest(!result.getString("friendRequest").equals("0"));
+            notification.setDate(result.getString("send_date"));
+            notification.setTime(result.getString("time"));
+            if (!resultname.getString("login").isEmpty()) {          
+            notification.setPseudoAsking(resultname.getString("login"));
+            }
+           
         }
         this.closeCon();
         return notification;
@@ -302,15 +313,18 @@ public class SQLConnector {
 
    
     public void createNotification(Utilisateur utilisateur, Utilisateur friend, String message, String friendRequest) {
-        String query =
-                "INSERT INTO appcovid.notification(id_user_asking, id_user_other,send_date, message, friendRequest) " +
+    	  
+    	String query =
+                "INSERT INTO appcovid.notification(id_user_asking, id_user_other,send_date, message, friendRequest,time) " +
                         "VALUES('"
                         + utilisateur.getId() + "','"
                         + friend.getId() + "',"
-                        + "null" + ",'"
-                        + message + "',"
-                        + friendRequest
-                        + ");";
+                        +  "CURDATE()"+ ",'"
+                        + message + "','"
+                        + friendRequest + "',"
+                        +"CURTIME()" 
+                        +");";
+    	
         doAdd(query);
     }
 
@@ -319,13 +333,14 @@ public class SQLConnector {
         con = connection();
         for(String id : usersIdToNotify) {
             String query =
-                    "INSERT INTO appcovid.notification(id_user_asking, id_user_other,send_date, message, friendRequest) " +
+                    "INSERT INTO appcovid.notification(id_user_asking, id_user_other,send_date, message, friendRequest,time) " +
                             "VALUES('"
                             + utilisateurPositif.getId() + "','"
                             +  id + "',"
-                            + "null" + ",'"
+                            + "CURDATE()" + ",'"
                             + message + "',"
-                            + "0"
+                            + "0" + ","
+                            +"CURTIME()" 
                             + ");";
             statement = con.prepareStatement(query);
             statement.executeUpdate();
@@ -437,7 +452,7 @@ public class SQLConnector {
         String query = "Select * FROM appcovid.users WHERE login='" + username + "'";
         ResultSet result = doRequest(query);
         if (result.next()) {
-            throw new Exception("Ce pseudo est d√©j√† utilis√©");
+            throw new Exception("Ce pseudo est dÈja utilisÈ");
         }
         this.closeCon();
     }
@@ -464,7 +479,7 @@ public class SQLConnector {
         String query = "Select * FROM appcovid.users WHERE email='" + email + "' AND id_user != '"+utilisateur.getId()+"';";
         ResultSet result = doRequest(query);
         if (result.next()) {
-            throw new Exception("Cet email est d√©j√† utilis√©");
+            throw new Exception("Cet email est dÈja† utilisÈ");
         }
         this.closeCon();
     }
@@ -473,7 +488,7 @@ public class SQLConnector {
         String query = "Select * FROM appcovid.place WHERE name='" + name + "'";
         ResultSet result = doRequest(query);
         if (result.next()) {
-            throw new Exception(name + " est un lieu d√©j√† existant");
+            throw new Exception(name + " est un lieu dÈja existant");
         }
         this.closeCon();
     }
@@ -482,7 +497,7 @@ public class SQLConnector {
         String query = "Select * FROM appcovid.place WHERE name='" + name + "' AND id_place != '"+id+"';";
         ResultSet result = doRequest(query);
         if (result.next()) {
-            throw new Exception(name + " est un lieu d√©j√† existant");
+            throw new Exception(name + " est un lieu dÈja† existant");
         }
         this.closeCon();
     }
@@ -500,7 +515,7 @@ public class SQLConnector {
         String query = "Select * FROM appcovid.place WHERE address='" + address + "' AND id_place != '"+id+"';";
         ResultSet result = doRequest(query);
         if (result.next()) {
-            throw new Exception(address + " est d√©j√† utilis√© pour un lieu existant");
+            throw new Exception(address + " est dÈja† utilisÈ pour un lieu existant");
         }
         this.closeCon();
     }

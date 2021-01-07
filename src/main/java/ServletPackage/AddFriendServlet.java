@@ -25,7 +25,7 @@ public class AddFriendServlet extends HttpServlet {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        sqlConnector.createNotification(utilisateur,friend, utilisateur.getNom() + " " + utilisateur.getPrenom() +" veut etre votre ami.", "1");
+        sqlConnector.createNotification(utilisateur,friend," veut etre votre ami.", "1");
         
         response.sendRedirect("/DevWeb2020_AppCovid/friends-user");
 
