@@ -674,7 +674,7 @@ public class SQLConnector {
         String query = "SELECT * FROM appcovid.users WHERE id_user!='" + utilisateur.getId() + "';";
         ResultSet result = doRequest(query);
         while (result.next()) {     	
-            if (!result.getBoolean("is_admin")) { 
+            if (!result.getBoolean("is_admin") && (result.getString("id_user")!=utilisateur.getId()) ) { 
             utilisateur = new Utilisateur();
             utilisateur.setId(result.getString("id_user"));
             utilisateur.setPseudo(result.getString("login"));

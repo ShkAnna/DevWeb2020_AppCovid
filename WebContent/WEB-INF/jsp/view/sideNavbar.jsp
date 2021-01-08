@@ -25,7 +25,7 @@
       </div>
       <!-- Small Brand information, appears on minimized sidebar-->
     <div class="sidenav-header-logo">
-   	<a href="index.html" class="brand-small text-center">
+   	<a href="dashboard-user-servlet" class="brand-small text-center">
      	<strong>AC</strong>
      	<!-- <strong class="text-primary">C</strong> -->
     	</a>

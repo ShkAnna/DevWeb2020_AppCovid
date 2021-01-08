@@ -1,6 +1,8 @@
 <%@ page import="BeanPackage.Utilisateur" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    
+<% Utilisateur current_user = (Utilisateur) session.getAttribute("current_user"); %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,11 +76,15 @@
 							<div class="form-row justify-content-center"  style="margin-bottom: 1rem !important;">
 								<div class="col-3">
 									<input type="text" class="form-control rounded-lg" id="login" name="login" placeholder="Login">
+									
 								</div>
 								<div class="col-3">
 									<input type="password" id="password" name="password"  class="form-control rounded-lg"  placeholder="Password">
+								                
 								</div>
+								
 							</div>
+							<p style="text-align:center;">${erreur} </p>
 							<div class="form-row justify-content-center" style="margin-bottom: 1rem !important;">
 								<button class="btn btn-primary rounded-lg" style="font-weight: bold;" type="submit">Sign in</button>
 							</div>

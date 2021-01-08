@@ -16,7 +16,8 @@ import java.util.List;
 
 @WebServlet(name = "NotificationsServlet", value = "/notifications")
 public class NotificationsServlet extends HttpServlet {
-
+	private List<Utilisateur> friends;
+	
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Notification> list = null;
         SQLConnector con = new SQLConnector();
@@ -27,6 +28,13 @@ public class NotificationsServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        try {
+            friends = con.getFriends(utilisateur);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        
+        request.setAttribute("friends", friends);
         request.setAttribute("notifs", list);
         
         this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/notification2.jsp" ).forward( request, response );

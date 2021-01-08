@@ -1,6 +1,7 @@
 package ServletPackage;
 
 import SQLPackage.SQLConnector;
+
 import BeanPackage.Utilisateur;
 
 
@@ -33,20 +34,26 @@ public class SignInUserServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
     	request.setCharacterEncoding("UTF-8");
-        String login = request.getParameter("login");
-        String pass = request.getParameter("password");
-   
+
         SQLConnector connector = new SQLConnector();
         HttpSession session = request.getSession();
-
+        String erreur = "Login ou mot de passe incorecte";
+        
+    	if(!request.getParameter("login").isEmpty() && !request.getParameter("password").isEmpty() ) {
+        String login = request.getParameter("login");
+        String pass = request.getParameter("password");
+    
         try {
             Utilisateur user = connector.getUser(login,pass);
            
-            if(user == null || user.getPseudo() == null){
+            if(user == null || user.getPseudo() == null  ){
+            	 session.setAttribute("erreur",erreur);
                 this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/signInUser.jsp" ).forward( request, response );
+               
             }
             else{
-            	
+            	 erreur = " ";
+            	 session.setAttribute("erreur",erreur);
     			session.setAttribute("current_user",user);
     			request.setAttribute("current_user",user);
     			response.sendRedirect("/DevWeb2020_AppCovid/dashboard-user-servlet");
@@ -58,5 +65,12 @@ public class SignInUserServlet extends HttpServlet {
             throwables.printStackTrace();
         }
 
+    }
+    	else {
+    		 session.setAttribute("erreur",erreur);
+    		 this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/signInUser.jsp" ).forward( request, response );
+    		
+    		
+    	}
     }
 }

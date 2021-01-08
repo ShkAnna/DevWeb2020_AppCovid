@@ -52,19 +52,21 @@
 						                 			<th></th>
 								                   	<th>Pseudo</th>
 								                   	<th>Lieu en commun</th>
-								                   	<th>Date en commun</th>
-								                   	<th>Horaire en commun</th>
+								                   	<th>Date </th>
+								                   	<th>Horaire</th>
 							                 	</tr>
 						               		</thead>
 						               		<tbody style="font-weight:bold;">
-			               						<tr >
-							               			<td>
-							               				<img src="${pageContext.request.contextPath}/images/photoProfil.png" alt="person" width="50" height="50" class="img rounded-circle">
-							               			</td>
-							               	 		<td>
-										        		Saraaaaaaaaaa    	
-			          						  		</td>
-			          						  		<td>
+			               						
+			               						<c:forEach items="${friends}" var="item">
+				               						<tr>
+								               			<td>
+								               				<img src=${item.profilPicture} alt="person" width="50" height="50" class="img rounded-circle">
+								               			</td>
+									               	 	<td>
+												            ${item.pseudo} 												            
+					          						  	</td>
+					          						  	<td>
 										        		Tennis Footbal Basketball Badminton
 			          						  		</td>
 			          						  		<td>
@@ -72,8 +74,11 @@
 			          						  		</td>
 			          						  		<td>
 										        		09:02 	
-			          						  		</td>
-							                 	</tr>
+			          						  		</td>	
+												  
+												</c:forEach>
+							                 	
+							                 	
 							               	</tbody>
 						             	</table>
 						         	</div>

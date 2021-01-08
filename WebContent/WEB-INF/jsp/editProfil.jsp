@@ -39,7 +39,7 @@
       <div class="text-center">
         <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
         <label for="picture" class="col-sm-6 col-form-label">Image de profil</label>
-                <input type="file" id="picture" name="picture" accept="image/png, image/jpeg" class="form-control-file">
+        <input type="file" id="picture" name="picture" accept="image/png, image/jpeg" class="form-control-file">
         </div><br>
       
 
@@ -68,12 +68,7 @@
             
           </ul> 
                
-          <div class="panel panel-default">
-            <div class="panel-heading">Social Media</div>
-            <div class="panel-body">
-            	<i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
-            </div>
-          </div>
+          
           
         </div>
     	<div class="col-sm-9">
@@ -111,7 +106,7 @@
                       <div class="form-group">
                           
                           <div class="col-xs-6">
-                                 <label for="first_name"><h3>Email</h3></label>
+                                 <label for="email"><h3>Email</h3></label>
                             	 <input type="email" id="mail" name="mail" class="form-control" value="<c:out value="${user.email}"/>" required>
              					 <div class="mailError" style="display:none;"></div>
                           </div>
@@ -120,14 +115,14 @@
          				 <div class="form-group">                      
                           <div class="col-xs-6">
 		                <label for="password" ><h3>Mot de passe *</h3> <span class="requis"></span></label>
-		                <input type="password" id="password" name="password" class="form-control">
+		                <input type="password" id="password" name="password" class="form-control" required>
 		                <div class="passwordError" style="display:none;"></div>
 		           	 </div>
 		           	 </div>
 		            <div class="form-group">
 		                  <div class="col-xs-6">
 		                <label for="password_CHECK"> <h3>Confirmation *</h3> <span class="requis"></span></label>
-		                <input type="password" id="password_CHECK" name="password_CHECK" class="form-control">
+		                <input type="password" id="password_CHECK" name="password_CHECK" class="form-control" required>
 		                <div class="password_CHECKError" style="display:none;"></div>
 		            </div>
 		            </div>
@@ -135,7 +130,7 @@
                       <div class="form-group">
                           <div class="col-xs-6">
                             <label for="birthdate"><h3>Date de naissance</h3></label>
-                          <input type="date" id="birthdate" name="birthdate" value="<c:out value="${user.dateDeNaissance}"/>" min="1900-01-01" class="form-control" class="input-group date">
+                          <input type="date" id="birthdate" name="birthdate" value="<c:out value="${user.dateDeNaissance}"/>" min="1900-01-01" class="form-control" class="input-group date" required>
             		    <div class="birthdateError" style="display:none;"></div></div>
                       </div>
                       <div class="form-group">

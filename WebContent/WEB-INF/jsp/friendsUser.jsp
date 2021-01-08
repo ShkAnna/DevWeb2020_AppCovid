@@ -120,7 +120,8 @@
 				                 		
 			               				<tr>
 							            	<td>
-				               					<img src="${pageContext.request.contextPath}/images/photoProfil.png" alt="person" width="50" height="50" class="img rounded-circle">
+				               					<img src=${pos.profilPicture} alt="person" width="50" height="50" class="img rounded-circle">
+								               			   			
 				               				</td>
 							            	<td>
 									            ${pos.nom} 

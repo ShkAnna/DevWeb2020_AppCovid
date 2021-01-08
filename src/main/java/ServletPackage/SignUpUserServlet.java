@@ -41,7 +41,7 @@ public class SignUpUserServlet extends HttpServlet {
         Part pictureData = request.getPart("picture");  
         String picture;
         SQLConnector con = new SQLConnector();
-        picture = "images/photoProfil.png";
+       
                
         String birthdate = request.getParameter("birthdate");
         if(birthdate != null) {
@@ -90,7 +90,15 @@ public class SignUpUserServlet extends HttpServlet {
             utilisateur.setPseudo(pseudo);
             utilisateur.setEmail(email);
             utilisateur.setDateDeNaissance(birthdate);
-            utilisateur.setProfilPicture(picture);
+            if (pictureData.getSize() > 0) {
+                picture = "images/" + pseudo + "." + pictureData.getSubmittedFileName().split(Pattern.quote("."))[1];
+                ProfilUtils.saveProfilPicture(pictureData, picture, request);
+                utilisateur.setProfilPicture(picture);
+            }
+            else{
+            	 picture = "images/photoProfil.png";
+                utilisateur.setProfilPicture(picture);
+            }
            
 
             con.createUser(utilisateur);
