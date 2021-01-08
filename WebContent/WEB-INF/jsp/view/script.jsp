@@ -17,7 +17,20 @@
     <script src="${pageContext.request.contextPath}/resources/jquery.coronatracker/js/jquery.coronatracker.js" charset="utf-8"></script>
     <script src="${pageContext.request.contextPath}/resources/jquery.coronatracker/jquery-jvectormap-2.0.5/jquery-jvectormap-2.0.5.min.js" charset="utf-8"></script>
     <script src="${pageContext.request.contextPath}/resources/jquery.coronatracker/jquery-jvectormap-2.0.5/jquery-jvectormap-world-mill-en.js" charset="utf-8"></script>
-  
+  	
+  	<script src="${pageContext.request.contextPath}/resources/codebase/dhtmlxscheduler.js" type="text/javascript" charset="utf-8"></script>
+	<script src="${pageContext.request.contextPath}/resources/codebase/ext/dhtmlxscheduler_minical.js" type="text/javascript" charset="utf-8"></script>
+   	<script src="${pageContext.request.contextPath}/resources/codebase/ext/dhtmlxscheduler_container_autoresize.js"></script>
+   	<script src="${pageContext.request.contextPath}/resources/codebase/ext/dhtmlxscheduler_agenda_view.js" ></script>
+   	<!-- use your own Google API key
+	<script src="//maps.google.com/maps/api/js?key=AIzaSyBpxf_sy28gn2hTK1qG6pkk5gbNZLHUaGo&sensor=false" type="text/javascript"></script>`
+	<script src="${pageContext.request.contextPath}/resources/codebase/ext/dhtmlxscheduler_map_view.js"></script>
+   	-->
+   	<script src="//maps.google.com/maps/api/js?key=AIzaSyAmBpYILZc2Ktp2Qw8rRBX_ur7_qOGiJEk" type="text/javascript"></script>
+	
+ 	<script src="${pageContext.request.contextPath}/resources/codebase/dhtmlxscheduler.js" type="text/javascript" charset="utf-8"></script>
+	<script src="${pageContext.request.contextPath}/resources/codebase/ext/dhtmlxscheduler_map_view.js" type="text/javascript" charset="utf-8"></script>
+	
   <script type="text/javascript">
   
 	  	$('#modalDeleteUser').on('show.bs.modal', function (event) {

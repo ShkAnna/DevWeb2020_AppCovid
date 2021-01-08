@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.green.css" id="theme-stylesheet">
     <!-- Favicon-->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
- 	<link rel="stylesheet" href="${pageContext.request.contextPath}/font/css/font-awesome.min.css">
+ 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/css/font-awesome.min.css">
  	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/jquery.coronatracker/css/coronatracker.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/jquery.coronatracker/jquery-jvectormap-2.0.5/jquery-jvectormap-2.0.5.css">
+   	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/codebase/dhtmlxscheduler_material.css">
