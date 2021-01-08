@@ -13,12 +13,14 @@
       	 	<img src=<%out.print(current_user.getProfilPicture());%>  alt="person" class="img-fluid rounded-circle">
         <h2 class="h5"><%out.print(current_user.getPrenom());%> <%out.print(current_user.getNom());%></h2>
         
-        <%if(!current_user.isPositif()){%>
-                  <div id="stateNotif" class="stateNotSick">Pas malade </div>
-                <%}else{%>
-                 <div id="stateNotif" class="stateNotSick">Atteint du COVID </div>
-                <%}%>
-     
+       <c:choose>
+								<c:when test="${positif}">
+                  <div id="stateNotif" class="stateNotSick">Atteint du COVID  </div>
+               </c:when>
+										<c:otherwise>
+                 <div id="stateNotif" class="stateNotSick">Pas malade </div>
+               </c:otherwise>
+								     </c:choose>
         <!-- <span>Web Developer</span> -->
       </div>
       <!-- Small Brand information, appears on minimized sidebar-->
