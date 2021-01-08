@@ -2,6 +2,7 @@ package ServletPackage;
 
 import java.io.IOException;
 
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -41,7 +42,7 @@ public class SignUpUserServlet extends HttpServlet {
         Part pictureData = request.getPart("picture");  
         String picture;
         SQLConnector con = new SQLConnector();
-        picture = "./WebContent/images/photoProfil.png";
+       
                
         String birthdate = request.getParameter("birthdate");
         if(birthdate != null) {
@@ -82,7 +83,6 @@ public class SignUpUserServlet extends HttpServlet {
         }
 
      
-        //S'il n'y a aucune erreur, on ajoute Ã  la BDD
         if(erreurs.isEmpty()){
             Utilisateur utilisateur = new Utilisateur();
             utilisateur.setPrenom(prenom);
@@ -91,7 +91,15 @@ public class SignUpUserServlet extends HttpServlet {
             utilisateur.setPseudo(pseudo);
             utilisateur.setEmail(email);
             utilisateur.setDateDeNaissance(birthdate);
-            utilisateur.setProfilPicture(picture);
+            if (pictureData.getSize() > 0) {
+                picture = "images/" + pseudo + "." + pictureData.getSubmittedFileName().split(Pattern.quote("."))[1];
+                ProfilUtils.saveProfilPicture(pictureData, picture, request);
+                utilisateur.setProfilPicture(picture);
+            }
+            else{
+            	 picture = "images/photoProfil.png";
+                utilisateur.setProfilPicture(picture);
+            }
            
 
             con.createUser(utilisateur);
@@ -111,7 +119,7 @@ public class SignUpUserServlet extends HttpServlet {
     private void validationNom(String nom) throws Exception{
         if (nom.trim().length() > 2) {
             if (!nom.matches("[a-zA-Z]*")) {
-                throw new Exception("Merci de saisir un nom sans caractÃ¨res spÃ©ciaux.");
+                throw new Exception("Merci de saisir un nom sans caractéres spéciaux.");
             }
         }else{
             throw new Exception("Merci de saisir un nom de longueur correcte.");

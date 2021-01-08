@@ -1,6 +1,7 @@
 package ServletPackage;
 
 import java.io.IOException;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -21,25 +22,14 @@ import SQLPackage.SQLConnector;
 @WebServlet("/dashboard-admin-servlet")
 public class DashboardAdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
 	private List<Activity> listActivities;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SQLConnector con = new SQLConnector();
         HttpSession session = request.getSession();
-        Utilisateur utilisateur = (Utilisateur) session.getAttribute("current_user");
-        try {
-            listActivities = con.getActivitiesUser(utilisateur.getId());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        request.setAttribute("activities", listActivities);
-        try {
-            request.setAttribute("nbNotifs", con.getNotifs(utilisateur.getId()).size());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        Utilisateur utilisateur = (Utilisateur) session.getAttribute("current_user");        
+      
         this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/dashboardAdmin.jsp" ).forward( request, response );
     }
-
-}
+    }

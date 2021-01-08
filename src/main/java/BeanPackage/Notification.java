@@ -1,17 +1,24 @@
 package BeanPackage;
 
+
 public class Notification {
     private String id;
     private String idAsking;
     private String idOther;
     private String message;
+    private String pseudoAsking;
     private boolean friendRequest;
-
+    private String date;
+    private String time;
+   
+    
     public Notification(){
         id = null;
         idAsking = null;
         idOther = null;
         message = null;
+        date=null;
+        time=null;
         friendRequest = true;
     }
 
@@ -34,6 +41,31 @@ public class Notification {
     public boolean isFriendRequest() {
         return friendRequest;
     }
+    
+    public String getPseudoAsking() {
+        return pseudoAsking;
+    }
+  
+    public String getDate() {
+        return date;
+    }
+    public String getTime() {
+        return time;
+    }
+    
+    
+    public void setTime(String time) {
+        this.time = time;
+    }
+    
+    public void setDate(String date) {
+        this.date = date;
+    }
+    
+    public void setPseudoAsking(String pseudoAsking) {
+        this.pseudoAsking = pseudoAsking;
+    }
+
 
     public void setId(String id) {
         this.id = id;
@@ -54,4 +86,6 @@ public class Notification {
     public void setFriendRequest(boolean friendRequest) {
         this.friendRequest = friendRequest;
     }
+    
+   
 }

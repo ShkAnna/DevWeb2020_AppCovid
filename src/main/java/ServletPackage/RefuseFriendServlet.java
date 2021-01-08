@@ -30,7 +30,7 @@ public class RefuseFriendServlet extends HttpServlet {
             throwables.printStackTrace();
         }
         sqlConnector.deleteNotif(idNotif);
-        sqlConnector.createNotification(utilisateur, friend, utilisateur.getNom() + " " + utilisateur.getPrenom()+" a refusÃ© votre invitation", "0");
-        response.sendRedirect("/Appcovid-1.0-SNAPSHOT/notifications");
+        sqlConnector.createNotification(utilisateur, friend," a refusé votre invitation", "0");
+        response.sendRedirect("/DevWeb2020_AppCovid/notifications");
     }
 }

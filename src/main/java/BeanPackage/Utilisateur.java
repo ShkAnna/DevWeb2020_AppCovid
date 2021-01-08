@@ -9,8 +9,8 @@ public class Utilisateur {
     private String dateDeNaissance;
     private String profilPicture;
     private String id;
-    private Boolean isPositif;
-    private Boolean isAdmin;
+    private boolean positif;
+    private boolean isAdmin;
 
     public Utilisateur(){
         email = null;
@@ -21,8 +21,8 @@ public class Utilisateur {
         dateDeNaissance = null;
         profilPicture = null;
         id = null;
-        isPositif = null;
-        isAdmin = null;
+        positif = false;
+        isAdmin = false;
     }
 
     public String getProfilPicture() {
@@ -88,19 +88,19 @@ public class Utilisateur {
         this.id = id;
     }
 
-    public Boolean getPositif() {
-        return isPositif;
+    public boolean isPositif() {
+        return positif;
     }
 
-    public void setPositif(Boolean postif) {
-        isPositif = postif;
+    public void setPositif(boolean positif) {
+    	this.positif = positif;
     }
 
-    public Boolean getAdmin() {
+    public boolean getAdmin() {
         return isAdmin;
     }
 
-    public void setAdmin(Boolean admin) {
+    public void setAdmin(boolean admin) {
         isAdmin = admin;
     }
 

@@ -1,6 +1,7 @@
 package ServletPackage;
 
 import SQLPackage.SQLConnector;
+
 import BeanPackage.Utilisateur;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +20,9 @@ public class DeleteFriendServlet extends HttpServlet {
         SQLConnector sqlConnector = new SQLConnector();
         HttpSession session = request.getSession();
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("current_user");
+        System.out.println("icii first "+request.getParameter("id"));
         int friendId = Integer.parseInt(request.getParameter("id"));
+        System.out.println("icii "+friendId);
         Utilisateur friend = null;
         try {
             friend = sqlConnector.getUser(friendId);
@@ -27,7 +30,7 @@ public class DeleteFriendServlet extends HttpServlet {
             throwables.printStackTrace();
         }
         sqlConnector.deleteFriend(utilisateur.getId(), friend.getId());
-        sqlConnector.createNotification(utilisateur, friend, utilisateur.getPrenom()+ " "+utilisateur.getNom()+" vous a retier de sa liste d amis.", "0");
+        sqlConnector.createNotification(utilisateur, friend, "vous a retier de sa liste d amis.", "0");
         response.sendRedirect("/DevWeb2020_AppCovid/friends-user");
 
     }

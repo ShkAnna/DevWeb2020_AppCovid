@@ -2,6 +2,7 @@ package ServletPackage;
 
 
 import SQLPackage.SQLConnector;
+
 import BeanPackage.Utilisateur;
 import javax.servlet.http.HttpSession;
 import javax.servlet.ServletException;
@@ -18,14 +19,18 @@ import java.util.List;
  */
 @WebServlet("/friends-user")
 public class FriendsUserServlet extends HttpServlet {
+	private List<Utilisateur> friends;
+	private List<Utilisateur> friendsPositive;
+	private List<Utilisateur> friendsNegative;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 SQLConnector con = new SQLConnector();
+			SQLConnector con = new SQLConnector();
 	        HttpSession session = request.getSession();
 	        Utilisateur utilisateur = (Utilisateur) session.getAttribute("current_user");
 	        List<Utilisateur> listUsers = null;
-	        try {
-	            listUsers = con.getUsersApplication(utilisateur);
+	        
+	       try {
+	             listUsers = con.getUsersApplication(utilisateur);
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        }
@@ -50,6 +55,43 @@ public class FriendsUserServlet extends HttpServlet {
 	            listUsers.removeAll(listAsked);
 	        }
 
+	        try {
+	            friends = con.getFriends(utilisateur);
+	        } catch (SQLException throwables) {
+	            throwables.printStackTrace();
+	        }
+	        
+	        
+	        try {
+	        	 request.setAttribute("friendsPositive", con.getFriendsPositive(utilisateur).size());
+	        	
+	        } catch (SQLException throwables) {
+	            throwables.printStackTrace();
+	        }
+	        
+	        try {
+	        	 request.setAttribute("friendsNegative", con.getFriendsNegative(utilisateur).size());
+	        	
+	        } catch (SQLException throwables) {
+	            throwables.printStackTrace();
+	        }
+	        
+	        
+	        
+	        try {
+	        	 request.setAttribute("nbNotifs", con.getNotifs(utilisateur.getId()).size());
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	           try {
+	           	 request.setAttribute("notifs", con.getNotifs(utilisateur.getId()));
+	           } catch (SQLException e) {
+	               e.printStackTrace();
+	           }
+	        
+	        request.setAttribute("friends", friends);
+	    
+	        
 	        request.setAttribute("users", listUsers);
 	       
 		 this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/friendsUser.jsp" ).forward( request, response );

@@ -1,6 +1,7 @@
 package SQLPackage;
 
 import SQLPackage.SQLConnector;
+
 import BeanPackage.Utilisateur;
 import BeanPackage.Place;
 import BeanPackage.Notification;
@@ -9,7 +10,9 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.math.BigInteger;
 import java.sql.*;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +59,17 @@ public class SQLConnector {
 
     }
 
-    public void doUpdate(String query) {
+    private Object handleNullValues(String colonum,ResultSet results) throws SQLException {
+        Object o = results.getObject(colonum);
+        if(results.wasNull()){
+            return null;
+        }
+        else{
+            return o;
+        }
+    }
+
+        public void doUpdate(String query) {
         try {
             con = connection();
             statement = con.prepareStatement(query);
@@ -121,6 +134,7 @@ public class SQLConnector {
     }
 
 
+    
     public void createUser(Utilisateur utilisateur) {
         String query =
                 "INSERT INTO appcovid.users(picture,login,user_password,name,first_name,email,birthdate) " +
@@ -131,7 +145,7 @@ public class SQLConnector {
                         + utilisateur.getNom() + "','"
                         + utilisateur.getPrenom() + "','"
                         + utilisateur.getEmail() + "','"
-                        + utilisateur.getDateDeNaissance() +
+                        + utilisateur.getDateDeNaissance() + 
                         "');";
         doAdd(query);
     }
@@ -149,9 +163,9 @@ public class SQLConnector {
             utilisateur.setPrenom(result.getString("first_name"));
             utilisateur.setNom(result.getString("name"));
             utilisateur.setEmail(result.getString("email"));
-            utilisateur.setDateDeNaissance(result.getString("birthdate"));
-            utilisateur.setProfilPicture(result.getString("picture"));
-            utilisateur.setPositif(!result.getString("is_positif").equals("0"));
+            utilisateur.setDateDeNaissance(handleNullValues("birthdate",result).toString());
+            utilisateur.setProfilPicture(handleNullValues("picture",result).toString());
+            utilisateur.setPositif(!result.getString("positif").equals("0"));
             utilisateur.setAdmin(!result.getString("is_admin").equals("0"));
         }
         this.closeCon();
@@ -171,9 +185,9 @@ public class SQLConnector {
             utilisateur.setPrenom(result.getString("first_name"));
             utilisateur.setNom(result.getString("name"));
             utilisateur.setEmail(result.getString("email"));
-            utilisateur.setDateDeNaissance(result.getString("birthdate"));
-            utilisateur.setProfilPicture(result.getString("picture"));
-            utilisateur.setPositif(!result.getString("is_positif").equals("0"));
+            utilisateur.setDateDeNaissance(handleNullValues("birthdate",result).toString());
+            utilisateur.setProfilPicture(handleNullValues("picture",result).toString());
+            utilisateur.setPositif(!result.getString("positif").equals("0"));
             utilisateur.setAdmin(!result.getString("is_admin").equals("0"));
         }
         this.closeCon();
@@ -194,7 +208,7 @@ public class SQLConnector {
             utilisateur.setEmail(result.getString("email"));
             utilisateur.setDateDeNaissance(result.getString("birthdate"));
             utilisateur.setProfilPicture(result.getString("picture"));
-            utilisateur.setPositif(!result.getString("is_positif").equals("0"));
+            utilisateur.setPositif(!result.getString("positif").equals("0"));
             utilisateur.setAdmin(!result.getString("is_admin").equals("1"));
         }
         this.closeCon();
@@ -215,7 +229,7 @@ public class SQLConnector {
             utilisateur.setEmail(result.getString("email"));
             utilisateur.setDateDeNaissance(result.getString("birthdate"));
             utilisateur.setProfilPicture(result.getString("picture"));
-            utilisateur.setPositif(!result.getString("is_positif").equals("0"));
+            utilisateur.setPositif(!result.getString("positif").equals("0"));
             utilisateur.setAdmin(!result.getString("is_admin").equals("1"));
         }
         this.closeCon();
@@ -251,7 +265,7 @@ public class SQLConnector {
             utilisateur.setEmail(result.getString("email"));
             utilisateur.setDateDeNaissance(result.getString("birthdate"));
             utilisateur.setProfilPicture(result.getString("picture"));
-            utilisateur.setPositif(!result.getString("is_positif").equals("0"));
+            utilisateur.setPositif(!result.getString("positif").equals("0"));
             utilisateur.setAdmin(!result.getString("is_admin").equals("0"));
         }
         this.closeCon();
@@ -264,12 +278,21 @@ public class SQLConnector {
         ResultSet result = doRequest(query);
         result.next();
         if (!result.getString("id_notification").isEmpty()) {
+        	String name = "Select * FROM appcovid.users WHERE id_user='" + result.getString("id_user_asking") + "' ;";
+            ResultSet resultname = doRequest(name);
+            resultname.next();
             notification = new Notification();
             notification.setId(result.getString("id_notification"));
             notification.setIdAsking(result.getString("id_user_asking"));
             notification.setIdOther(result.getString("id_user_other"));
             notification.setMessage(result.getString("message"));
             notification.setFriendRequest(!result.getString("friendRequest").equals("0"));
+            notification.setDate(result.getString("send_date"));
+            notification.setTime(result.getString("time"));
+            if (!resultname.getString("login").isEmpty()) {          
+            notification.setPseudoAsking(resultname.getString("login"));
+            }
+           
         }
         this.closeCon();
         return notification;
@@ -302,15 +325,18 @@ public class SQLConnector {
 
    
     public void createNotification(Utilisateur utilisateur, Utilisateur friend, String message, String friendRequest) {
-        String query =
-                "INSERT INTO appcovid.notification(id_user_asking, id_user_other,send_date, message, friendRequest) " +
+    	  
+    	String query =
+                "INSERT INTO appcovid.notification(id_user_asking, id_user_other,send_date, message, friendRequest,time) " +
                         "VALUES('"
                         + utilisateur.getId() + "','"
                         + friend.getId() + "',"
-                        + "null" + ",'"
-                        + message + "',"
-                        + friendRequest
-                        + ");";
+                        +  "CURDATE()"+ ",'"
+                        + message + "','"
+                        + friendRequest + "',"
+                        +"CURTIME()" 
+                        +");";
+    	
         doAdd(query);
     }
 
@@ -319,13 +345,14 @@ public class SQLConnector {
         con = connection();
         for(String id : usersIdToNotify) {
             String query =
-                    "INSERT INTO appcovid.notification(id_user_asking, id_user_other,send_date, message, friendRequest) " +
+                    "INSERT INTO appcovid.notification(id_user_asking, id_user_other,send_date, message, friendRequest,time) " +
                             "VALUES('"
                             + utilisateurPositif.getId() + "','"
                             +  id + "',"
-                            + "null" + ",'"
+                            + "CURDATE()" + ",'"
                             + message + "',"
-                            + "0"
+                            + "0" + ","
+                            +"CURTIME()" 
                             + ");";
             statement = con.prepareStatement(query);
             statement.executeUpdate();
@@ -426,6 +453,84 @@ public class SQLConnector {
         this.closeCon();
         return lu;
     }
+    
+    
+    
+    
+    public List<Utilisateur> getFriendsPositive(Utilisateur u) throws SQLException {
+        String query =
+                        "SELECT id_friend " +
+                        "FROM appcovid.friend " +
+                        "WHERE id_user = "+u.getId()+";";
+        ResultSet result = doRequest(query);
+
+        List<Utilisateur> lu = new ArrayList<>();
+        Utilisateur utilisateur;
+
+        while (result.next()) {
+            utilisateur = getUser(Integer.parseInt(result.getString("id_friend")));
+           
+            if(utilisateur.isPositif()) {
+                lu.add(utilisateur);
+            }
+        }
+
+        query =
+                "SELECT id_user " +
+                        "FROM appcovid.friend " +
+                        "WHERE id_friend = "+u.getId()+";";
+        result = doRequest(query);
+
+        while (result.next()) {
+            utilisateur = getUser(Integer.parseInt(result.getString("id_user")));
+            
+            if(utilisateur.isPositif()) {
+                lu.add(utilisateur);
+            }
+        }
+        this.closeCon();
+        return lu;
+    }
+    
+    public List<Utilisateur> getFriendsNegative(Utilisateur u) throws SQLException {
+        String query =
+                        "SELECT id_friend " +
+                        "FROM appcovid.friend " +
+                        "WHERE id_user = "+u.getId()+";";
+        ResultSet result = doRequest(query);
+
+        List<Utilisateur> lu = new ArrayList<>();
+        Utilisateur utilisateur;
+
+        while (result.next()) {
+            utilisateur = getUser(Integer.parseInt(result.getString("id_friend")));
+            if(!utilisateur.isPositif()) {
+                lu.add(utilisateur);
+            }
+        }
+
+        query =
+                "SELECT id_user " +
+                        "FROM appcovid.friend " +
+                        "WHERE id_friend = "+u.getId()+";";
+        result = doRequest(query);
+
+        while (result.next()) {
+            utilisateur = getUser(Integer.parseInt(result.getString("id_user")));
+            if(!utilisateur.isPositif()) {
+                lu.add(utilisateur);
+            }
+        }
+        this.closeCon();
+        return lu;
+        
+        
+       
+    }
+    
+    
+    
+    
 
     public ResultSet getActivitesOfPlace(Place p) {
         return doRequest(
@@ -433,47 +538,51 @@ public class SQLConnector {
         );
     }
 
-    public void isMember(String username) throws Exception {
+    public String isMember(String username) throws Exception {
         String query = "Select * FROM appcovid.users WHERE login='" + username + "'";
         ResultSet result = doRequest(query);
         if (result.next()) {
-            throw new Exception("Ce pseudo est d√©j√† utilis√©");
+            throw new Exception("Ce pseudo est dÈja utilisÈ");
         }
         this.closeCon();
+        return null;
     }
 
-    public void isMember(String username, Utilisateur utilisateur) throws Exception {
+    public String isMember(String username, Utilisateur utilisateur) throws Exception {
         String query = "Select * FROM appcovid.users WHERE login='" + username  + "' AND id_user != '"+utilisateur.getId()+"';";
         ResultSet result = doRequest(query);
         if (result.next()) {
             throw new Exception("Ce pseudo est dÈja† utilisÈ");
         }
         this.closeCon();
+        return null;
     }
 
-    public void isRegistered(String email) throws Exception {
+    public String isRegistered(String email) throws Exception {
         String query = "Select * FROM appcovid.users WHERE email='" + email + "'";
         ResultSet result = doRequest(query);
         if (result.next()) {
             throw new Exception("Ce email est dÈja† utilisÈ");
         }
         this.closeCon();
+        return null;
     }
 
-    public void isRegistered(String email, Utilisateur utilisateur) throws Exception {
+    public String isRegistered(String email, Utilisateur utilisateur) throws Exception {
         String query = "Select * FROM appcovid.users WHERE email='" + email + "' AND id_user != '"+utilisateur.getId()+"';";
         ResultSet result = doRequest(query);
         if (result.next()) {
-            throw new Exception("Cet email est d√©j√† utilis√©");
+            throw new Exception("Cet email est dÈja† utilisÈ");
         }
         this.closeCon();
+        return null;
     }
 
     public void placeAlreadyExist(String name) throws Exception {
         String query = "Select * FROM appcovid.place WHERE name='" + name + "'";
         ResultSet result = doRequest(query);
         if (result.next()) {
-            throw new Exception(name + " est un lieu d√©j√† existant");
+            throw new Exception(name + " est un lieu dÈja existant");
         }
         this.closeCon();
     }
@@ -482,7 +591,7 @@ public class SQLConnector {
         String query = "Select * FROM appcovid.place WHERE name='" + name + "' AND id_place != '"+id+"';";
         ResultSet result = doRequest(query);
         if (result.next()) {
-            throw new Exception(name + " est un lieu d√©j√† existant");
+            throw new Exception(name + " est un lieu dÈja† existant");
         }
         this.closeCon();
     }
@@ -500,7 +609,7 @@ public class SQLConnector {
         String query = "Select * FROM appcovid.place WHERE address='" + address + "' AND id_place != '"+id+"';";
         ResultSet result = doRequest(query);
         if (result.next()) {
-            throw new Exception(address + " est d√©j√† utilis√© pour un lieu existant");
+            throw new Exception(address + " est dÈja† utilisÈ pour un lieu existant");
         }
         this.closeCon();
     }
@@ -564,7 +673,8 @@ public class SQLConnector {
         List<Utilisateur> res = new ArrayList<>();
         String query = "SELECT * FROM appcovid.users WHERE id_user!='" + utilisateur.getId() + "';";
         ResultSet result = doRequest(query);
-        while (result.next()) {
+        while (result.next()) {     	
+            if (!result.getBoolean("is_admin") && (result.getString("id_user")!=utilisateur.getId()) ) { 
             utilisateur = new Utilisateur();
             utilisateur.setId(result.getString("id_user"));
             utilisateur.setPseudo(result.getString("login"));
@@ -574,12 +684,48 @@ public class SQLConnector {
             utilisateur.setEmail(result.getString("email"));
             utilisateur.setDateDeNaissance(result.getString("birthdate"));
             utilisateur.setProfilPicture(result.getString("picture"));
+            String positif = "SELECT * FROM appcovid.users WHERE id_user='" + utilisateur.getId() + "';";
+            ResultSet resultP = doRequest(positif);
+            resultP.next();
+            if (!resultP.getString("login").isEmpty()) { 
+            	utilisateur.setPositif(resultP.getBoolean("positif"));
+             }            
             res.add(utilisateur);
+        
+        	}
         }
         this.closeCon();
         return res;
     }
 
+    public List<Utilisateur> getUsersApplicationAdmin(Utilisateur utilisateur) throws SQLException {
+        List<Utilisateur> res = new ArrayList<>();
+        String query = "SELECT * FROM appcovid.users WHERE id_user!='" + utilisateur.getId() + "';";
+        ResultSet result = doRequest(query);
+        while (result.next()) {     	
+            if ((result.getString("id_user")!=utilisateur.getId()) ) { 
+            utilisateur = new Utilisateur();
+            utilisateur.setId(result.getString("id_user"));
+            utilisateur.setPseudo(result.getString("login"));
+            utilisateur.setMotDePasse(result.getString("user_password"));
+            utilisateur.setPrenom(result.getString("first_name"));
+            utilisateur.setNom(result.getString("name"));
+            utilisateur.setEmail(result.getString("email"));
+            utilisateur.setDateDeNaissance(result.getString("birthdate"));
+            utilisateur.setProfilPicture(result.getString("picture"));
+            String positif = "SELECT * FROM appcovid.users WHERE id_user='" + utilisateur.getId() + "';";
+            ResultSet resultP = doRequest(positif);
+            resultP.next();
+            if (!resultP.getString("login").isEmpty()) { 
+            	utilisateur.setPositif(resultP.getBoolean("positif"));
+             }            
+            res.add(utilisateur);
+        
+        	}
+        }
+        this.closeCon();
+        return res;
+    }
     
     public List<Notification> getNotifs(String id) throws SQLException {
         List<Notification> res = new ArrayList<>();
@@ -594,6 +740,23 @@ public class SQLConnector {
         return res;
     }
 
+    public boolean getState(Utilisateur user) throws SQLException {
+    	boolean positif=false;
+    	 Utilisateur utilisateur = null;
+         String query = "Select * FROM appcovid.users WHERE login='" + user.getPseudo() + "' ;";
+         ResultSet result = doRequest(query);
+         result.next();
+         if (!result.getString("login").isEmpty()) {        
+        	 	positif=result.getBoolean("positif");
+        	 	
+         }
+         this.closeCon();
+         return positif;
+    	
+    	
+
+    }
+
     
     public void deleteNotif(String id) {
         String query = "DELETE FROM appcovid.notification WHERE id_notification = "+id+";";
@@ -603,12 +766,18 @@ public class SQLConnector {
 
     
     public void setPositif(Utilisateur utilisateur) {
-        String query = "UPDATE appcovid.users SET is_positif = 1 WHERE id_user = "+utilisateur.getId()+";";
+        String query = "UPDATE appcovid.users SET positif = 1 WHERE id_user = "+utilisateur.getId()+";";
         doUpdate(query);
         this.closeCon();
         utilisateur.setPositif(true);
     }
 
+    public void setNegatif(Utilisateur utilisateur) {
+        String query = "UPDATE appcovid.users SET positif = 0 WHERE id_user = "+utilisateur.getId()+";";
+        doUpdate(query);
+        this.closeCon();
+        utilisateur.setPositif(true);
+    }
     
     public void deleteFriend(String id, String idOther) {
         String query = "DELETE FROM appcovid.friend WHERE id_user = "+id+" AND id_friend ="+idOther+";";
@@ -641,6 +810,7 @@ public class SQLConnector {
     public void updateUser(Utilisateur utilisateur) {
         String query = "UPDATE appcovid.users SET login = '"+utilisateur.getPseudo()+"', " +
                 "user_password = '"+passwordHasher.hash(utilisateur.getMotDePasse())+"', "+
+                "picture = '"+utilisateur.getProfilPicture()+"', "+
                 "name = '"+utilisateur.getNom()+"',"+
                 "first_name ='"+utilisateur.getPrenom()+"', "+
                 "email = '"+utilisateur.getEmail()+"', "+
