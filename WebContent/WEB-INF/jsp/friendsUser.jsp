@@ -149,7 +149,7 @@
 		        <div class="col-lg-4">
 		        	<div class="card"> 
 			           	<div class="card-header">
-			            	<h4  style="color:#E14557;">Situation avec vos amis</h4>
+			            	<h4  style="color:#E14557;">Situation avec vos amis ${friendsPositive}, ${friendsNegative}</h4>
 			           	</div>
 			           	<div class="card-body" style="color:#E14557;">
 		                  <div class="chart-container">
@@ -189,7 +189,7 @@
 	      data: {
 	        labels: ["Malades", "Pas malades"],
 	        datasets: [{
-	          data: [300, 50],
+	          data: [${friendsPositive}, ${friendsNegative}],
 	          backgroundColor: ["#F7464A", "#A1C83F"],
 	          hoverBackgroundColor: ["#FF5A5E", "#c6e086"]
 	        }]

@@ -134,6 +134,7 @@ public class SQLConnector {
     }
 
 
+    
     public void createUser(Utilisateur utilisateur) {
         String query =
                 "INSERT INTO appcovid.users(picture,login,user_password,name,first_name,email,birthdate) " +
@@ -452,6 +453,84 @@ public class SQLConnector {
         this.closeCon();
         return lu;
     }
+    
+    
+    
+    
+    public List<Utilisateur> getFriendsPositive(Utilisateur u) throws SQLException {
+        String query =
+                        "SELECT id_friend " +
+                        "FROM appcovid.friend " +
+                        "WHERE id_user = "+u.getId()+";";
+        ResultSet result = doRequest(query);
+
+        List<Utilisateur> lu = new ArrayList<>();
+        Utilisateur utilisateur;
+
+        while (result.next()) {
+            utilisateur = getUser(Integer.parseInt(result.getString("id_friend")));
+           
+            if(utilisateur.isPositif()) {
+                lu.add(utilisateur);
+            }
+        }
+
+        query =
+                "SELECT id_user " +
+                        "FROM appcovid.friend " +
+                        "WHERE id_friend = "+u.getId()+";";
+        result = doRequest(query);
+
+        while (result.next()) {
+            utilisateur = getUser(Integer.parseInt(result.getString("id_user")));
+            
+            if(utilisateur.isPositif()) {
+                lu.add(utilisateur);
+            }
+        }
+        this.closeCon();
+        return lu;
+    }
+    
+    public List<Utilisateur> getFriendsNegative(Utilisateur u) throws SQLException {
+        String query =
+                        "SELECT id_friend " +
+                        "FROM appcovid.friend " +
+                        "WHERE id_user = "+u.getId()+";";
+        ResultSet result = doRequest(query);
+
+        List<Utilisateur> lu = new ArrayList<>();
+        Utilisateur utilisateur;
+
+        while (result.next()) {
+            utilisateur = getUser(Integer.parseInt(result.getString("id_friend")));
+            if(!utilisateur.isPositif()) {
+                lu.add(utilisateur);
+            }
+        }
+
+        query =
+                "SELECT id_user " +
+                        "FROM appcovid.friend " +
+                        "WHERE id_friend = "+u.getId()+";";
+        result = doRequest(query);
+
+        while (result.next()) {
+            utilisateur = getUser(Integer.parseInt(result.getString("id_user")));
+            if(!utilisateur.isPositif()) {
+                lu.add(utilisateur);
+            }
+        }
+        this.closeCon();
+        return lu;
+        
+        
+       
+    }
+    
+    
+    
+    
 
     public ResultSet getActivitesOfPlace(Place p) {
         return doRequest(
