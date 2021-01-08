@@ -1,9 +1,9 @@
 /*
 
 @license
-dhtmlxScheduler v.5.3.10 Professional Evaluation
+dhtmlxScheduler v.5.3.10 Standard
 
-This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com to get Commercial or Enterprise license. Usage without proper license is prohibited.
+To use dhtmlxScheduler in non-GPL projects (and get Pro version of the product), please obtain Commercial/Enterprise or Ultimate license on our site https://dhtmlx.com/docs/products/dhtmlxScheduler/#licensing or contact us at sales@dhtmlx.com
 
 (c) XB Software Ltd.
 
@@ -46,3 +46,4 @@ g.end_date=e._fix_daylight_saving_date(g.start_date,g.end_date,t,_,g.end_date),g
 e.getRecDates=function(t,a){var n="object"==typeof t?t:e.getEvent(t),i=[];if(a=a||100,!n.rec_type)return[{start_date:n.start_date,end_date:n.end_date}];if("none"==n.rec_type)return[];e.repeat_date(n,i,!0,n.start_date,n.end_date,a);for(var r=[],o=0;o<i.length;o++)"none"!=i[o].rec_type&&r.push({start_date:i[o].start_date,end_date:i[o].end_date});return r},e.getEvents=function(e,t){var a=[];for(var n in this._events){var i=this._events[n];if(i&&i.start_date<t&&i.end_date>e)if(i.rec_pattern){
 if("none"==i.rec_pattern)continue;var r=[];this.repeat_date(i,r,!0,e,t);for(var o=0;o<r.length;o++)!r[o].rec_pattern&&r[o].start_date<t&&r[o].end_date>e&&!this._rec_markers[r[o].id]&&a.push(r[o])}else this._is_virtual_event(i.id)||a.push(i)}return a},e.config.repeat_date="%m.%d.%Y",e.config.lightbox.sections=[{name:"description",map_to:"text",type:"textarea",focus:!0},{name:"recurring",type:"recurring",map_to:"rec_type",button:"recurring"},{name:"time",height:72,type:"time",map_to:"auto"}],
 e._copy_dummy=function(e){var t=new Date(this.start_date),a=new Date(this.end_date);this.start_date=t,this.end_date=a,this.event_length=this.event_pid=this.rec_pattern=this.rec_type=null},e.config.include_end_by=!1,e.config.lightbox_recurring="ask",e.attachEvent("onClearAll",function(){e._rec_markers={},e._rec_markers_pull={},e._rec_temp=[]})});
+//# sourceMappingURL=../sources/ext/dhtmlxscheduler_recurring.js.map

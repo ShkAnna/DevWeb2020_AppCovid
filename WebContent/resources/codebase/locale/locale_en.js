@@ -1,9 +1,9 @@
 /*
 
 @license
-dhtmlxScheduler v.5.3.10 Professional Evaluation
+dhtmlxScheduler v.5.3.10 Standard
 
-This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com to get Commercial or Enterprise license. Usage without proper license is prohibited.
+To use dhtmlxScheduler in non-GPL projects (and get Pro version of the product), please obtain Commercial/Enterprise or Ultimate license on our site https://dhtmlx.com/docs/products/dhtmlxScheduler/#licensing or contact us at sales@dhtmlx.com
 
 (c) XB Software Ltd.
 
@@ -13,3 +13,4 @@ icon_save:"Save",icon_cancel:"Cancel",icon_details:"Details",icon_edit:"Edit",ic
 button_edit_occurrence:"Edit occurrence",agenda_tab:"Agenda",date:"Date",description:"Description",year_tab:"Year",week_agenda_tab:"Agenda",grid_tab:"Grid",drag_to_create:"Drag to create",drag_to_move:"Drag to move",message_ok:"OK",message_cancel:"Cancel",next:"Next",prev:"Previous",year:"Year",month:"Month",day:"Day",hour:"Hour",minute:"Minute",repeat_radio_day:"Daily",repeat_radio_week:"Weekly",repeat_radio_month:"Monthly",repeat_radio_year:"Yearly",repeat_radio_day_type:"Every",
 repeat_text_day_count:"day",repeat_radio_day_type2:"Every workday",repeat_week:" Repeat every",repeat_text_week_count:"week next days:",repeat_radio_month_type:"Repeat",repeat_radio_month_start:"On",repeat_text_month_day:"day every",repeat_text_month_count:"month",repeat_text_month_count2_before:"every",repeat_text_month_count2_after:"month",repeat_year_label:"On",select_year_day2:"of",repeat_text_year_day:"day",select_year_month:"month",repeat_radio_end:"No end date",
 repeat_text_occurences_count:"occurrences",repeat_radio_end2:"After",repeat_radio_end3:"End by",month_for_recurring:["January","February","March","April","May","June","July","August","September","October","November","December"],day_for_recurring:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}}});
+//# sourceMappingURL=../sources/locale/locale_en.js.map

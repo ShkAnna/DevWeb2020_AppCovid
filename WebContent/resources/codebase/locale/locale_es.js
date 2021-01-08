@@ -1,9 +1,9 @@
 /*
 
 @license
-dhtmlxScheduler v.5.3.10 Professional Evaluation
+dhtmlxScheduler v.5.3.10 Standard
 
-This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com to get Commercial or Enterprise license. Usage without proper license is prohibited.
+To use dhtmlxScheduler in non-GPL projects (and get Pro version of the product), please obtain Commercial/Enterprise or Ultimate license on our site https://dhtmlx.com/docs/products/dhtmlxScheduler/#licensing or contact us at sales@dhtmlx.com
 
 (c) XB Software Ltd.
 
@@ -13,3 +13,4 @@ icon_save:"Guardar",icon_cancel:"Cancelar",icon_details:"Detalles",icon_edit:"Ed
 button_edit_occurrence:"Editar este evento",agenda_tab:"Día",date:"Fecha",description:"Descripción",year_tab:"Año",week_agenda_tab:"Día",grid_tab:"Reja",drag_to_create:"Drag to create",drag_to_move:"Drag to move",message_ok:"OK",message_cancel:"Cancel",next:"Next",prev:"Previous",year:"Year",month:"Month",day:"Day",hour:"Hour",minute:"Minute",repeat_radio_day:"Diariamente",repeat_radio_week:"Semanalmente",repeat_radio_month:"Mensualmente",repeat_radio_year:"Anualmente",
 repeat_radio_day_type:"Cada",repeat_text_day_count:"dia",repeat_radio_day_type2:"Cada jornada de trabajo",repeat_week:" Repetir cada",repeat_text_week_count:"semana:",repeat_radio_month_type:"Repita",repeat_radio_month_start:"El",repeat_text_month_day:"dia cada ",repeat_text_month_count:"mes",repeat_text_month_count2_before:"cada",repeat_text_month_count2_after:"mes",repeat_year_label:"El",select_year_day2:"del",repeat_text_year_day:"dia",select_year_month:"mes",
 repeat_radio_end:"Sin fecha de finalización",repeat_text_occurences_count:"ocurrencias",repeat_radio_end3:"Fin",repeat_radio_end2:"Después de",month_for_recurring:["Enero","Febrero","Маrzo","Аbril","Mayo","Junio","Julio","Аgosto","Setiembre","Octubre","Noviembre","Diciembre"],day_for_recurring:["Domingo","Lunes","Martes","Miércoles","Jeuves","Viernes","Sabado"]}}});
+//# sourceMappingURL=../sources/locale/locale_es.js.map

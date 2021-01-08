@@ -1,9 +1,9 @@
 /*
 
 @license
-dhtmlxScheduler v.5.3.10 Professional Evaluation
+dhtmlxScheduler v.5.3.10 Standard
 
-This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com to get Commercial or Enterprise license. Usage without proper license is prohibited.
+To use dhtmlxScheduler in non-GPL projects (and get Pro version of the product), please obtain Commercial/Enterprise or Ultimate license on our site https://dhtmlx.com/docs/products/dhtmlxScheduler/#licensing or contact us at sales@dhtmlx.com
 
 (c) XB Software Ltd.
 
@@ -20,3 +20,4 @@ e.hideQuickInfo()},e._init_quick_info=function(){if(!this._quick_info_box){var t
 e._qi_button_click=function(t){var a=e._quick_info_box;if(t&&t!=a){var n=e._getClassName(t);if(-1!=n.indexOf("_icon")){var i=e._quick_info_box_id;e._click.buttons[n.split(" ")[1].replace("icon_","")](i)}else e._qi_button_click(t.parentNode)}},e._get_event_counter_part=function(t){for(var a=e.getRenderedEvent(t),n=0,i=0,r=a;r&&r!=e._obj;)n+=r.offsetLeft,i+=r.offsetTop-r.scrollTop,r=r.offsetParent;if(r){return{left:n,top:i,dx:n+a.offsetWidth/2>e._x/2?1:0,dy:i+a.offsetHeight/2>e._y/2?1:0,
 width:a.offsetWidth,height:a.offsetHeight}}return 0},e._fill_quick_data=function(t){var a=e.getEvent(t),n=e._quick_info_box;e._quick_info_box_id=t;var i={content:e.templates.quick_info_title(a.start_date,a.end_date,a),date:e.templates.quick_info_date(a.start_date,a.end_date,a)},r=n.firstChild.firstChild;r.innerHTML=i.content,r.nextSibling.innerHTML=i.date,e._waiAria.quickInfoHeader(n,[i.content,i.date].join(" ")),
 n.firstChild.nextSibling.innerHTML=e.templates.quick_info_content(a.start_date,a.end_date,a)}});
+//# sourceMappingURL=../sources/ext/dhtmlxscheduler_quick_info.js.map

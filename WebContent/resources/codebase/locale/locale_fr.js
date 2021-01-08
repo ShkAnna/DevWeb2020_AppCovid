@@ -1,9 +1,9 @@
 /*
 
 @license
-dhtmlxScheduler v.5.3.10 Professional Evaluation
+dhtmlxScheduler v.5.3.10 Standard
 
-This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com to get Commercial or Enterprise license. Usage without proper license is prohibited.
+To use dhtmlxScheduler in non-GPL projects (and get Pro version of the product), please obtain Commercial/Enterprise or Ultimate license on our site https://dhtmlx.com/docs/products/dhtmlxScheduler/#licensing or contact us at sales@dhtmlx.com
 
 (c) XB Software Ltd.
 
@@ -13,3 +13,4 @@ new_event:"Nouvel événement",icon_save:"Enregistrer",icon_cancel:"Annuler",ico
 button_edit_series:"Modifier la série",button_edit_occurrence:"Modifier une copie",agenda_tab:"Jour",date:"Date",description:"Description",year_tab:"Année",week_agenda_tab:"Jour",grid_tab:"Grille",drag_to_create:"Drag to create",drag_to_move:"Drag to move",message_ok:"OK",message_cancel:"Cancel",next:"Next",prev:"Previous",year:"Year",month:"Month",day:"Day",hour:"Hour",minute:"Minute",repeat_radio_day:"Quotidienne",repeat_radio_week:"Hebdomadaire",repeat_radio_month:"Mensuelle",
 repeat_radio_year:"Annuelle",repeat_radio_day_type:"Chaque",repeat_text_day_count:"jour",repeat_radio_day_type2:"Chaque journée de travail",repeat_week:" Répéter toutes les",repeat_text_week_count:"semaine:",repeat_radio_month_type:"Répéter",repeat_radio_month_start:"Le",repeat_text_month_day:"jour chaque",repeat_text_month_count:"mois",repeat_text_month_count2_before:"chaque",repeat_text_month_count2_after:"mois",repeat_year_label:"Le",select_year_day2:"du",repeat_text_year_day:"jour",
 select_year_month:"mois",repeat_radio_end:"Pas de date d&quot;achèvement",repeat_text_occurences_count:"occurrences",repeat_radio_end3:"Fin",repeat_radio_end2:"Après",month_for_recurring:["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],day_for_recurring:["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"]}}});
+//# sourceMappingURL=../sources/locale/locale_fr.js.map

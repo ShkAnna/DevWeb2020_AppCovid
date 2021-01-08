@@ -27,7 +27,7 @@
       <h5 class="sidenav-heading">Main</h5>
       <ul id="side-main-menu" class="side-menu list-unstyled">                  
         <li class="active"><a href="dashboard-user-servlet"> <i class="fa fa-home"></i>Menu principal</a></li>
-        <li class="activities"><a href="activities"> <i class="fa fa-history"></i>Mes activités</a></li>
+        <li class="activities"><a href="activities-user"> <i class="fa fa-history"></i>Mes activités</a></li>
         <li class="friends"><a href="friends-user"> <i class="fa fa-users"></i>Mes amis</a></li>
         <li class="notifications"><a href="notifications"><i class="fa fa-bell"></i>Mes notifications
             <div class="badge badge-warning">6 New</div></a>

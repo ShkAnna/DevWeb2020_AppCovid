@@ -49,11 +49,10 @@
 											<div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div>
 											<div class="dhx_cal_tab" name="month_tab" style="right:76px;"></div>
 											<div class="dhx_cal_tab" name="agenda_tab" style="right:280px;"></div>
-											<div class="dhx_cal_tab" name="map_tab" style="right:280px;"></div>
 								        </div>
 									</div>
 									<div class="dhx_cal_header"></div>
-									<div class="dhx_cal_data"></div>  
+									<div class="dhx_cal_data"></div>
 								</div>
 			    			</div>
 			    		</div>
@@ -67,9 +66,7 @@
 							</div>
 						</div>
 	       			</div>
-	       			<div class="row">
 	       			
-	       			</div>
 	       		</div>
 		    </div>
 		</div> 
@@ -78,12 +75,32 @@
     <jsp:include page="/WEB-INF/jsp/view/footer.jsp" />
     </div>
   	<jsp:include page="/WEB-INF/jsp/view/script.jsp" />
+
+	       
   	<script>
 	  	window.onload = function() {
 	  		changeActiveLi();
 	  		init();
 	  		doOnLoad();
+	  		$("#pickup_country").PlacePicker({
+	    		btnClass:"btn btn-xs btn-default",
+	    		key:"AIzaSyAmBpYILZc2Ktp2Qw8rRBX_ur7_qOGiJEk",
+	    		center: {lat: 48.66521389660117, lng: 6.161156884097942},
+	    		success:function(data,address){
+	    			//data contains address elements and
+	    			//address conatins you searched text
+	    			//Your logic here
+	    			$("#pickup_country").val(data.formatted_address);
+	    		}
+	    	});
+	  		
 	  	};
+	  	var btn = null
+	  	function getBtn() {
+	  		console.log("change btn");
+	  		btn = document.getElementById("placePickerUIButton");
+	  		return btn;
+	  	}
 	  	
 	  	function changeActiveLi() {
 	  		var navChange = document.getElementById("side-main-menu");
@@ -98,6 +115,7 @@
 	  		   });
 	  	}
 	  	
+	  	
 	  	function init() {
 			scheduler.config.multi_day = true;
 			//The structure of the scheduler
@@ -106,13 +124,11 @@
 		        "week",
 		        "month",
 		        "agenda",
-		        "map",
 		        "date",
 		        "prev",
 		        "today",
 		        "next"
 		    ];
-			//scheduler.init('scheduler_here',new Date(2018,0,10),"week");
 			scheduler.load("${pageContext.request.contextPath}/common/events.json");
 			// Following config options are optional
 			// If you remove them current date will be used as start period
@@ -133,39 +149,58 @@
 
 			scheduler.config.map_start = new Date(2019, 3, 1);
 			scheduler.config.map_end = new Date(2020, 9, 1);
-
-
-			scheduler.config.lightbox.sections=[	
-				{ name:"description", height:50, map_to:"text", type:"textarea", focus:true },
-				{ name:"location", height:43, map_to:"event_location", type:"textarea"  },
-				{ name:"time", height:72, type:"time", map_to:"auto"}	
-			]
+		
 			
+			scheduler.form_blocks["my_editor"]={
+				    render:function(sns){
+				        return "<div class='dhx_cal_ltext'>"+
+				        "<div id='placePickerUIButton' onclick='getBtn(); iconPicker();' type='button' title='Pick location from map' >"+
+
+				        "<input name='locationInput' class='w-100' style='height:50px;' type='textarea' id='pickup_country' placeholder='Address'>"+
+				        "<i class='fa fa-map' style='position:absolute;bottom:0.8rem;right:2rem;font-size:20px'></i>"+
+				        "</div>"+
+				        "</div>";
+				    },
+				    set_value:function(node,value,ev){
+				    	console.log("Change view "+node.querySelector("[name='locationInput']").value);
+				        node.querySelector("[name='locationInput']").value = ev.location||"";
+				    },
+				    get_value:function(node,ev){
+				        ev.location = node.querySelector("[name='locationInput']").value;
+				        console.log(ev.location);
+				        return ev.location.value;
+				    },
+				    focus:function(node){
+				        var input = node.querySelector("[name='locationInput']"); 
+				        input.select(); 
+				        input.focus(); 
+				    }
+				};
+				 
+			scheduler.locale.labels.section_description = "Details";
+			scheduler.config.lightbox.sections=[    
+				{ name:"description", height:50, map_to:"text", type:"textarea", focus:true },
+			    { name:"location", height:50, width:50, map_to:"locationInput", type:"my_editor"  },
+			    { name:"time", height:72, type:"time", map_to:"auto"}   
+			];
+			
+			//scheduler.attachEvent("onBeforeViewChange", resetConfig);
 			scheduler.config.map_inital_zoom = 8;
 			
-			scheduler.init('scheduler_here', new Date(2019,5,1), "map");
-			scheduler.load("${pageContext.request.contextPath}/backend/map-events");
+			scheduler.templates.quick_info_content = function(start, end, ev){ 
+			       return ev.location;
+			};
+			scheduler.init('scheduler_here',new Date(2018,0,10),"week");
+			//scheduler.init('scheduler_here', new Date(2019,5,1), "map");
+			
+			//scheduler.load("${pageContext.request.contextPath}/backend/map-events");
 
-			dp = new dataProcessor("${pageContext.request.contextPath}/backend/map-events");
-			dp.init(scheduler);
-			dp.setTransactionMode("REST", false);
+			//dp = new dataProcessor("${pageContext.request.contextPath}/backend/map-events");
+			//dp.init(scheduler);
+			//dp.setTransactionMode("REST", false);
 			
 		}
-		
-		function show_minical(){
-			if (scheduler.isCalendarVisible())
-				scheduler.destroyCalendar();
-			else
-				scheduler.renderCalendar({
-					position:"dhx_minical_icon",
-					date:scheduler.getState().date,
-					navigation:true,
-					handler:function(date,calendar){
-						scheduler.setCurrentView(date);
-						scheduler.destroyCalendar()
-					}
-				});
-		}
+	  	
 		var prev = null;
 		var curr = null;
 		var next = null;
@@ -187,6 +222,9 @@
 
 			scheduler.setCurrentView();
 		}
+		
+		
   	</script>
+
   </body>
 </html>

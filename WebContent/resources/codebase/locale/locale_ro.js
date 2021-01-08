@@ -1,9 +1,9 @@
 /*
 
 @license
-dhtmlxScheduler v.5.3.10 Professional Evaluation
+dhtmlxScheduler v.5.3.10 Standard
 
-This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com to get Commercial or Enterprise license. Usage without proper license is prohibited.
+To use dhtmlxScheduler in non-GPL projects (and get Pro version of the product), please obtain Commercial/Enterprise or Ultimate license on our site https://dhtmlx.com/docs/products/dhtmlxScheduler/#licensing or contact us at sales@dhtmlx.com
 
 (c) XB Software Ltd.
 
@@ -13,3 +13,4 @@ icon_save:"Salveaza",icon_cancel:"Anuleaza",icon_details:"Detalii",icon_edit:"Ed
 button_edit_series:"Editeaza serie",button_edit_occurrence:"Editeaza doar intrare",agenda_tab:"Agenda",date:"Data",description:"Descriere",year_tab:"An",week_agenda_tab:"Agenda",grid_tab:"Lista",drag_to_create:"Drag to create",drag_to_move:"Drag to move",message_ok:"OK",message_cancel:"Cancel",next:"Next",prev:"Previous",year:"Year",month:"Month",day:"Day",hour:"Hour",minute:"Minute",repeat_radio_day:"Zilnic",repeat_radio_week:"Saptamanal",repeat_radio_month:"Lunar",repeat_radio_year:"Anual",
 repeat_radio_day_type:"La fiecare",repeat_text_day_count:"zi(le)",repeat_radio_day_type2:"Fiecare zi lucratoare",repeat_week:" Repeta la fiecare",repeat_text_week_count:"saptamana in urmatoarele zile:",repeat_radio_month_type:"Repeta in",repeat_radio_month_start:"In a",repeat_text_month_day:"zi la fiecare",repeat_text_month_count:"luni",repeat_text_month_count2_before:"la fiecare",repeat_text_month_count2_after:"luni",repeat_year_label:"In",select_year_day2:"a lunii",
 repeat_text_year_day:"zi a lunii",select_year_month:"",repeat_radio_end:"Fara data de sfarsit",repeat_text_occurences_count:"evenimente",repeat_radio_end3:"La data",repeat_radio_end2:"Dupa",month_for_recurring:["Ianuarie","Februarie","Martie","Aprilie","Mai","Iunie","Iulie","August","Septembrie","Octombrie","Noiembrie","Decembrie"],day_for_recurring:["Duminica","Luni","Marti","Miercuri","Joi","Vineri","Sambata"]}}});
+//# sourceMappingURL=../sources/locale/locale_ro.js.map

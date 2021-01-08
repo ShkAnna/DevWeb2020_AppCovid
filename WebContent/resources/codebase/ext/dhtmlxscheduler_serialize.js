@@ -1,9 +1,9 @@
 /*
 
 @license
-dhtmlxScheduler v.5.3.10 Professional Evaluation
+dhtmlxScheduler v.5.3.10 Standard
 
-This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com to get Commercial or Enterprise license. Usage without proper license is prohibited.
+To use dhtmlxScheduler in non-GPL projects (and get Pro version of the product), please obtain Commercial/Enterprise or Ultimate license on our site https://dhtmlx.com/docs/products/dhtmlxScheduler/#licensing or contact us at sales@dhtmlx.com
 
 (c) XB Software Ltd.
 
@@ -13,3 +13,4 @@ Scheduler.plugin(function(e){e._get_serializable_data=function(){var e={};for(va
 var e=[],t="",a=this.data_attributes(),n=this._get_serializable_data();for(var i in n){for(var r=n[i],o=[],d=0;d<a.length;d++)t=a[d][1]?a[d][1](r[a[d][0]]):r[a[d][0]],o.push(' "'+a[d][0]+'": '+this._serialize_json_value(t));e.push("{"+o.join(",")+"}")}return"["+e.join(",\n")+"]"},e.toICal=function(t){
 var a="BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//dhtmlXScheduler//NONSGML v2.2//EN\nDESCRIPTION:",n="END:VCALENDAR",i=e.date.date_to_str("%Y%m%dT%H%i%s"),r=e.date.date_to_str("%Y%m%d"),o=[],d=this._get_serializable_data();for(var _ in d){var s=d[_];o.push("BEGIN:VEVENT"),s._timed&&(s.start_date.getHours()||s.start_date.getMinutes())?o.push("DTSTART:"+i(s.start_date)):o.push("DTSTART:"+r(s.start_date)),
 s._timed&&(s.end_date.getHours()||s.end_date.getMinutes())?o.push("DTEND:"+i(s.end_date)):o.push("DTEND:"+r(s.end_date)),o.push("SUMMARY:"+s.text),o.push("END:VEVENT")}return a+(t||"")+"\n"+o.join("\n")+"\n"+n}});
+//# sourceMappingURL=../sources/ext/dhtmlxscheduler_serialize.js.map

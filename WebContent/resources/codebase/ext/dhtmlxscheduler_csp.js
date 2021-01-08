@@ -1,9 +1,9 @@
 /*
 
 @license
-dhtmlxScheduler v.5.3.10 Professional Evaluation
+dhtmlxScheduler v.5.3.10 Standard
 
-This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com to get Commercial or Enterprise license. Usage without proper license is prohibited.
+To use dhtmlxScheduler in non-GPL projects (and get Pro version of the product), please obtain Commercial/Enterprise or Ultimate license on our site https://dhtmlx.com/docs/products/dhtmlxScheduler/#licensing or contact us at sales@dhtmlx.com
 
 (c) XB Software Ltd.
 
@@ -13,3 +13,4 @@ return i?a.getUTCFullYear():a.getFullYear();case"%D":return i?e.locale.date.day_
 return i?e.date.to_fixed((a.getUTCHours()+11)%12+1):e.date.to_fixed((a.getHours()+11)%12+1);case"%g":return i?(a.getUTCHours()+11)%12+1:(a.getHours()+11)%12+1;case"%G":return i?a.getUTCHours():a.getHours();case"%H":return i?e.date.to_fixed(a.getUTCHours()):e.date.to_fixed(a.getHours());case"%i":return i?e.date.to_fixed(a.getUTCMinutes()):e.date.to_fixed(a.getMinutes());case"%a":return i?a.getUTCHours()>11?"pm":"am":a.getHours()>11?"pm":"am";case"%A":
 return i?a.getUTCHours()>11?"PM":"AM":a.getHours()>11?"PM":"AM";case"%s":return i?e.date.to_fixed(a.getUTCSeconds()):e.date.to_fixed(a.getSeconds());case"%W":return i?e.date.to_fixed(e.date.getUTCISOWeek(a)):e.date.to_fixed(e.date.getISOWeek(a));default:return t}})}},e.date.str_to_date=function(t,i){return function(a){for(var n=[0,0,1,0,0,0],r=a.match(/[a-zA-Z]+|[0-9]+/g),o=t.match(/%[a-zA-Z]/g),s=0;s<o.length;s++)switch(o[s]){case"%j":case"%d":n[2]=r[s]||1;break;case"%n":case"%m":
 n[1]=(r[s]||1)-1;break;case"%y":n[0]=1*r[s]+(r[s]>50?1900:2e3);break;case"%g":case"%G":case"%h":case"%H":n[3]=r[s]||0;break;case"%i":n[4]=r[s]||0;break;case"%Y":n[0]=r[s]||0;break;case"%a":case"%A":n[3]=n[3]%12+("am"==(r[s]||"").toLowerCase()?0:12);break;case"%s":n[5]=r[s]||0;break;case"%M":n[1]=e.locale.date.month_short_hash[r[s]]||0;break;case"%F":n[1]=e.locale.date.month_full_hash[r[s]]||0}return i?new Date(Date.UTC(n[0],n[1],n[2],n[3],n[4],n[5])):new Date(n[0],n[1],n[2],n[3],n[4],n[5])}}});
+//# sourceMappingURL=../sources/ext/dhtmlxscheduler_csp.js.map

@@ -25,13 +25,11 @@
    	<!-- use your own Google API key
 	<script src="//maps.google.com/maps/api/js?key=AIzaSyBpxf_sy28gn2hTK1qG6pkk5gbNZLHUaGo&sensor=false" type="text/javascript"></script>`
 	<script src="${pageContext.request.contextPath}/resources/codebase/ext/dhtmlxscheduler_map_view.js"></script>
-   	-->
-   	<script src="//maps.google.com/maps/api/js?key=AIzaSyAmBpYILZc2Ktp2Qw8rRBX_ur7_qOGiJEk" type="text/javascript"></script>
-	
- 	<script src="${pageContext.request.contextPath}/resources/codebase/dhtmlxscheduler.js" type="text/javascript" charset="utf-8"></script>
-	<script src="${pageContext.request.contextPath}/resources/codebase/ext/dhtmlxscheduler_map_view.js" type="text/javascript" charset="utf-8"></script>
-	
-  <script type="text/javascript">
+   	
+   	<script src="//maps.google.com/maps/api/js?key=AIzaSyAmBpYILZc2Ktp2Qw8rRBX_ur7_qOGiJEk" type="text/javascript"></script>-->
+	<script src="${pageContext.request.contextPath}/resources/js/PlacePicker.js"></script>
+  	<script src="${pageContext.request.contextPath}/resources/codebase/ext/dhtmlxscheduler_quick_info.js"></script>
+  	<script type="text/javascript">
   
 	  	$('#modalDeleteUser').on('show.bs.modal', function (event) {
 	  	  var button = $(event.relatedTarget); // Button that triggered the modal
@@ -48,6 +46,7 @@
 	  	  //modal.find('.modal-title').text('New message to ' + user);
 	  	  //$(this).find('.modal-username').text(user);
 	  	})
+	  	
   	
 		window.alert = function(){};
 	    var defaultCSS = document.getElementById('bootstrap-css');

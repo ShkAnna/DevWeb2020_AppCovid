@@ -1,9 +1,9 @@
 /*
 
 @license
-dhtmlxScheduler v.5.3.10 Professional Evaluation
+dhtmlxScheduler v.5.3.10 Standard
 
-This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com to get Commercial or Enterprise license. Usage without proper license is prohibited.
+To use dhtmlxScheduler in non-GPL projects (and get Pro version of the product), please obtain Commercial/Enterprise or Ultimate license on our site https://dhtmlx.com/docs/products/dhtmlxScheduler/#licensing or contact us at sales@dhtmlx.com
 
 (c) XB Software Ltd.
 
@@ -14,3 +14,4 @@ var _=i[d];if(!_._timed)if("short"!=this.config.all_timed||e(_)){var l=this._saf
 c.end_date=new Date(c.end_date),c.start_date<this._min_date?c.start_date=o(this._min_date,this.config.first_hour):c.start_date=o(s(_.start_date),this.config.first_hour),c.start_date<this._max_date&&c.start_date<c.end_date){if(!h){i[d--]=c;continue}i.splice(d+1,0,c),c._last_chunk=!1}else l._last_chunk=!0,l._drag_resize=!0}else"month"!=this._mode&&i.splice(d--,1)}var u="move"!=this._drag_mode&&a;return n.call(this,i,u)};var r=t.get_visible_events;t.get_visible_events=function(t){
 return this.config.all_timed&&this.config.multi_day?r.call(this,!1):r.call(this,t)},t.attachEvent("onBeforeViewChange",function(e,i,a,n){return t._allow_dnd="day"==a||"week"==a,!0}),t._is_main_area_event=function(t){return!!(t._timed||!0===this.config.all_timed||"short"==this.config.all_timed&&e(t))};var s=t.updateEvent;t.updateEvent=function(e){var i,a,n=t.getEvent(e);n&&(i=t.config.all_timed&&!(t.isOneDayEvent(t._events[e])||t.getState().drag_id))&&(a=t.config.update_render,
 t.config.update_render=!0),s.apply(t,arguments),n&&i&&(t.config.update_render=a)}}()});
+//# sourceMappingURL=../sources/ext/dhtmlxscheduler_all_timed.js.map

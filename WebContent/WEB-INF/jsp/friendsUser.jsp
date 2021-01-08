@@ -126,9 +126,9 @@
 		    	</div>
 		  	</div>
 		  	<div class="row">
-		  		<div class="col-lg-8">
-		  			<div class="card align-items-center"> 
-		        		<img class="img" width="60%" src="${pageContext.request.contextPath}/images/friends.png" >
+		  		<div class="col-lg-auto ">
+		  			<div class=" align-items-center"> 
+		        		<img class="card img" width="70%" src="${pageContext.request.contextPath}/images/friends.png" >
 		        	</div>
 		        </div>
 		        <div class="col-lg-4">
