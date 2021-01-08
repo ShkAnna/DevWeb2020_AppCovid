@@ -57,8 +57,8 @@
           
           <ul class="list-group">
             <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-            <li class="list-group-item text-right" onclick="location.href='friends-user';"  style="cursor:pointer;" ><span class="pull-left"><strong>Friends list</strong></span> 125</li>
-            <li class="list-group-item text-right" onclick="location.href='index.jsp';"  style="cursor:pointer;"  ><span class="pull-left"><strong>Visited places</strong></span> 13</li>
+            <li class="list-group-item text-right" onclick="location.href='friends-user';"  style="cursor:pointer;" ><span class="pull-left"><strong>Friends list</strong></span> ${nbFriends}</li>
+            <li class="list-group-item text-right" onclick="location.href='index.jsp';"  style="cursor:pointer;"  ><span class="pull-left"><strong>Visited places</strong></span> </li>
             
           </ul> 
                

@@ -149,7 +149,7 @@
 		        <div class="col-lg-4">
 		        	<div class="card"> 
 			           	<div class="card-header">
-			            	<h4  style="color:#E14557;">Situation avec vos amis ${friendsPositive}, ${friendsNegative}</h4>
+			            	<h4  style="color:#E14557;">Situation avec vos amis </h4>
 			           	</div>
 			           	<div class="card-body" style="color:#E14557;">
 		                  <div class="chart-container">

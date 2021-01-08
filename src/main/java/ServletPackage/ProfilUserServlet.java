@@ -29,6 +29,13 @@ public class ProfilUserServlet extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+            
+            try {
+                request.setAttribute("nbFriends", con.getFriends(utilisateur).size());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
 
             this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/profilUser.jsp").forward(request, response);
         }
