@@ -698,6 +698,34 @@ public class SQLConnector {
         return res;
     }
 
+    public List<Utilisateur> getUsersApplicationAdmin(Utilisateur utilisateur) throws SQLException {
+        List<Utilisateur> res = new ArrayList<>();
+        String query = "SELECT * FROM appcovid.users WHERE id_user!='" + utilisateur.getId() + "';";
+        ResultSet result = doRequest(query);
+        while (result.next()) {     	
+            if ((result.getString("id_user")!=utilisateur.getId()) ) { 
+            utilisateur = new Utilisateur();
+            utilisateur.setId(result.getString("id_user"));
+            utilisateur.setPseudo(result.getString("login"));
+            utilisateur.setMotDePasse(result.getString("user_password"));
+            utilisateur.setPrenom(result.getString("first_name"));
+            utilisateur.setNom(result.getString("name"));
+            utilisateur.setEmail(result.getString("email"));
+            utilisateur.setDateDeNaissance(result.getString("birthdate"));
+            utilisateur.setProfilPicture(result.getString("picture"));
+            String positif = "SELECT * FROM appcovid.users WHERE id_user='" + utilisateur.getId() + "';";
+            ResultSet resultP = doRequest(positif);
+            resultP.next();
+            if (!resultP.getString("login").isEmpty()) { 
+            	utilisateur.setPositif(resultP.getBoolean("positif"));
+             }            
+            res.add(utilisateur);
+        
+        	}
+        }
+        this.closeCon();
+        return res;
+    }
     
     public List<Notification> getNotifs(String id) throws SQLException {
         List<Notification> res = new ArrayList<>();
