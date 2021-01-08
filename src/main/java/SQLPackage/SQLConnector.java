@@ -314,8 +314,6 @@ public class SQLConnector {
         String query =
                 "INSERT INTO appcovid.place(latitude,longitude,address,name) " +
                         "VALUES('"
-                        + place.getLatitude() + "','"
-                        + place.getLongitude() + "','"
                         + place.getAddress() + "','"
                         + place.getName()
                         + "');";
@@ -361,6 +359,14 @@ public class SQLConnector {
         connection().close();
 
     }
+    
+    public void updateActivity(Activity activity) {
+        String query = "UPDATE covidnon.activity SET start_date = '"+activity.getStartDate()+"', " +
+                "end_date = '"+activity.getEndDate()+"',"+
+                "id_place ='"+activity.getIdPlace()+"' WHERE id_activity = "+activity.getId()+";";
+        doUpdate(query);
+        this.closeCon();
+    }
 
     
     public List<String> getPlaceContactCase(String positifUserId) throws SQLException {
@@ -399,9 +405,7 @@ public class SQLConnector {
         if (!result.getString("name").isEmpty()) {
             place = new Place();
             place.setName(result.getString("name"));
-            place.setAddress(result.getString("address"));
-            place.setLongitude(result.getString("longitude"));
-            place.setLatitude(result.getString("latitude"));
+            place.setAddress(result.getString("address"));           
             place.setId(result.getString("id_place"));
         }
         this.closeCon();
@@ -416,9 +420,7 @@ public class SQLConnector {
         if (!result.getString("name").isEmpty()) {
             place = new Place();
             place.setName(result.getString("name"));
-            place.setAddress(result.getString("address"));
-            place.setLongitude(result.getString("longitude"));
-            place.setLatitude(result.getString("latitude"));
+            place.setAddress(result.getString("address"));                 
             place.setId(result.getString("id_place"));
         }
         this.closeCon();
@@ -529,9 +531,28 @@ public class SQLConnector {
     }
     
     
-    
-    
-
+   
+    public Activity getActivity(int id) throws SQLException {
+        Activity activity = null;
+        String query = "SELECT * FROM covidnon.activity WHERE id_activity ='" + id + "' ;";
+        ResultSet result = doRequest(query);
+        result.next();
+        if (!result.getString("name").isEmpty()) {
+            activity = new Activity();
+            activity.setId(result.getString("id_activity"));
+            activity.setIdPlace(result.getString("id_place"));
+            activity.setIdUser(result.getString("id_user"));
+            String sd = result.getString("start_date");
+            String ed = result.getString("end_date");
+            // remove seconds for the display
+            sd = sd.substring(0,sd.length()-3);
+            ed = ed.substring(0,ed.length()-3);
+            activity.setStartDate(sd);
+            activity.setEndDate(ed);
+        }
+        this.closeCon();
+        return activity;
+    }
     public ResultSet getActivitesOfPlace(Place p) {
         return doRequest(
                 "SELECT * FROM appcovid.activity WHERE id_place=" + p.getId() + ";"
@@ -625,8 +646,6 @@ public class SQLConnector {
             Place place = new Place();
             place.setName(result.getString("name"));
             place.setAddress(result.getString("address"));
-            place.setLongitude(result.getString("longitude"));
-            place.setLatitude(result.getString("latitude"));
             place.setId(result.getString("id_place"));
             res.add(place);
         }
@@ -643,8 +662,10 @@ public class SQLConnector {
             Activity activity = new Activity();
             String sd =result.getString("start_date");
             String ed = result.getString("end_date");
-
-            
+            activity.setId(result.getString("id_activity"));
+            activity.setIdUser(result.getString("id_user"));
+            activity.setIdPlace(result.getString("id_place"));
+            //enelve quelques secondes 
             sd = sd.substring(0,sd.length()-3);
             ed = ed.substring(0,ed.length()-3);
             activity.setStartDate(sd);
@@ -824,10 +845,9 @@ public class SQLConnector {
     public void updatePlace(Place place) {
         String query = "UPDATE appcovid.place SET address = '"+place.getAddress()+"', " +
                 "name = '"+place.getName()+"',"+
-                "latitude ='"+place.getLatitude()+"', "+
-                "longitude = '"+place.getLongitude()+"' WHERE id_place = "+place.getId()+";";
-        doUpdate(query);
-        this.closeCon();
+        		"' WHERE id_place = "+place.getId()+";";
+        			doUpdate(query);
+        			this.closeCon();
     }
 
     public String hashPassword(String password) {

@@ -43,39 +43,36 @@
 </head>
 <body>
 
-<h1 style="text-align:center"> Liste des utilisateurs</h1>
-<div><label>Search user : </label>
-<input id="myInput" type="text" placeholder="Rechercher...">
+<br>
+<h1  style="text-align:center">Gestion lieux</h1>
+<div><label>Rerchercher un lieu : </label>
+    <input id="myInput" type="text" placeholder="Rechercher...">
 </div>
 <br>
 <br>
 
+
 <table>
     <thead>
     <tr>
-        <th>Photo</th>
-        <th>Pseudo</th>
-        <th>Prénom</th>
         <th>Nom</th>
-        <th>Email</th>
+        <th>Adresse</th>
         <th>Supprimer</th>
         <th>Editer</th>
     </tr>
     </thead>
     <tbody id="myTable">
-    <c:forEach items="${users}" var="item">
+    <c:forEach items="${places}" var="item">
     <tr>
-        <td> <img width=40 height=40 src=${item.profilPicture}></td>
-        <td>${item.pseudo}</td>
-        <td>${item.prenom}</td>
-        <td>${item.nom}</td>
-        <td>${item.email}</td>
-        <td>  <button type="button" class="btn btn-danger" onclick="window.location.href='delete-user?id=${item.id}'" width="50" height="50" >Supprimer
+        <td>${item.name}</td>
+        <td>${item.address}</td>
+        
+          <td>  <button type="button" class="btn btn-danger" onclick="window.location.href='deletePlace?id=${item.id}'" width="50" height="50" >Supprimer
 		<i class="fa fa-trash" style="color:#E14557;"></i>
 		</button>
 				
 		<td> 
-		<button class="btn btn-secondary rounded-lg" style="font-weight: bold;border-color:#0099cc;background-color:#0099cc;" type="submit"  name="buttonDeleteNotif" onclick="window.location.href='modifyProfil?id=${item.id}'" width="50" height="50">Editer</button>
+		<button class="btn btn-secondary rounded-lg" style="font-weight: bold;border-color:#0099cc;background-color:#0099cc;" type="submit"  name="buttonDeleteNotif" onclick="window.location.href='modifyPlace?id=${item.id}'" width="50" height="50">Editer</button>
 	          						  	
 		</td>										
        
@@ -85,7 +82,19 @@
 <br>
 <br>
 <div><button type="submit" class="btn btn-primary mb-2" style="font-weight: bold;border-color:#a1c83f;background-color:#a1c83f;" onclick="window.location.href='dashboard-admin-servlet'">retourner à la page d'administration</button></div>
-
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+

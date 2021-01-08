@@ -3,16 +3,12 @@ package BeanPackage;
 import java.util.Objects;
 
 public class Place {
-    private String latitude;
-    private String longitude;
     private String address;
     private String name;
     private String id;
 
     public Place(){
-        id = null;
-        latitude = "0";
-        longitude = "0";
+        id = null;       
         address = null;
         name = null;
     }
@@ -24,23 +20,7 @@ public class Place {
     public void setId(String id) {
         this.id = id;
     }
-
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-
+ 
     public String getAddress() {
         return address;
     }

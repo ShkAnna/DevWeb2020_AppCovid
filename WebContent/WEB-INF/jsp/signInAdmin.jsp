@@ -62,7 +62,6 @@
 			</div>
 			<div class="col-md-9 register-right">
 				<div class="row justify-content-end" style="margin-top: 1rem !important;margin-bottom: 1rem !important;margin-right: 0rem !important;">
-						<a class="col-3 col-lg-2 left-sign text-center"  aria-selected="false" href="sign-up-user">Sign up</a>
 						<a class="col-3 col-lg-2 right-sign text-center"  aria-selected="true" href="sign-in-user">Sign in</a>		
 				</div>
 				<div class ="row align-items-center" style="height:60%;">
