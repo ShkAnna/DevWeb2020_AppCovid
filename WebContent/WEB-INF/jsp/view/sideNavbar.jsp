@@ -1,6 +1,6 @@
 <%@ page import="BeanPackage.Utilisateur" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% Utilisateur current_user = (Utilisateur) session.getAttribute("current_user"); %>
+<%// Utilisateur current_user = (Utilisateur) session.getAttribute("current_user"); %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
  
  <!-- Side Navbar -->
@@ -10,12 +10,12 @@
     <div class="sidenav-header d-flex align-items-center justify-content-center">
       <!-- User Info-->
       <div class="sidenav-header-inner text-center">
-      	 	<img src=<%out.print(current_user.getProfilPicture());%>  alt="person" class="img-fluid rounded-circle">
-        <h2 class="h5"><%out.print(current_user.getPrenom());%> <%out.print(current_user.getNom());%></h2>
+      	 	<img src=<%//out.print(current_user.getProfilPicture());%>  alt="person" class="img-fluid rounded-circle">
+        <h2 class="h5"><%//out.print(current_user.getPrenom());%> <%//out.print(current_user.getNom());%></h2>
         
        <c:choose>
 								<c:when test="${positif}">
-                  <div id="stateNotif" class="stateNotSick">Atteint du COVID  </div>
+                  <div id="stateNotif" class="stateSick">Atteint du COVID  </div>
                </c:when>
 										<c:otherwise>
                  <div id="stateNotif" class="stateNotSick">Pas malade </div>
@@ -39,14 +39,14 @@
         <li class="activities"><a href="activities"> <i class="fa fa-history"></i>Mes activités</a></li>
         <li class="friends"><a href="friends-user"> <i class="fa fa-users"></i>Mes amis</a></li>
         <li class="notifications"><a href="notifications"><i class="fa fa-bell"></i>Mes notifications
-            <div class="badge badge-warning">${nbNotifs}</div></a>
+            <div class="badge badge-warning"><!-- ${nbNotifs} --></div></a>
         </li>
       </ul>
     </div>
     <div class="admin-menu">
       <h5 class="sidenav-heading">Réglages</h5>
       <ul id="side-admin-menu" class="side-menu list-unstyled"> 
-        <li> <a href="profil-user"> <i class="fa fa-user"> </i>Profil</a></li>
+        <li class="profil"> <a href="profil-user"> <i class="fa fa-user"> </i>Profil</a></li>
       </ul>
     </div>
   </div>

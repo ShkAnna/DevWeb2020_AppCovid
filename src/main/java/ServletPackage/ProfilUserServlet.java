@@ -35,13 +35,11 @@ public class ProfilUserServlet extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
-
             this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/profilUser.jsp").forward(request, response);
         }
-        else{
+    	else{
             response.sendRedirect("/DevWeb2020_AppCovid/");
-        }
+    	}
                 
     }
 }

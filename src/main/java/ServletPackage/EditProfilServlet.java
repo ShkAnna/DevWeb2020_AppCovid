@@ -77,7 +77,7 @@ public class EditProfilServlet extends HttpServlet {
         }
         erreurs = new HashMap<String, String>();
 
-        /* Récupération des champs du formulaire. */
+        /* Rï¿½cupï¿½ration des champs du formulaire. */
         String email = request.getParameter("mail");
         String motDePasse = request.getParameter("password");
         String confirmation = request.getParameter("password_CHECK");

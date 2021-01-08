@@ -1,6 +1,6 @@
 <%@ page import="BeanPackage.Utilisateur" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% Utilisateur current_user = (Utilisateur) session.getAttribute("current_user"); %>
+<%// Utilisateur current_user = (Utilisateur) session.getAttribute("current_user"); %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 
@@ -24,14 +24,15 @@
 					<li class="nav-item dropdown">
 						<a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">
 							<i class="fa fa-bell" style="font-size:20px;"></i>
-							<span class="badge badge-warning">${nbNotifs}</span>
+							<span class="badge badge-warning"><!-- ${nbNotifs} --></span>
 						</a>
-						<ul aria-labelledby="notifications" class="dropdown-menu">						
+						<ul aria-labelledby="notifications" class="dropdown-menu">	
+						<!-- 					
 						<c:forEach items="${notifs}" var="item">				                		
 	               					<li style="  list-style-type: circle;color:#a1c83f;font-size:14px"> ${fn:toUpperCase(item.pseudoAsking)} 	${item.message} </li>
 					               	
 					                 	</c:forEach>	
-							
+							-->
 							<li>
 								<a rel="nofollow" href="notifications" class="dropdown-item all-notifications text-center">
 								<strong><i class="fa fa-bell"></i>view all notifications</strong>

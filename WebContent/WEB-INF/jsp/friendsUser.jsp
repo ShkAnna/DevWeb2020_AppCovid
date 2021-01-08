@@ -177,7 +177,7 @@
 	  		    element.classList.remove("active");
 	  		   });
 	  		var notActive = navChange.getElementsByClassName("friends");
-	  		console.log(notActive);
+	  		
 	  		Array.prototype.forEach.call(notActive, function forElement(element) {
 	  		    element.classList.add("active");
 	  		   });
