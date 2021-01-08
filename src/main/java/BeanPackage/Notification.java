@@ -10,6 +10,7 @@ public class Notification {
     private boolean friendRequest;
     private String date;
     private String time;
+   
     
     public Notification(){
         id = null;
@@ -52,6 +53,7 @@ public class Notification {
         return time;
     }
     
+    
     public void setTime(String time) {
         this.time = time;
     }
@@ -64,7 +66,6 @@ public class Notification {
         this.pseudoAsking = pseudoAsking;
     }
 
-    
 
     public void setId(String id) {
         this.id = id;
@@ -85,4 +86,6 @@ public class Notification {
     public void setFriendRequest(boolean friendRequest) {
         this.friendRequest = friendRequest;
     }
+    
+   
 }

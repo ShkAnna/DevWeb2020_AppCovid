@@ -1,6 +1,7 @@
 package SQLPackage;
 
 import SQLPackage.SQLConnector;
+
 import BeanPackage.Utilisateur;
 import BeanPackage.Place;
 import BeanPackage.Notification;
@@ -58,7 +59,17 @@ public class SQLConnector {
 
     }
 
-    public void doUpdate(String query) {
+    private Object handleNullValues(String colonum,ResultSet results) throws SQLException {
+        Object o = results.getObject(colonum);
+        if(results.wasNull()){
+            return null;
+        }
+        else{
+            return o;
+        }
+    }
+
+        public void doUpdate(String query) {
         try {
             con = connection();
             statement = con.prepareStatement(query);
@@ -133,7 +144,7 @@ public class SQLConnector {
                         + utilisateur.getNom() + "','"
                         + utilisateur.getPrenom() + "','"
                         + utilisateur.getEmail() + "','"
-                        + utilisateur.getDateDeNaissance() +
+                        + utilisateur.getDateDeNaissance() + 
                         "');";
         doAdd(query);
     }
@@ -151,9 +162,9 @@ public class SQLConnector {
             utilisateur.setPrenom(result.getString("first_name"));
             utilisateur.setNom(result.getString("name"));
             utilisateur.setEmail(result.getString("email"));
-            utilisateur.setDateDeNaissance(result.getString("birthdate"));
-            utilisateur.setProfilPicture(result.getString("picture"));
-            utilisateur.setPositif(!result.getString("is_positif").equals("0"));
+            utilisateur.setDateDeNaissance(handleNullValues("birthdate",result).toString());
+            utilisateur.setProfilPicture(handleNullValues("picture",result).toString());
+            utilisateur.setPositif(!result.getString("positif").equals("0"));
             utilisateur.setAdmin(!result.getString("is_admin").equals("0"));
         }
         this.closeCon();
@@ -173,9 +184,9 @@ public class SQLConnector {
             utilisateur.setPrenom(result.getString("first_name"));
             utilisateur.setNom(result.getString("name"));
             utilisateur.setEmail(result.getString("email"));
-            utilisateur.setDateDeNaissance(result.getString("birthdate"));
-            utilisateur.setProfilPicture(result.getString("picture"));
-            utilisateur.setPositif(!result.getString("is_positif").equals("0"));
+            utilisateur.setDateDeNaissance(handleNullValues("birthdate",result).toString());
+            utilisateur.setProfilPicture(handleNullValues("picture",result).toString());
+            utilisateur.setPositif(!result.getString("positif").equals("0"));
             utilisateur.setAdmin(!result.getString("is_admin").equals("0"));
         }
         this.closeCon();
@@ -196,7 +207,7 @@ public class SQLConnector {
             utilisateur.setEmail(result.getString("email"));
             utilisateur.setDateDeNaissance(result.getString("birthdate"));
             utilisateur.setProfilPicture(result.getString("picture"));
-            utilisateur.setPositif(!result.getString("is_positif").equals("0"));
+            utilisateur.setPositif(!result.getString("positif").equals("0"));
             utilisateur.setAdmin(!result.getString("is_admin").equals("1"));
         }
         this.closeCon();
@@ -217,7 +228,7 @@ public class SQLConnector {
             utilisateur.setEmail(result.getString("email"));
             utilisateur.setDateDeNaissance(result.getString("birthdate"));
             utilisateur.setProfilPicture(result.getString("picture"));
-            utilisateur.setPositif(!result.getString("is_positif").equals("0"));
+            utilisateur.setPositif(!result.getString("positif").equals("0"));
             utilisateur.setAdmin(!result.getString("is_admin").equals("1"));
         }
         this.closeCon();
@@ -253,7 +264,7 @@ public class SQLConnector {
             utilisateur.setEmail(result.getString("email"));
             utilisateur.setDateDeNaissance(result.getString("birthdate"));
             utilisateur.setProfilPicture(result.getString("picture"));
-            utilisateur.setPositif(!result.getString("is_positif").equals("0"));
+            utilisateur.setPositif(!result.getString("positif").equals("0"));
             utilisateur.setAdmin(!result.getString("is_admin").equals("0"));
         }
         this.closeCon();
@@ -448,40 +459,44 @@ public class SQLConnector {
         );
     }
 
-    public void isMember(String username) throws Exception {
+    public String isMember(String username) throws Exception {
         String query = "Select * FROM appcovid.users WHERE login='" + username + "'";
         ResultSet result = doRequest(query);
         if (result.next()) {
             throw new Exception("Ce pseudo est déja utilisé");
         }
         this.closeCon();
+        return null;
     }
 
-    public void isMember(String username, Utilisateur utilisateur) throws Exception {
+    public String isMember(String username, Utilisateur utilisateur) throws Exception {
         String query = "Select * FROM appcovid.users WHERE login='" + username  + "' AND id_user != '"+utilisateur.getId()+"';";
         ResultSet result = doRequest(query);
         if (result.next()) {
             throw new Exception("Ce pseudo est déja  utilisé");
         }
         this.closeCon();
+        return null;
     }
 
-    public void isRegistered(String email) throws Exception {
+    public String isRegistered(String email) throws Exception {
         String query = "Select * FROM appcovid.users WHERE email='" + email + "'";
         ResultSet result = doRequest(query);
         if (result.next()) {
             throw new Exception("Ce email est déja  utilisé");
         }
         this.closeCon();
+        return null;
     }
 
-    public void isRegistered(String email, Utilisateur utilisateur) throws Exception {
+    public String isRegistered(String email, Utilisateur utilisateur) throws Exception {
         String query = "Select * FROM appcovid.users WHERE email='" + email + "' AND id_user != '"+utilisateur.getId()+"';";
         ResultSet result = doRequest(query);
         if (result.next()) {
             throw new Exception("Cet email est déja  utilisé");
         }
         this.closeCon();
+        return null;
     }
 
     public void placeAlreadyExist(String name) throws Exception {
@@ -618,7 +633,7 @@ public class SQLConnector {
 
     
     public void setPositif(Utilisateur utilisateur) {
-        String query = "UPDATE appcovid.users SET is_positif = 1 WHERE id_user = "+utilisateur.getId()+";";
+        String query = "UPDATE appcovid.users SET positif = 1 WHERE id_user = "+utilisateur.getId()+";";
         doUpdate(query);
         this.closeCon();
         utilisateur.setPositif(true);
@@ -656,6 +671,7 @@ public class SQLConnector {
     public void updateUser(Utilisateur utilisateur) {
         String query = "UPDATE appcovid.users SET login = '"+utilisateur.getPseudo()+"', " +
                 "user_password = '"+passwordHasher.hash(utilisateur.getMotDePasse())+"', "+
+                "picture = '"+utilisateur.getProfilPicture()+"', "+
                 "name = '"+utilisateur.getNom()+"',"+
                 "first_name ='"+utilisateur.getPrenom()+"', "+
                 "email = '"+utilisateur.getEmail()+"', "+

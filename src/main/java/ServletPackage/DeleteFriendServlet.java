@@ -1,6 +1,7 @@
 package ServletPackage;
 
 import SQLPackage.SQLConnector;
+
 import BeanPackage.Utilisateur;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +20,9 @@ public class DeleteFriendServlet extends HttpServlet {
         SQLConnector sqlConnector = new SQLConnector();
         HttpSession session = request.getSession();
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("current_user");
+        System.out.println("icii first "+request.getParameter("id"));
         int friendId = Integer.parseInt(request.getParameter("id"));
+        System.out.println("icii "+friendId);
         Utilisateur friend = null;
         try {
             friend = sqlConnector.getUser(friendId);

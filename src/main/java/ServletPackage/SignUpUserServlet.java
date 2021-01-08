@@ -41,7 +41,7 @@ public class SignUpUserServlet extends HttpServlet {
         Part pictureData = request.getPart("picture");  
         String picture;
         SQLConnector con = new SQLConnector();
-        picture = "./WebContent/images/photoProfil.png";
+        picture = "images/photoProfil.png";
                
         String birthdate = request.getParameter("birthdate");
         if(birthdate != null) {

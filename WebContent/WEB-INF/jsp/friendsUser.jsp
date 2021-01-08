@@ -69,7 +69,7 @@
 					          						  	</td>
 	          						 			   		<td><i class="fa fa-check" style="color:#70af1c;"></i></td>
 								                   		<td>
-															<button type="button" class="btn btn-del" data-toggle="modal" data-target="#modalDeleteUser" data-username="USER-NAME">
+															        <button type="button" class="btn btn-danger" onclick="window.location.href='deleteFriend?id=${item.id}'" >Supprimer
 																<i class="fa fa-trash" style="color:#E14557;"></i>
 															</button>
 								                   		</td>
@@ -105,17 +105,25 @@
 				                 	</tr>
 			               		</thead>
 			               		<tbody style="font-weight:bold;">
-				                 	<c:forEach items="${friends}" var="item">
+				                 	<c:forEach items="${friends}" var="pos">
+				                 	<c:choose>
+				               			 <c:when test="${pos.positif}">	
+				                 		
 			               				<tr>
 							            	<td>
 				               					<img src="${pageContext.request.contextPath}/images/photoProfil.png" alt="person" width="50" height="50" class="img rounded-circle">
 				               				</td>
 							            	<td>
-									            ${item.pseudo} -
-									            ${item.nom} -
-									            ${item.prenom}
+									            ${pos.nom} 
+									            ${pos.prenom}
 			          						 </td>
 							             </tr>
+							                   </c:when>	
+					                 			<c:otherwise>
+            
+										         </c:otherwise>
+										      </c:choose>	    	
+					                 
 									</c:forEach>
 				               	</tbody>
 			             	</table>

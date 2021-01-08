@@ -49,11 +49,14 @@
 						            	 <c:forEach items="${notifs}" var="item">
 								        <span>  ${item.message} </span>
 								        <c:choose>
-								            <c:when test="${item.friendRequest}">
-								                    <button type="submit" name="buttonAddFriend" onclick="window.location.href='acceptFriend?id=${item.idAsking}&idNotif=${item.id}'">Ajouter en ami</button>
-								                    <button type="submit" name="buttonRefuseFriend" onclick="window.location.href='refuseFriend?id=${item.idAsking}&idNotif=${item.id}'">Refuser</button>
-								            </c:when>
-								            <c:otherwise>
+													<c:when test="${item.friendRequest}">
+														<button type="submit" name="buttonAddFriend"
+															onclick="window.location.href='acceptFriend?id=${item.idAsking}&idNotif=${item.id}'">Ajouter
+															en ami</button>
+														<button type="submit" name="buttonRefuseFriend"
+															onclick="window.location.href='refuseFriend?id=${item.idAsking}&idNotif=${item.id}'">Refuser</button>
+													</c:when>
+													<c:otherwise>
 								                <button type="submit" name="buttonDeleteNotif" onclick="window.location.href='deleteNotif?id=${item.id}'">Effacer</button>
 								            </c:otherwise>
 								        </c:choose>

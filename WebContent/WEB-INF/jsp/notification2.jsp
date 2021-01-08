@@ -105,8 +105,10 @@
 								                   	<th></th>
 							                 	</tr>
 						               		</thead>
-						               			<tbody style="font-weight:bold;">						               		
-						               							<c:forEach items="${notifs}" var="item">			               		
+						               			<tbody style="font-weight:bold;">
+						               			<c:forEach items="${notifs}" var="item">
+						                			<c:choose>
+						               			 <c:when test="${item.friendRequest}">				               		
 			               						<tr>
 			               					
 			               					
@@ -128,9 +130,13 @@
 			          						  		 
 			          						  
 							                 	</tr>
-							                 					  </c:forEach>				                 	
-							                 	
-							               	</tbody>
+							                 			</c:when>	
+					                 			<c:otherwise>
+            
+										         </c:otherwise>
+										      </c:choose>		                 	
+					                 	</c:forEach>	
+					               	</tbody>
 						             	</table>
 						            
 						         	</div>
@@ -166,7 +172,9 @@
 				               		
 				               		
 				               		<tbody style="font-weight:bold;">
-				               			<c:forEach items="${notifs}" var="item">			  
+				               			<c:forEach items="${notifs}" var="item">
+				                			<c:choose>
+				               			 <c:when test="${not  item.friendRequest}">	
 	               						<tr>
 					               			<td>
 					               				<img src="${pageContext.request.contextPath}/images/photoProfil.png" alt="person" width="50" height="50" class="img rounded-circle">
@@ -184,10 +192,14 @@
 								        		${item.time}
 	          						  		</td>
 	          						  		<td>
-	          						  			<button class="btn btn-secondary rounded-lg" style="font-weight: bold;border-color:#0099cc;background-color:#0099cc;" type="button" data-toggle="modal" data-target="#modalAddUser">Effacer</button>
+	          						  			<button class="btn btn-secondary rounded-lg" style="font-weight: bold;border-color:#0099cc;background-color:#0099cc;" type="submit"  name="buttonDeleteNotif" onclick="window.location.href='deleteNotif?id=${item.id}'">Effacer</button>
 	          						  		</td>
 					                 	</tr>
-					                 						                 	
+					                 			</c:when>	
+					                 			<c:otherwise>
+            
+										         </c:otherwise>
+										      </c:choose>		                 	
 					                 	</c:forEach>	
 					               	</tbody>
 					               	

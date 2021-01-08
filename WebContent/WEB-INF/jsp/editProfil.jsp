@@ -35,8 +35,12 @@
               
 
       <div class="text-center">
-        <img src="<%out.print(current_user.getProfilPicture());%>" class="img-thumbnail rounded mx-auto d-block" alt="avatar">
-            </div><br>
+        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+        <label for="picture" class="col-sm-6 col-form-label">Image de profil</label>
+                <input type="file" id="picture" name="picture" accept="image/png, image/jpeg" class="form-control-file">
+        </div><br>
+      
+
 
                
           <div class="panel panel-default">
@@ -57,7 +61,7 @@
           
           <ul class="list-group">
             <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-            <li class="list-group-item text-right" onclick="location.href='friends-user';"  style="cursor:pointer;" ><span class="pull-left"><strong>Friends list</strong></span> 125</li>
+            <li class="list-group-item text-right" onclick="location.href='index.jsp';"  style="cursor:pointer;" ><span class="pull-left"><strong>Friends list</strong></span> 125</li>
             <li class="list-group-item text-right" onclick="location.href='index.jsp';"  style="cursor:pointer;"  ><span class="pull-left"><strong>Visited places</strong></span> 13</li>
             
           </ul> 
@@ -76,54 +80,79 @@
               </ul>
               
           <div class="tab-content">
+            <form method="post" enctype="multipart/form-data" action="modifyProfil?id=<%out.print((String)request.getAttribute("id"));%>" >
             <div class="tab-pane active" id="home">
-        			    <div class="form-group">
-                          
+        			    <div class="form-group">                          
                           <div class="col-xs-6">
                               <label for="first_name"><h3>Pseudo</h3></label>
-                              <h4><%out.print(current_user.getPseudo());%></h4>
+                              <input type="text" id="login" name="login" class="form-control" value="<c:out value="${user.pseudo}"/>" required>
+               				  <div class="loginError" style="display:none;"></div>
                           </div>
-                      </div>
-                     <div class="form-group">
+                      </div>                     
+                    		            
+                       <div class="form-group">                     
                           
                           <div class="col-xs-6">
-                              <label for="first_name"><h3>Nom</h3></label>
-                              <h4><%out.print(current_user.getNom());%></h4>
+                             <label for="first_name"><h3>Nom</h3></label>
+                             <input type="text" id="surname" name="surname" class="form-control" value="<c:out value="${user.prenom}"/>" required>
+              				 <div class="surnameError" style="display:none;"></div>
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                              <label for="first_name"><h3>Prenom</h3></label>
-                              <h4><%out.print(current_user.getPrenom());%></h4>
-                               </div>
+                             <input type="text" id="name" name="name" class="form-control" value="<c:out value="${user.nom}"/>" required>
+               				 <div class="nameError" style="display:none;"></div>
+                          </div>
                       </div>
           
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                                  <label for="first_name"><h3>Email</h3></label>
-                            	 <h4><%out.print(current_user.getEmail());%></h4>
+                            	 <input type="email" id="mail" name="mail" class="form-control" value="<c:out value="${user.email}"/>" required>
+             					 <div class="mailError" style="display:none;"></div>
                           </div>
                       </div>
           
+         				 <div class="form-group">                      
+                          <div class="col-xs-6">
+		                <label for="password" ><h3>Mot de passe</h3></label>
+		                <input type="password" id="password" name="password" class="form-control">
+		                <div class="passwordError" style="display:none;"></div>
+		           	 </div>
+		           	 </div>
+		            <div class="form-group">
+		                  <div class="col-xs-6">
+		                <label for="password_CHECK"> <h3>Confirmation</h3></label>
+		                <input type="password" id="password_CHECK" name="password_CHECK" class="form-control">
+		                <div class="password_CHECKError" style="display:none;"></div>
+		            </div>
+		            </div>
+		            
                       <div class="form-group">
                           <div class="col-xs-6">
-                            <label for="birthdate"><h3>Date de naissance </h3> </label>
-                          	<h4><%out.print(current_user.getDateDeNaissance());%></h4>
-                          </div>
+                            <label for="birthdate"><h3>Date de naissance</h3></label>
+                          <input type="date" id="birthdate" name="birthdate" value="<c:out value="${user.dateDeNaissance}"/>" min="1900-01-01" class="form-control" class="input-group date">
+            		    <div class="birthdateError" style="display:none;"></div></div>
                       </div>
                       <div class="form-group">
-                           <div class="col-xs-12">
-                                <br>
+                           <div class="col-xs-12">                               
                                 
-                              	<button class="btn btn-lg btn-success pull-right" type="submit" onclick="window.location.href='modifyProfil'" type="submit" ><i class="glyphicon glyphicon-ok-sign"></i> Edit</button>
+                              	<button class="btn btn-lg btn-success pull-right"  type="submit" ><i class="glyphicon glyphicon-ok-sign"></i> Valider</button>
                                	<!--<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>-->
                             </div>
                       </div>
                           
                                         
     </div><!--/row-->
+     </form>
+     </div>
+     </div>
+     </div>
+     </div>
+                            
                                                       
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

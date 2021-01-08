@@ -23,6 +23,6 @@ public class ProfilUserServlet extends HttpServlet {
         SQLConnector con = new SQLConnector();
         HttpSession session = request.getSession();
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("current_user");
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp//profilUser.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/profilUser.jsp" ).forward( request, response );
     }
 }
