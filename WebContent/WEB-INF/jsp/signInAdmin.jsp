@@ -46,6 +46,8 @@
 	</script>
 </head>
 <body>
+<div class="col-sm-2"><a href="../DevWeb2020_AppCovid/" class="pull-right">Menu Princpal<img class="im1" src="images/retour.png" width="50" height="50"></a></div>
+    
 	<div class="container h-100 register">
 		<div class="row">
 			<div class="col-md-3 register-left">

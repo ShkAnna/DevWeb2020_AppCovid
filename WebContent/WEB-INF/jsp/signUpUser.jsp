@@ -109,9 +109,7 @@
 									</div>
 									<div class="row = justify-content-center" style="margin-top: 1rem !important;">
 										<label for="picture">Photo de profil</label>
-										<div class="form-group">
-                                        <input type="file" id="picture" name="picture" accept="image/png, image/jpeg" class="form-control-file">
-              						
+            							<input type="file" id="picture" name="picture" accept="image/png, image/jpeg">
 									</div>
 								</div>
 							</div>
