@@ -1,6 +1,7 @@
 package ServletPackage;
 
 import java.io.IOException;
+
 import SQLPackage.SQLConnector;
 import BeanPackage.Activity;
 import BeanPackage.Utilisateur;
@@ -17,12 +18,23 @@ import java.util.List;
  */
 @WebServlet(name = "profilUserServlet", value = "/profil-user")
 public class ProfilUserServlet extends HttpServlet {
-    private List<Activity> listActivities;
-
+  
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SQLConnector con = new SQLConnector();
         HttpSession session = request.getSession();
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("current_user");
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/profilUser.jsp" ).forward( request, response );
+        if(utilisateur != null) {
+            try {
+                request.setAttribute("nbNotifs", con.getNotifs(utilisateur.getId()).size());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/profilUser.jsp").forward(request, response);
+        }
+        else{
+            response.sendRedirect("/DevWeb2020_AppCovid/");
+        }
+                
     }
 }

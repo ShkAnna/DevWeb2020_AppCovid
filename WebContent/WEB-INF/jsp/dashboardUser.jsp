@@ -64,16 +64,20 @@
 				        <div class="col-lg-6">
 				        	<div class="card"  style="height:90%;"> 
 					           	<div class="card-header">
-					            	<h4  style="color:#E14557;">Me déclarer</h4>
+					            	<h4  style="color:#E14557;">Me déclarer </h4>
 					           	</div>
-					           	<div class="card-body" style="color:#E14557;">
+					         
+							<c:choose>
+								<c:when test="${positif}">
+								<div class="card-body" style="color:#E14557;">
 						            <div class="row ">
 							            <div class="col-7">
 							            	<div class="row-fluid" style="margin-bottom: 1rem !important;">
-							            		<strong><span>Vous avez été diagnostiqué comme un cas de COVID-19?</span></strong>
+							            		<strong><span>Vous avez été guéri du COVID-19?</span></strong>
 											</div>
 							             	<div class="row-fluid">
-							             		<button class="btn btn-info rounded-lg" style="font-weight: bold;" type="submit">Oui</button>
+							             		<button class="btn btn-info rounded-lg" style="font-weight: bold;" type="submit"
+							             		onclick="window.location.href='negatif'">Oui</button>
 							             	</div>
 							             </div>
 							             <div class="col-5">
@@ -81,6 +85,40 @@
 							             </div>
 						            </div>
 					           	</div>
+					           	</c:when>
+										<c:otherwise>
+								           <div class="card-body" style="color:#E14557;">
+						            <div class="row ">
+							            <div class="col-7">
+							            	<div class="row-fluid" style="margin-bottom: 1rem !important;">
+							            		<strong><span>Vous avez été diagnostiqué comme un cas de COVID-19?</span></strong>
+											</div>
+							             	<div class="row-fluid">
+							             		<button class="btn btn-info rounded-lg" style="font-weight: bold;" type="submit" onclick="window.location.href='positif'">Oui</button>
+							             	</div>
+							             </div>
+							             <div class="col-5">
+							             	<img class="img-fluid" src="${pageContext.request.contextPath}/images/notify.png" >
+							             </div>
+						            </div>
+					           	</div>
+					           	 </c:otherwise>
+								     </c:choose>
+								
+								
+								
+								
+								
+								
+								
+								
+								
+				            								
+					         
+              
+               
+                
+					           
 				        	</div>
 				        </div>
 		    		</div>

@@ -633,6 +633,23 @@ public class SQLConnector {
         return res;
     }
 
+    public boolean getState(Utilisateur user) throws SQLException {
+    	boolean positif=false;
+    	 Utilisateur utilisateur = null;
+         String query = "Select * FROM appcovid.users WHERE login='" + user.getPseudo() + "' ;";
+         ResultSet result = doRequest(query);
+         result.next();
+         if (!result.getString("login").isEmpty()) {        
+        	 	positif=result.getBoolean("positif");
+        	 	
+         }
+         this.closeCon();
+         return positif;
+    	
+    	
+
+    }
+
     
     public void deleteNotif(String id) {
         String query = "DELETE FROM appcovid.notification WHERE id_notification = "+id+";";
@@ -648,6 +665,12 @@ public class SQLConnector {
         utilisateur.setPositif(true);
     }
 
+    public void setNegatif(Utilisateur utilisateur) {
+        String query = "UPDATE appcovid.users SET positif = 0 WHERE id_user = "+utilisateur.getId()+";";
+        doUpdate(query);
+        this.closeCon();
+        utilisateur.setPositif(true);
+    }
     
     public void deleteFriend(String id, String idOther) {
         String query = "DELETE FROM appcovid.friend WHERE id_user = "+id+" AND id_friend ="+idOther+";";

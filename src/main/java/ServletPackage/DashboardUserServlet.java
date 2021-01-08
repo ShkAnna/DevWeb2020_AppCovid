@@ -21,7 +21,26 @@ import java.util.List;
 public class DashboardUserServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {request.setCharacterEncoding("UTF-8");
     HttpSession session = request.getSession();
+    SQLConnector con = new SQLConnector();
     Utilisateur user =  (Utilisateur) session.getAttribute("current_user");
+    try {
+ 	 request.setAttribute("nbNotifs", con.getNotifs(user.getId()).size());
+ } catch (SQLException e) {
+     e.printStackTrace();
+ }
+    try {
+    	 request.setAttribute("notifs", con.getNotifs(user.getId()));
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    
+    try {
+   	 request.setAttribute("positif", con.getState(user));
+   } catch (SQLException e) {
+       e.printStackTrace();
+   }
+    
+  
     this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/dashboardUser.jsp" ).forward( request, response );
 
 }

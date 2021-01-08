@@ -56,6 +56,18 @@ public class FriendsUserServlet extends HttpServlet {
 	        } catch (SQLException throwables) {
 	            throwables.printStackTrace();
 	        }
+	        
+	        try {
+	        	 request.setAttribute("nbNotifs", con.getNotifs(utilisateur.getId()).size());
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	           try {
+	           	 request.setAttribute("notifs", con.getNotifs(utilisateur.getId()));
+	           } catch (SQLException e) {
+	               e.printStackTrace();
+	           }
+	        
 	        request.setAttribute("friends", friends);
 	        
 	        request.setAttribute("users", listUsers);

@@ -12,7 +12,13 @@
       <div class="sidenav-header-inner text-center">
       	 	<img src=<%out.print(current_user.getProfilPicture());%>  alt="person" class="img-fluid rounded-circle">
         <h2 class="h5"><%out.print(current_user.getPrenom());%> <%out.print(current_user.getNom());%></h2>
-        <div id="stateNotif" class="stateNotSick">Pas malade</div>
+        
+        <%if(!current_user.isPositif()){%>
+                  <div id="stateNotif" class="stateNotSick">Pas malade </div>
+                <%}else{%>
+                 <div id="stateNotif" class="stateNotSick">Atteint du COVID </div>
+                <%}%>
+     
         <!-- <span>Web Developer</span> -->
       </div>
       <!-- Small Brand information, appears on minimized sidebar-->
@@ -31,7 +37,7 @@
         <li class="activities"><a href="activities"> <i class="fa fa-history"></i>Mes activités</a></li>
         <li class="friends"><a href="friends-user"> <i class="fa fa-users"></i>Mes amis</a></li>
         <li class="notifications"><a href="notifications"><i class="fa fa-bell"></i>Mes notifications
-            <div class="badge badge-warning">6 New</div></a>
+            <div class="badge badge-warning">${nbNotifs}</div></a>
         </li>
       </ul>
     </div>
