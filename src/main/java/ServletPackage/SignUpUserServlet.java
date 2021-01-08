@@ -82,7 +82,6 @@ public class SignUpUserServlet extends HttpServlet {
         }
 
      
-        //S'il n'y a aucune erreur, on ajoute Ã  la BDD
         if(erreurs.isEmpty()){
             Utilisateur utilisateur = new Utilisateur();
             utilisateur.setPrenom(prenom);
@@ -111,7 +110,7 @@ public class SignUpUserServlet extends HttpServlet {
     private void validationNom(String nom) throws Exception{
         if (nom.trim().length() > 2) {
             if (!nom.matches("[a-zA-Z]*")) {
-                throw new Exception("Merci de saisir un nom sans caractÃ¨res spÃ©ciaux.");
+                throw new Exception("Merci de saisir un nom sans caractéres spéciaux.");
             }
         }else{
             throw new Exception("Merci de saisir un nom de longueur correcte.");

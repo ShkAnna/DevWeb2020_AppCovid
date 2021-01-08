@@ -32,12 +32,13 @@ public class ProfilUtils {
     }
 
     
-    public static void saveProfilPicture(Part pictureData, String picturePath, HttpServletRequest request) {
-        File file = new File(request.getSession().getServletContext().getRealPath("/images") + picturePath.substring(3));
+    public static void saveProfilPicture(Part pictureData, String picturePath, HttpServletRequest request) {    	 
+        File file = new File(request.getSession().getServletContext().getRealPath("/images") + picturePath.substring(6));
         try (InputStream input = pictureData.getInputStream()) {
             file.delete();
             file.mkdir();
             file.createNewFile();
+            
             Files.copy(input, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             e.printStackTrace();

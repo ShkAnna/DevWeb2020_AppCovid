@@ -25,8 +25,8 @@ public class FriendsUserServlet extends HttpServlet {
 	        HttpSession session = request.getSession();
 	        Utilisateur utilisateur = (Utilisateur) session.getAttribute("current_user");
 	        List<Utilisateur> listUsers = null;
-	        try {
-	            listUsers = con.getUsersApplication(utilisateur);
+	       try {
+	             listUsers = con.getUsersApplication(utilisateur);
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        }

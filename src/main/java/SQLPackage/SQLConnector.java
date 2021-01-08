@@ -594,7 +594,8 @@ public class SQLConnector {
         List<Utilisateur> res = new ArrayList<>();
         String query = "SELECT * FROM appcovid.users WHERE id_user!='" + utilisateur.getId() + "';";
         ResultSet result = doRequest(query);
-        while (result.next()) {
+        while (result.next()) {     	
+            if (!result.getBoolean("is_admin")) { 
             utilisateur = new Utilisateur();
             utilisateur.setId(result.getString("id_user"));
             utilisateur.setPseudo(result.getString("login"));
@@ -604,7 +605,15 @@ public class SQLConnector {
             utilisateur.setEmail(result.getString("email"));
             utilisateur.setDateDeNaissance(result.getString("birthdate"));
             utilisateur.setProfilPicture(result.getString("picture"));
+            String positif = "SELECT * FROM appcovid.users WHERE id_user='" + utilisateur.getId() + "';";
+            ResultSet resultP = doRequest(positif);
+            resultP.next();
+            if (!resultP.getString("login").isEmpty()) { 
+            	utilisateur.setPositif(resultP.getBoolean("positif"));
+             }            
             res.add(utilisateur);
+        
+        	}
         }
         this.closeCon();
         return res;

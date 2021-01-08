@@ -26,6 +26,8 @@
 
 <body>
 <div class="container bootstrap snippet">
+ <form method="post" enctype="multipart/form-data" action="modifyProfil?id=<%out.print((String)request.getAttribute("id"));%>" >
+            
     <div class="row">
   		<div class="col-sm-10"><h1>Bienvenue <%out.print(current_user.getPseudo());%> </h1></div>
     	<div class="col-sm-2"><a href="dashboard-user-servlet" class="pull-right">Menu Princpal<img class="im1" src="images/retour.png" width="50" height="50"></a></div>
@@ -80,8 +82,7 @@
               </ul>
               
           <div class="tab-content">
-            <form method="post" enctype="multipart/form-data" action="modifyProfil?id=<%out.print((String)request.getAttribute("id"));%>" >
-            <div class="tab-pane active" id="home">
+           <div class="tab-pane active" id="home">
         			    <div class="form-group">                          
                           <div class="col-xs-6">
                               <label for="first_name"><h3>Pseudo</h3></label>
@@ -118,14 +119,14 @@
           
          				 <div class="form-group">                      
                           <div class="col-xs-6">
-		                <label for="password" ><h3>Mot de passe</h3></label>
+		                <label for="password" ><h3>Mot de passe *</h3> <span class="requis"></span></label>
 		                <input type="password" id="password" name="password" class="form-control">
 		                <div class="passwordError" style="display:none;"></div>
 		           	 </div>
 		           	 </div>
 		            <div class="form-group">
 		                  <div class="col-xs-6">
-		                <label for="password_CHECK"> <h3>Confirmation</h3></label>
+		                <label for="password_CHECK"> <h3>Confirmation *</h3> <span class="requis"></span></label>
 		                <input type="password" id="password_CHECK" name="password_CHECK" class="form-control">
 		                <div class="password_CHECKError" style="display:none;"></div>
 		            </div>
@@ -146,11 +147,11 @@
                       </div>
                           
                                         
-    </div><!--/row-->
-     </form>
+    </div><!--/row-->    
      </div>
      </div>
      </div>
+      </form>
      </div>
                             
                                                       

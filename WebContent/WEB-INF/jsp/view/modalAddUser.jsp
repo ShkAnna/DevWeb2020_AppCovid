@@ -1,6 +1,6 @@
 <%@ page import="BeanPackage.Utilisateur" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% Utilisateur current_user = (Utilisateur) session.getAttribute("current_user"); %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
  
  
@@ -52,10 +52,16 @@
           		
           		<tbody  id="myTable">
           		<c:forEach items="${users}" var="item">
-           		<tr>
-           		
-               		<td>${item.pseudo}</td>
-               		<td><i class="fa fa-check" style="color:#70af1c;"></i></td>
+          		  <tr>
+           		             <td>${item.pseudo}</td>
+            			   	<c:choose>
+							 <c:when test="${item.positif}">	
+	          				 <td><i class="fa fa-check" style="color:#70af1c;"></i></td>
+							  </c:when>	
+							  <c:otherwise>
+							   <td><i class="fa fa-times" style="color:#E14557;"></i></td>	                   																      
+								</c:otherwise>
+								</c:choose>	
                		<td><input class="btn btn-primary rounded-lg" style="font-weight: bold;" type="submit" value="Ajouter" onclick="window.location.href='addFriend?login=${item.pseudo}'" /></td>
              	
              	</tr>

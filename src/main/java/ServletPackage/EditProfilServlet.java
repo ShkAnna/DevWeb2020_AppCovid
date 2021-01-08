@@ -85,7 +85,6 @@ public class EditProfilServlet extends HttpServlet {
         String prenom = request.getParameter("surname");
         String pseudo = request.getParameter("login");
         Part pictureData = request.getPart("picture");
-        System.out.println("ici pic "+pictureData);
         String picture;
         if(motDePasse.equals("") && confirmation.equals("")){
             motDePasse = user.getMotDePasse();
@@ -142,7 +141,7 @@ public class EditProfilServlet extends HttpServlet {
             utilisateur.setDateDeNaissance(birthdate);
             utilisateur.setId(user.getId());
             if (pictureData.getSize() > 0) {
-                picture = "image/" + pseudo + "." + pictureData.getSubmittedFileName().split(Pattern.quote("."))[1];
+                picture = "images/" + pseudo + "." + pictureData.getSubmittedFileName().split(Pattern.quote("."))[1];
                 ProfilUtils.saveProfilPicture(pictureData, picture, request);
                 utilisateur.setProfilPicture(picture);
             }

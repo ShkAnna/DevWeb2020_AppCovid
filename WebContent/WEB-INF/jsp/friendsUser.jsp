@@ -1,5 +1,6 @@
 <%@ page import="BeanPackage.Utilisateur" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<% Utilisateur current_user = (Utilisateur) session.getAttribute("current_user"); %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
 <!DOCTYPE html>
@@ -62,17 +63,25 @@
 								              	<c:forEach items="${friends}" var="item">
 				               						<tr>
 								               			<td>
-								               				<img src="${pageContext.request.contextPath}/images/photoProfil.png" alt="person" width="50" height="50" class="img rounded-circle">
+								               				<img src=${item.profilPicture} alt="person" width="50" height="50" class="img rounded-circle">
 								               			</td>
 									               	 	<td>
 												            ${item.pseudo} 												            
 					          						  	</td>
+					          						  	<c:choose>
+					          						   <c:when test="${item.positif}">	
 	          						 			   		<td><i class="fa fa-check" style="color:#70af1c;"></i></td>
-								                   		<td>
+								                       </c:when>	
+							                 			<c:otherwise>
+							                 		<td><i class="fa fa-times" style="color:#E14557;"></i></td>		                   																      
+								                   	 </c:otherwise>
+												      </c:choose>	
+												      <td>
 															        <button type="button" class="btn btn-danger" onclick="window.location.href='deleteFriend?id=${item.id}'" >Supprimer
 																<i class="fa fa-trash" style="color:#E14557;"></i>
 															</button>
 								                   		</td>
+												      
 								                 	</tr>
 												</c:forEach>
 							               	</tbody>

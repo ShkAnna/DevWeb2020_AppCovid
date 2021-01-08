@@ -10,7 +10,7 @@
     <div class="sidenav-header d-flex align-items-center justify-content-center">
       <!-- User Info-->
       <div class="sidenav-header-inner text-center">
-      	 	<img src="${pageContext.request.contextPath}/images/photoProfil.png" alt="person" class="img-fluid rounded-circle">
+      	 	<img src=<%out.print(current_user.getProfilPicture());%>  alt="person" class="img-fluid rounded-circle">
         <h2 class="h5"><%out.print(current_user.getPrenom());%> <%out.print(current_user.getNom());%></h2>
         <div id="stateNotif" class="stateNotSick">Pas malade</div>
         <!-- <span>Web Developer</span> -->
