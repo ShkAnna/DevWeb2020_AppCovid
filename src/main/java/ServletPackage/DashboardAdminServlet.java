@@ -28,7 +28,22 @@ public class DashboardAdminServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SQLConnector con = new SQLConnector();
         HttpSession session = request.getSession();
-        Utilisateur utilisateur = (Utilisateur) session.getAttribute("current_user");        
+        Utilisateur utilisateur = (Utilisateur) session.getAttribute("current_user");     
+        
+        try {
+       	 request.setAttribute("positive", con.getPositive().size());
+       	
+       } catch (SQLException throwables) {
+           throwables.printStackTrace();
+       }
+       
+       try {
+       	 request.setAttribute("negative", con.getNegative().size());
+       	
+       } catch (SQLException throwables) {
+           throwables.printStackTrace();
+       }
+       
       
         this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/dashboardAdmin.jsp" ).forward( request, response );
     }

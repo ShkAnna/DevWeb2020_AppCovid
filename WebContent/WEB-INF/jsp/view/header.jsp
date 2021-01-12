@@ -24,7 +24,7 @@
 					<li class="nav-item dropdown">
 						<a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">
 							<i class="fa fa-bell" style="font-size:20px;"></i>
-							<span class="badge badge-warning"><!-- ${nbNotifs} --></span>
+							<span class="badge badge-warning">${nbNotifs}</span>
 						</a>
 						<ul aria-labelledby="notifications" class="dropdown-menu">	
 						<!-- 					

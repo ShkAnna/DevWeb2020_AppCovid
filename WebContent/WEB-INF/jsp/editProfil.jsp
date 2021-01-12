@@ -56,17 +56,10 @@
 									<ul class="list-group">
 									    <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
 									    <li class="list-group-item " onclick="location.href='friends-user';"  style="cursor:pointer;" ><strong>Friends list</strong> ${nbFriends}</li>
-										<li class="list-group-item " onclick="location.href='#';"  style="cursor:pointer;"><strong>Visited places</strong> 13</li>
+										<li class="list-group-item " onclick="location.href='#';"  style="cursor:pointer;"><strong>Visited places</strong> ${nbPlace}</li>
 									</ul> 
 							   </div>
-							   <div class="row-fluid"  style="margin-top: 1rem !important;margin-left: 1rem;">
-									<div class="panel panel-default">
-									 	<div class="panel-heading">Social Media</div>
-										<div class="panel-body">
-								  			<i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
-								  		</div>
-									</div>
-								</div>
+							   
 			  				</div>
 					  	</div>
 					  	<div class="card col-lg-6">

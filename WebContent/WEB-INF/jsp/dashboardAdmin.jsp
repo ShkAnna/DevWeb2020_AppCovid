@@ -108,7 +108,7 @@
 	      data: {
 	        labels: ["Malades", "Pas malades"],
 	        datasets: [{
-	          data: [${friendsPositive}, ${friendsNegative}],
+	          data: [${positive}, ${negative}],
 	          backgroundColor: ["#F7464A", "#A1C83F"],
 	          hoverBackgroundColor: ["#FF5A5E", "#c6e086"]
 	        }]

@@ -88,6 +88,14 @@ public class FriendsUserServlet extends HttpServlet {
 	           } catch (SQLException e) {
 	               e.printStackTrace();
 	           }
+	           
+	           try {
+	        	   	 request.setAttribute("positif", con.getState(utilisateur));
+	        	   } catch (SQLException e) {
+	        	       e.printStackTrace();
+	        	   }
+	        	    
+	        	  
 	        
 	        request.setAttribute("friends", friends);
 	    

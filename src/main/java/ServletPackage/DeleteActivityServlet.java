@@ -13,16 +13,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "deleteUserServlet", value = "/delete-user")
-public class DeleteUserServlet extends HttpServlet {
+@WebServlet(name = "deleteActivityServlet", value = "/deleteActivity")
+public class DeleteActivityServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
         Utilisateur adminUser = (Utilisateur) session.getAttribute("current_user");
-            SQLConnector sqlConnector = new SQLConnector();
-            String idToRemove = request.getParameter("id");
-            sqlConnector.deleteUser(idToRemove);
+        SQLConnector sqlConnector = new SQLConnector();
+        String idToRemove = request.getParameter("id");
+        sqlConnector.deleteActivity(idToRemove);
+        response.sendRedirect("/DevWeb2020_AppCovid/admin-activity");
+              
       
-        response.sendRedirect("/DevWeb2020_AppCovid/adminstrate-users");
-        
+       
     }
 }

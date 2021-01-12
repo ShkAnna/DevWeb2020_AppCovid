@@ -24,6 +24,13 @@ public class ProfilUserServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("current_user");
         if(utilisateur != null) {
+        	 try {
+        	   	 request.setAttribute("positif", con.getState(utilisateur));
+        	   } catch (SQLException e) {
+        	       e.printStackTrace();
+        	   }
+        	    
+        	  
             try {
                 request.setAttribute("nbNotifs", con.getNotifs(utilisateur.getId()).size());
             } catch (SQLException e) {
@@ -35,6 +42,13 @@ public class ProfilUserServlet extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+            
+            try {
+                request.setAttribute("nbPlace", con.getPlacesUser(utilisateur.getId()).size());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            
             this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/profilUser.jsp").forward(request, response);
         }
     	else{

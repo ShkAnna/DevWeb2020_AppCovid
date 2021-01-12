@@ -37,7 +37,7 @@
       <ul id="side-main-menu" class="side-menu list-unstyled">           
       	<li class="active"><a href="dashboard-admin"> <i class="fa fa-home"></i>Menu principal</a></li>
       	<li class="users"><a href="adminstrate-users"> <i class="fa fa-users"></i>Administrer les utilisateurs</a></li>
-        <li class="activities"><a href="admin-activities"> <i class="fa fa-history"></i>Administrer les activités</a></li>
+        <li class="activities"><a href="admin-activity"> <i class="fa fa-history"></i>Administrer les activités</a></li>
         <li class="lieux"><a href="admin-places"><i class="fa fa-map-marker"></i>Administrer les lieux</a>
         </li>
       </ul>
