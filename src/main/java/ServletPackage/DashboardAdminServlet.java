@@ -43,7 +43,15 @@ public class DashboardAdminServlet extends HttpServlet {
        } catch (SQLException throwables) {
            throwables.printStackTrace();
        }
+    
+       try {
+       	 request.setAttribute("map", con.getActivtyOccurence());
+       	
+       } catch (SQLException throwables) {
+           throwables.printStackTrace();
+       }
        
+         
       
         this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/dashboardAdmin.jsp" ).forward( request, response );
     }

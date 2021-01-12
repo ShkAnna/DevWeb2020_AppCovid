@@ -14,7 +14,9 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SQLConnector {
     PasswordHasher passwordHasher = PasswordHasher.getInstance();
@@ -385,9 +387,7 @@ public class SQLConnector {
                 + "                FROM appcovid.activity \n"
                 + "               WHERE id_user = "+ positifUserId +")";
         ResultSet res = doRequest(query);      
-        while(res.next()) {
-        	 System.out.println("dude please");
-        	
+        while(res.next()) {      	
             ids.add(res.getString("id_user"));
         
         	}
@@ -583,18 +583,42 @@ public class SQLConnector {
         List<Activity> lu = new ArrayList<>();
         Activity activity;
         while(result.next()) {
-        	activity = getActivity( Integer.parseInt(result.getString("id_activity")));          
-            lu.add(activity);
-               
-               
-       
+        	activity = getActivity( Integer.parseInt(result.getString("id_activity")));     
+            lu.add(activity);            
         }
         this.closeCon();
         return lu;
     }
     
     
-   
+public Integer getOccurence(Activity activity) throws SQLException{
+	int res=0;
+	String query = "SELECT * FROM appcovid.activity WHERE id_place ='" + activity.getIdPlace() + "' ;";
+    ResultSet result = doRequest(query);
+    while(result.next()) {   
+    	res++;
+    	 }
+    this.closeCon();
+	  
+	return res;
+}
+
+public Map <String, Integer> getActivtyOccurence() throws SQLException{
+	Map <String, Integer> res= new HashMap<String, Integer>();
+	 String query = "SELECT * FROM appcovid.activity ;";
+	 ResultSet result = doRequest(query);
+	 Activity  activity;
+	 while(result.next()) { 
+		 activity = new Activity();
+		   activity = getActivity( Integer.parseInt(result.getString("id_activity")));          
+           if(!res.containsKey(activity.getNomPlace())){
+		   res.put(activity.getNomPlace(),getOccurence(activity));
+           }
+	   }
+	   this.closeCon();	 
+	return res ;
+	
+}
     public Activity getActivity(int id) throws SQLException {
         Activity activity = null;
         String query = "SELECT * FROM appcovid.activity WHERE id_activity ='" + id + "' ;";

@@ -11,6 +11,7 @@ public class Activity {
 	    private String idPlace;
 	    private String pseudo;
 	    private String nomPlace;
+	    private String occurence;
 
 	    public Activity(){
 	        startDate=null;
@@ -41,6 +42,14 @@ public class Activity {
 	        return id;
 	    }
 
+	    public String getOccurence() {
+	        return occurence;
+	    }
+
+	    public void setOccurence(String occurence) {
+	        this.occurence = occurence;
+	    }
+	    
 	    public void setId(String id) {
 	        this.id = id;
 	    }
