@@ -34,19 +34,18 @@
     <!-- Sidebar Navigation Menus-->
     <div class="main-menu">
       <h5 class="sidenav-heading">Main</h5>
-      <ul id="side-main-menu" class="side-menu list-unstyled">                  
-        <li class="active"><a href="dashboard-user-servlet"> <i class="fa fa-home"></i>Menu principal</a></li>
-        <li class="activities"><a href="activities"> <i class="fa fa-history"></i>Mes activités</a></li>
-        <li class="friends"><a href="friends-user"> <i class="fa fa-users"></i>Mes amis</a></li>
-        <li class="notifications"><a href="notifications"><i class="fa fa-bell"></i>Mes notifications
-            <div class="badge badge-warning"><!-- ${nbNotifs} --></div></a>
+      <ul id="side-main-menu" class="side-menu list-unstyled">           
+      	<li class="active"><a href="dashboard-admin"> <i class="fa fa-home"></i>Menu principal</a></li>
+      	<li class="users"><a href="adminstrate-users"> <i class="fa fa-users"></i>Administrer les utilisateurs</a></li>
+        <li class="activities"><a href="admin-activities"> <i class="fa fa-history"></i>Administrer les activités</a></li>
+        <li class="lieux"><a href="admin-places"><i class="fa fa-map-marker"></i>Administrer les lieux</a>
         </li>
       </ul>
     </div>
     <div class="admin-menu">
       <h5 class="sidenav-heading">Réglages</h5>
       <ul id="side-admin-menu" class="side-menu list-unstyled"> 
-        <li class="profil"> <a href="profil-user"> <i class="fa fa-user"> </i>Profil</a></li>
+        <li class="profil"> <a href="profil-admin"> <i class="fa fa-user"> </i>Profil</a></li>
       </ul>
     </div>
   </div>

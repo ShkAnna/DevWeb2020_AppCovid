@@ -8,6 +8,25 @@ a, .btn-primary {
 	outline:none;
 	font-weight: bold;
 }
+
+.h1-404>span {
+	text-shadow: -8px 0px 0px #fff;
+}
+.h1-404 {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 252px;
+	font-weight: 900;
+	color: #a1c83f;
+	letter-spacing: -40px;
+	margin-left: -20px;
+}
+
+.sign {
+	background-color: #CAEA7B;
+	border:1px solid #CAEA7B;
+	border-radius: 20px 20px 20px 20px;
+}
+
 .a-modif {
 	background-color: #CAEA7B;
 	border:1px solid #CAEA7B;

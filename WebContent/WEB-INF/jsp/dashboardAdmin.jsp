@@ -13,27 +13,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
    	<meta name="robots" content="noindex">
    	
-  		<!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/custom.css">
-    
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css">
-    <!-- Fontastic Custom icon font-->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/fontastic.css">
-    <!-- Google fonts - Roboto -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-    <!-- jQuery Circle-->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/grasp_mobile_progress_circle-1.0.0.min.css">
-    <!-- Custom Scrollbar-->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
-    <!-- theme stylesheet-->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.green.css" id="theme-stylesheet">
-    <!-- Favicon-->
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
- 
-	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript">
+   	<jsp:include page="/WEB-INF/jsp/view/cssCollection.jsp" />
+</head>
+<body>
+    <jsp:include page="/WEB-INF/jsp/view/sideNavbarAdmin.jsp" />
+    <div class="page">
+   	<jsp:include page="/WEB-INF/jsp/view/headerAdmin.jsp" /> 	
+    <!-- Breadcrumb-->
+    <div class="breadcrumb-holder">
+    	<div class="container-fluid">
+        	<ul class="breadcrumb">
+          		<li class="breadcrumb-item active"><a href="dashboard-admin">Home</a></li>
+          		<!-- <li class="breadcrumb-item active">Tables</li> -->
+        	</ul>
+      	</div>
+    </div>
+	<section>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-8">
+		     		<div class="row">
+		      			<div class="col-lg-12">
+							<div class="card">
+						        <div class="card-header">
+						        	<div class="row justify-content-between align-items-center ">
+						        		<div class="col-auto">
+						        			<h4  style="color:#E14557;">Lieux les plus visités</h4>
+						        		</div>
+						        	</div>
+						        </div>
+						        <div class="card-body" style="color:#0099cc;margin-top:-1rem">
+						          	<div class="table-responsive" style="height:30vh;overflow-y:scroll;">
+						            	<table class="table table-striped table-hover text-center" style="font-size: 1rem;">
+						               		<thead>
+						                 		<tr>
+						                 			<th>Lieux</th>
+								                   	<th>Nombre des visites</th>
+							                 	</tr>
+						               		</thead>
+						               		<tbody style="font-weight:bold;">
+								              	<c:forEach items="${friends}" var="item">
+				               						<tr>
+								               			<td>
+								               				<!-- Lieux -->
+								               			</td>
+									               	 	<td>
+												            <!-- Nbr -->									            
+					          						  	</td>
+								                 	</tr>
+												</c:forEach>
+							               	</tbody>
+						             	</table>
+						         	</div>
+				       			</div>
+			    			</div>
+			    		</div>
+		    		</div>
+		    	</div>
+		    	<div class="col-lg-4">
+		     		<div class="card"> 
+			           	<div class="card-header">
+			            	<h4  style="color:#E14557;">Situation avec les utilisateurs </h4>
+			           	</div>
+			           	<div class="card-body" style="color:#E14557;">
+		                  <div class="chart-container">
+		                    <canvas id="pieChart"></canvas>
+		                  </div>
+			           	</div>
+		        	</div>
+		        </div>
+		    </div>
+		  	<div class="row">
+		  		<div class="col-lg-6">
+		  			<div class="card align-items-center"> 
+		        		<img class="img" width="60%" src="${pageContext.request.contextPath}/images/stat1.png" >
+		        	</div>
+		        </div>
+		        <div class="col-lg-6">
+		  			<div class="card align-items-center"> 
+		        		<img class="img" width="60%" src="${pageContext.request.contextPath}/images/stat2.png" >
+		        	</div>
+		        </div>
+			</div>
+		</div>
+	</section>
+    <jsp:include page="/WEB-INF/jsp/view/footer.jsp" />
+    </div>
+  	<jsp:include page="/WEB-INF/jsp/view/script.jsp" />
+  	<script type="text/javascript">
+	  	//pie
+	    var ctxP = document.getElementById("pieChart").getContext('2d');
+	    var myPieChart = new Chart(ctxP, {
+	      type: 'pie',
+	      data: {
+	        labels: ["Malades", "Pas malades"],
+	        datasets: [{
+	          data: [${friendsPositive}, ${friendsNegative}],
+	          backgroundColor: ["#F7464A", "#A1C83F"],
+	          hoverBackgroundColor: ["#FF5A5E", "#c6e086"]
+	        }]
+	      },
+	      options: {
+	          responsive: true,
+	          legend: {
+	            position: 'right',
+	            labels: {
+	              padding: 20,
+	              boxWidth: 10
+	            }
+	          }
+	        }
+	      });
+  	
 	    window.alert = function(){};
 	    var defaultCSS = document.getElementById('bootstrap-css');
 	    function changeCSS(css){
@@ -45,46 +136,6 @@
 	      window.parent.postMessage( iframe_height, '/');
 	    });
 	</script>
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	
-	
-    
-	
-</head>
-<body>
-	<div class="container h-100 register">
-		<div class="row">
-			<div class="col-md-3 register-left">
-				<img class="im1" src="images/covid.png" >              
-				<h3>Bienvenue </h3>
-				
-				<img src="images/covid2.png" width="280" height="280">		                      
-			</div>
-			
-				<div class ="row align-items-center" style="height:80%;">
-				 <div><button type="submit" class="btn btn-primary mb-2" onclick="window.location.href='adminstrate-users'"><h4>Administrer les utilisateurs</h4></button></div>
-				    <br>
-				    <div><button type="submit" class="btn btn-primary mb-2" onclick="window.location.href='admin-activities'"> <h4>Administrer les activités</h4> </button></div>
-				    <br>
-				    <div><button type="submit" class="btn btn-primary mb-2" onclick="window.location.href='admin-places'"> <h4>Administrer les lieux</h4> </button></div>
-				    <br>
-				
-		                <a href="logout" class="nav-link logout">
-			                <span class="d-none d-sm-inline-block" style="font-size:20px;">Logout</span>
-			                <i class="fa fa-sign-out" style="font-size:20px;"></i>
-	                	</a>
-					
-	                	
-			                
-	                
-		</div>
-		
-	</div>
-	
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 </body>
 </html>
 

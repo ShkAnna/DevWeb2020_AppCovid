@@ -20,9 +20,10 @@ import SQLPackage.SQLConnector;
 
 import java.util.List;
 
-@WebServlet (name = "adminUserServlet", value = "/adminstrate-users")
+@WebServlet("/adminstrate-users")
 public class AdminUsersServlet extends HttpServlet {
-    private List<Utilisateur> users;
+	private static final long serialVersionUID = 1L;
+	private List<Utilisateur> users;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SQLConnector connector = new SQLConnector();
@@ -34,7 +35,7 @@ public class AdminUsersServlet extends HttpServlet {
                 throwables.printStackTrace();
             }
                 request.setAttribute("users", users);
-                this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/adminUsers.jsp").forward(request, response);
+         	       this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/adminUsers.jsp").forward(request, response);
         
        
     }

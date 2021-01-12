@@ -10,13 +10,14 @@
     <script src="${pageContext.request.contextPath}/resources/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
     <!-- Main File-->
     <script src="${pageContext.request.contextPath}/resources/js/front.js"></script>
-    <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/jquery.coronatracker/jquery-3.4.1.min.js" charset="utf-8"></script> -->
     <script src="${pageContext.request.contextPath}/resources/jquery.coronatracker/js/jquery.coronatracker.js" charset="utf-8"></script>
     <script src="${pageContext.request.contextPath}/resources/jquery.coronatracker/jquery-jvectormap-2.0.5/jquery-jvectormap-2.0.5.min.js" charset="utf-8"></script>
     <script src="${pageContext.request.contextPath}/resources/jquery.coronatracker/jquery-jvectormap-2.0.5/jquery-jvectormap-world-mill-en.js" charset="utf-8"></script>
  
-<!-- Custom stylesheet - for your changes-->
+	<!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/custom.css">
     
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css">

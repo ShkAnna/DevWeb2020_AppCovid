@@ -19,7 +19,7 @@ import SQLPackage.SQLConnector;
 /**
  * Servlet implementation class ProfilAdminServlet
  */
-@WebServlet("/dashboard-admin-servlet")
+@WebServlet("/dashboard-admin")
 public class DashboardAdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     

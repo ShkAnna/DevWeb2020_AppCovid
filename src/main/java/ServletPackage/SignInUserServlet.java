@@ -69,8 +69,7 @@ public class SignInUserServlet extends HttpServlet {
     	else {
     		 session.setAttribute("erreur",erreur);
     		 this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/signInUser.jsp" ).forward( request, response );
-    		
-    		
+	
     	}
     }
 }

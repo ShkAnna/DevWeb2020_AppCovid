@@ -14,14 +14,14 @@
 </head>
 
 <body>
-	<jsp:include page="/WEB-INF/jsp/view/sideNavbar.jsp" />
+	<jsp:include page="/WEB-INF/jsp/view/sideNavbarAdmin.jsp" />
     <div class="page">
-	   	<jsp:include page="/WEB-INF/jsp/view/header.jsp" /> 	
+	   	<jsp:include page="/WEB-INF/jsp/view/headerAdmin.jsp" /> 	
 	    <!-- Breadcrumb-->
 	    <div class="breadcrumb-holder">
 	    	<div class="container-fluid">
 	        	<ul class="breadcrumb">
-	          		<li class="breadcrumb-item"><a href="dashboard-user">Home</a></li>
+	          		<li class="breadcrumb-item"><a href="dashboard-admin">Home</a></li>
 	          		<li class="breadcrumb-item active">Profil</li>
 	        	</ul>
 	      	</div>
