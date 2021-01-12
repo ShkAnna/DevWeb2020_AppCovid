@@ -34,6 +34,14 @@ public class NotificationsServlet extends HttpServlet {
             throwables.printStackTrace();
         }
         
+        try {
+          	 request.setAttribute("positif", con.getState(utilisateur));
+          } catch (SQLException e) {
+              e.printStackTrace();
+          }
+           
+         
+        
         request.setAttribute("friends", friends);
         request.setAttribute("notifs", list);
         

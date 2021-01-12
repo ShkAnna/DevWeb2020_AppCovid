@@ -11,6 +11,7 @@ public class Utilisateur {
     private String id;
     private boolean positif;
     private boolean isAdmin;
+    private String place ;
 
     public Utilisateur(){
         email = null;
@@ -21,6 +22,7 @@ public class Utilisateur {
         dateDeNaissance = null;
         profilPicture = null;
         id = null;
+        place=null;
         positif = false;
         isAdmin = false;
     }
@@ -71,6 +73,15 @@ public class Utilisateur {
         this.pseudo = pseudo;
     }
 
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    
     public String getPseudo() {
         return pseudo;
     }

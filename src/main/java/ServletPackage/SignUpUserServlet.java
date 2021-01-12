@@ -119,7 +119,7 @@ public class SignUpUserServlet extends HttpServlet {
     private void validationNom(String nom) throws Exception{
         if (nom.trim().length() > 2) {
             if (!nom.matches("[a-zA-Z]*")) {
-                throw new Exception("Merci de saisir un nom sans caractéres spéciaux.");
+                throw new Exception("Merci de saisir un nom sans caractï¿½res spï¿½ciaux.");
             }
         }else{
             throw new Exception("Merci de saisir un nom de longueur correcte.");

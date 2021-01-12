@@ -50,7 +50,7 @@ public class DashboardUserServlet extends HttpServlet {
         Utilisateur user =  (Utilisateur) session.getAttribute("current_user");
         session.setAttribute("current_user",user);
     			request.setAttribute("current_user",user);
-    			response.sendRedirect("/DevWeb2020_AppCovid/dashboard-admin-servlet");
+    			response.sendRedirect("/DevWeb2020_AppCovid/dashboard-admin");
 
     }
 

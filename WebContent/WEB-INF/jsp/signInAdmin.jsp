@@ -46,8 +46,6 @@
 	</script>
 </head>
 <body>
-<div class="col-sm-2"><a href="../DevWeb2020_AppCovid/" class="pull-right">Menu Princpal<img class="im1" src="images/retour.png" width="50" height="50"></a></div>
-    
 	<div class="container h-100 register">
 		<div class="row">
 			<div class="col-md-3 register-left">
@@ -61,8 +59,13 @@
 				<img src="images/covid2.png" width="280" height="280">		                      
 			</div>
 			<div class="col-md-9 register-right">
+<<<<<<< HEAD
 				<div class="row justify-content-end" style="margin-top: 1rem !important;margin-bottom: 1rem !important;margin-right: 0rem !important;">
 						<a class="col-3 col-lg-2 right-sign text-center"  aria-selected="true" href="sign-in-user">Sign in</a>		
+=======
+				<div class="row justify-content-between" style="margin-top: 1rem !important;margin-bottom: 1rem !important;margin-right: 0rem !important;">
+						<a class="col-lg-auto sign" style="margin-left: 5rem !important;" aria-selected="false" href="/DevWeb2020_AppCovid">Menu Principal</a>
+>>>>>>> lastversion_Anna
 				</div>
 				<div class ="row align-items-center" style="height:60%;">
 					<div class="col-12 tab-content" id="myTabContent">

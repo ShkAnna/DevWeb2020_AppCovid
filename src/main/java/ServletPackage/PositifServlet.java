@@ -62,6 +62,16 @@ public class PositifServlet extends HttpServlet {
             listUsers.removeAll(listFriend);
         }
 
+        // Send notif to friendlist 
+        for(Utilisateur friend : listFriend){
+            con.createNotification(utilisateur, friend, utilisateur.getNom() + "  " + utilisateur.getPrenom()+" a été déclaré positif.", "0");
+        }
+        
+        //Send notif due to visited places 
+        try {
+            con.createNotificationContactCase(utilisateur,"Une personne positive a fréquenté le même lieu que vous");
+        } catch (SQLException throwables) { throwables.printStackTrace(); }
+                
         request.setAttribute("positf", utilisateur.isPositif());
         session.setAttribute("current_user",utilisateur);
 		request.setAttribute("current_user",utilisateur);

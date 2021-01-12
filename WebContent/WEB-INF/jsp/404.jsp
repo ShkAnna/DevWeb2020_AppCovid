@@ -1,4 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html>
     <head>
         <meta charset="UTF-8">
@@ -30,50 +33,51 @@
 			<li class="active">404 error</li>
 		</ol>
 	</section>
+=======
+<html style="height:100%;">
+<head>
+	<meta charset="UTF-8">
+	<title>AppCovid</title>
+	 	    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css">
+		    <!-- Font Awesome CSS-->
+		    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css">
+		    <!-- Fontastic Custom icon font-->
+		    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/fontastic.css">
+		    <!-- Google fonts - Roboto -->
+		    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+		    <!-- jQuery Circle-->
+		    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/grasp_mobile_progress_circle-1.0.0.min.css">
+		    <!-- Custom Scrollbar-->
+		    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
+		    <!-- theme stylesheet-->
+		    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.green.css" id="theme-stylesheet">
+		    <!-- Custom stylesheet - for your changes-->
+		    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/custom.css">
+		    <!-- Favicon-->
+		    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
+>>>>>>> lastversion_Anna
 
-	<!-- Main content -->
-	<section class="content">
-
-		<div class="error-page">
-			<h2 class="headline text-info">404</h2>
-			<div class="error-content">
-				<h3>
-					<i class="fa fa-warning text-yellow"></i> Oops! Page not found.
-				</h3>
-				<p>
-					We could not find the page you were looking for. Meanwhile, you may
-					<a href='/.html'>return to dashboard</a> or try using the search
-					form.
-				</p>
-				<form class='search-form'>
-					<div class='input-group'>
-						<input type="text" name="search" class='form-control'
-							placeholder="Search" />
-						<div class="input-group-btn">
-							<button type="submit" name="submit" class="btn btn-primary">
-								<i class="fa fa-search"></i>
-							</button>
-						</div>
+</head>
+<body style="height:100%;">
+	<div class="container h-100">   
+		<div class="row h-100">
+			<div class="col-12 text-center">
+				<div class="row justify-content-center">
+					<div class="h1-404">
+						<span>4</span><span>0</span><span>4</span>
 					</div>
-					<!-- /.input-group -->
-				</form>
+				</div>
+				<div class="row justify-content-center">
+					<p>Oops! Page not found</p>
+				</div>
+				<div class="row justify-content-center">
+					<p>We are sorry, but the page you requested was not found</p>
+				</div>	
+				<div class="row justify-content-center">
+					<p>Meanwhile, you may return to <a href='/DevWeb2020_AppCovid' style="font-size:20px">Home page</a></p>
+				</div>	
 			</div>
-			<!-- /.error-content -->
 		</div>
-		<!-- /.error-page -->
-
-	</section>
-	<!-- /.content -->
-
-
-
-	<!-- jQuery 2.0.2 -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
-        <!-- AdminLTE App -->
-        <script src="${pageContext.request.contextPath}/resources/js/AdminLTE/app.js" type="text/javascript"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="${pageContext.request.contextPath}/resources/js/AdminLTE/demo.js" type="text/javascript"></script>
-    </body>
+	</div>
+</body>
 </html>

@@ -5,21 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
-<<<<<<< HEAD
-<html>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $("#myInput").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#myTable tr").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-</script>
-=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +18,6 @@
    	
    	<jsp:include page="/WEB-INF/jsp/view/cssCollection.jsp" />
 </head>
->>>>>>> lastversion_Anna
 <style>
     table {
         font-family: arial, sans-serif;
@@ -51,55 +35,6 @@
         background-color: #dddddd;
     }
 </style>
-<<<<<<< HEAD
-
-<head>
-    <title>AppCovid</title>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-
-<br>
-<h1  style="text-align:center">Gestion lieux</h1>
-<div><label>Rerchercher un lieu : </label>
-    <input id="myInput" type="text" placeholder="Rechercher...">
-</div>
-<br>
-<br>
-
-
-<table>
-    <thead>
-    <tr>
-        <th>Nom</th>
-        <th>Adresse</th>
-        <th>Supprimer</th>
-        <th>Editer</th>
-    </tr>
-    </thead>
-    <tbody id="myTable">
-    <c:forEach items="${places}" var="item">
-    <tr>
-        <td>${item.name}</td>
-        <td>${item.address}</td>
-        
-          <td>  <button type="button" class="btn btn-danger" onclick="window.location.href='deletePlace?id=${item.id}'" width="50" height="50" >Supprimer
-		<i class="fa fa-trash" style="color:#E14557;"></i>
-		</button>
-				
-		<td> 
-		<button class="btn btn-secondary rounded-lg" style="font-weight: bold;border-color:#0099cc;background-color:#0099cc;" type="submit"  name="buttonDeleteNotif" onclick="window.location.href='modifyPlace?id=${item.id}'" width="50" height="50">Editer</button>
-	          						  	
-		</td>										
-       
-    </tr>
-    </c:forEach>
-</table>
-<br>
-<br>
-<div><button type="submit" class="btn btn-primary mb-2" style="font-weight: bold;border-color:#a1c83f;background-color:#a1c83f;" onclick="window.location.href='dashboard-admin-servlet'">retourner à la page d'administration</button></div>
-=======
 <body>
     <jsp:include page="/WEB-INF/jsp/view/sideNavbarAdmin.jsp" />
     <div class="page">
@@ -109,7 +44,7 @@
     	<div class="container-fluid">
         	<ul class="breadcrumb">
           		<li class="breadcrumb-item"><a href="dashboard-admin">Home</a></li>
-          		<li class="breadcrumb-item active">Administrer les lieux</li>
+          		<li class="breadcrumb-item active">Administrer les activités</li>
         	</ul>
       	</div>
     </div>
@@ -121,7 +56,7 @@
 				        <div class="card-header">
 				        	<div class="row justify-content-between align-items-center ">
 				        		<div class="col-auto">
-				        			<h4  style="color:#E14557;">Liste des lieux</h4>
+				        			<h4  style="color:#E14557;">Liste des activités</h4>
 				        		</div>
 				        		<div class="col-auto">
 					        		<div class="input-group" >
@@ -142,24 +77,25 @@
 				                 		<tr>
 				                 				<th>Nom</th>
 										        <th>Adresse</th>
+										         <th>Date debut</th>
+										          <th>Date fin</th>
 										        <th>Supprimer</th>
-										        <th>Editer</th>
+										        
 					                 	</tr>
 				               		</thead>
 				               		<tbody id="myTable" style="font-weight:bold;">
-									<c:forEach items="${places}" var="item">
+									<c:forEach items="${activity}" var="item">
 								    <tr>
-								        <td>${item.name}</td>
-								        <td>${item.address}</td>
+								        <td>${item.nomPlace}</td>
+								        <td>${item.pseudo}</td>
+								         <td>${item.startDate}</td>
+								        <td>${item.endDate}</td>
 								        
-								          <td>  <button type="button" class="btn btn-danger" onclick="window.location.href='deletePlace?id=${item.id}'" width="50" height="50" >Supprimer
+								          <td>  <button type="button" class="btn btn-danger" onclick="window.location.href='deleteActivity?id=${item.id}'" width="50" height="50" >Supprimer
 										<i class="fa fa-trash" style="color:#E14557;"></i>
-										</button>
+										</button></td>
 												
-										<td> 
-										<button class="btn btn-secondary rounded-lg" style="font-weight: bold;border-color:#0099cc;background-color:#0099cc;" type="submit"  name="buttonDeleteNotif" onclick="window.location.href='modifyPlace?id=${item.id}'" width="50" height="50">Editer</button>
-									          						  	
-										</td>										
+																			
 								       
 								    </tr>
 								    </c:forEach>
@@ -200,7 +136,6 @@
 	        });
 	    });
 	</script>
->>>>>>> lastversion_Anna
 </body>
 
 </html>
@@ -216,7 +151,3 @@
 
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> lastversion_Anna

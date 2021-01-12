@@ -14,14 +14,14 @@
 </head>
 
 <body>
-	<jsp:include page="/WEB-INF/jsp/view/sideNavbar.jsp" />
+	<jsp:include page="/WEB-INF/jsp/view/sideNavbarAdmin.jsp" />
     <div class="page">
-	   	<jsp:include page="/WEB-INF/jsp/view/header.jsp" /> 	
+	   	<jsp:include page="/WEB-INF/jsp/view/headerAdmin.jsp" /> 	
 	    <!-- Breadcrumb-->
 	    <div class="breadcrumb-holder">
 	    	<div class="container-fluid">
 	        	<ul class="breadcrumb">
-	          		<li class="breadcrumb-item"><a href="dashboard-user">Home</a></li>
+	          		<li class="breadcrumb-item"><a href="dashboard-admin">Home</a></li>
 	          		<li class="breadcrumb-item active">Profil</li>
 	        	</ul>
 	      	</div>
@@ -56,7 +56,14 @@
 								<li class="list-group-item " onclick="location.href='#';"  style="cursor:pointer;"><strong>Visited places</strong> ${nbPlace}</li>
 							</ul> 
 					   </div>
-					  
+					   <div class="row-fluid"  style="margin-top: 1rem !important;margin-left: 1rem;">
+							<div class="panel panel-default">
+							  <div class="panel-heading">Social Media</div>
+							  <div class="panel-body">
+							  	<i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+							  </div>
+							</div>
+						</div>
 	  				</div>
 			  	</div>
 		    	<div class="card col-lg-6">

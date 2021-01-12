@@ -20,26 +20,6 @@
 				</div>
 				<ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
 					
-					<!-- Notifications dropdown-->
-					<li class="nav-item dropdown">
-						<a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">
-							<i class="fa fa-bell" style="font-size:20px;"></i>
-							<span class="badge badge-warning">${nbNotifs}</span>
-						</a>
-						<ul aria-labelledby="notifications" class="dropdown-menu">	
-						<!-- 					
-						<c:forEach items="${notifs}" var="item">				                		
-	               					<li style="  list-style-type: circle;color:#a1c83f;font-size:14px"> ${fn:toUpperCase(item.pseudoAsking)} 	${item.message} </li>
-					               	
-					                 	</c:forEach>	
-							-->
-							<li>
-								<a rel="nofollow" href="notifications" class="dropdown-item all-notifications text-center">
-								<strong><i class="fa fa-bell"></i>view all notifications</strong>
-								</a>
-							</li>
-						</ul>
-	                </li>
 	                <!-- Log out-->
 	                <li class="nav-item">
 		                <a href="logout" class="nav-link logout">

@@ -41,12 +41,18 @@ public class NouveauLieuServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		 request.setCharacterEncoding("UTF-8");
+<<<<<<< HEAD
 	        erreurs = new HashMap<String, String>();
 	        
 	        String name = request.getParameter("name");
 	        String address = request.getParameter("address");
 	      
 
+=======
+	        erreurs = new HashMap<String, String>();	        
+	        String name = request.getParameter("name");
+	        String address = request.getParameter("address");    
+>>>>>>> lastversion_Anna
 	        SQLConnector con = new SQLConnector();
 
 	        try{
@@ -64,6 +70,7 @@ public class NouveauLieuServlet extends HttpServlet {
 	        if(erreurs.isEmpty()) {
 	            Place place = new Place();
 	            place.setName(name);
+<<<<<<< HEAD
 	            place.setAddress(address);
 	          
 	            con.createPlace(place);
@@ -71,6 +78,13 @@ public class NouveauLieuServlet extends HttpServlet {
 	        }else{
 	            request.setAttribute("erreurs", erreurs);
 	            
+=======
+	            place.setAddress(address);	          
+	            con.createPlace(place);
+	            response.sendRedirect("/DevWeb2020_AppCovid/dashboard-user-servlet");
+	        }else{
+	            request.setAttribute("erreurs", erreurs);	            
+>>>>>>> lastversion_Anna
 	            this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/lieu.jsp").forward(request, response);
 	        }
 	    }

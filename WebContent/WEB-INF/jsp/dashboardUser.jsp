@@ -16,8 +16,8 @@
    	
    	<jsp:include page="/WEB-INF/jsp/view/cssCollection.jsp" />
    	
-  	</head>
- <body>
+</head>
+<body>
     <jsp:include page="/WEB-INF/jsp/view/sideNavbar.jsp" />
     <div class="page">
    	<jsp:include page="/WEB-INF/jsp/view/header.jsp" /> 	
@@ -86,39 +86,24 @@
 						            </div>
 					           	</div>
 					           	</c:when>
-										<c:otherwise>
-								           <div class="card-body" style="color:#E14557;">
-						            <div class="row ">
-							            <div class="col-7">
-							            	<div class="row-fluid" style="margin-bottom: 1rem !important;">
-							            		<strong><span>Vous avez été diagnostiqué comme un cas de COVID-19?</span></strong>
-											</div>
-							             	<div class="row-fluid">
-							             		<button class="btn btn-info rounded-lg" style="font-weight: bold;" type="submit" onclick="window.location.href='positif'">Oui</button>
-							             	</div>
-							             </div>
-							             <div class="col-5">
-							             	<img class="img-fluid" src="${pageContext.request.contextPath}/images/notify.png" >
-							             </div>
-						            </div>
-					           	</div>
+								<c:otherwise>
+									<div class="card-body" style="color:#E14557;">
+							            <div class="row ">
+								            <div class="col-7">
+								            	<div class="row-fluid" style="margin-bottom: 1rem !important;">
+								            		<strong><span>Vous avez été diagnostiqué comme un cas de COVID-19?</span></strong>
+												</div>
+								             	<div class="row-fluid">
+								             		<button class="btn btn-info rounded-lg" style="font-weight: bold;" type="submit" onclick="window.location.href='positif'">Oui</button>
+								             	</div>
+								             </div>
+								             <div class="col-5">
+								             	<img class="img-fluid" src="${pageContext.request.contextPath}/images/notify.png" >
+								             </div>
+							            </div>
+						           	</div>
 					           	 </c:otherwise>
-								     </c:choose>
-								
-								
-								
-								
-								
-								
-								
-								
-								
-				            								
-					         
-              
-               
-                
-					           
+							</c:choose>
 				        	</div>
 				        </div>
 		    		</div>

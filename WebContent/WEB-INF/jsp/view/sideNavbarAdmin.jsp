@@ -14,18 +14,18 @@
         <h2 class="h5"><%out.print(current_user.getPrenom());%> <%out.print(current_user.getNom());%></h2>
         
        <c:choose>
-								<c:when test="${positif}">
+       		<c:when test="${positif}">
                   <div id="stateNotif" class="stateSick">Atteint du COVID  </div>
-               </c:when>
-										<c:otherwise>
-                 <div id="stateNotif" class="stateNotSick">Pas malade </div>
-               </c:otherwise>
-			 </c:choose>
+       		</c:when>
+			<c:otherwise>
+        		<div id="stateNotif" class="stateNotSick">Pas malade </div>
+        	</c:otherwise>
+		</c:choose>
         <!-- <span>Web Developer</span> -->
       </div>
       <!-- Small Brand information, appears on minimized sidebar-->
     <div class="sidenav-header-logo">
-   	<a href="index.html" class="brand-small text-center">
+   	<a href="dashboard-user-servlet" class="brand-small text-center">
      	<strong>AC</strong>
      	<!-- <strong class="text-primary">C</strong> -->
     	</a>
@@ -34,23 +34,18 @@
     <!-- Sidebar Navigation Menus-->
     <div class="main-menu">
       <h5 class="sidenav-heading">Main</h5>
-      <ul id="side-main-menu" class="side-menu list-unstyled">                  
-        <li class="active"><a href="dashboard-user-servlet"> <i class="fa fa-home"></i>Menu principal</a></li>
-<<<<<<< HEAD
-        <li class="activities"><a href="activitesServlet"> <i class="fa fa-history"></i>Mes activités</a></li>
-=======
-        <li class="activities"><a href="activities-user"> <i class="fa fa-history"></i>Mes activités</a></li>
->>>>>>> lastversion_Anna
-        <li class="friends"><a href="friends-user"> <i class="fa fa-users"></i>Mes amis</a></li>
-        <li class="notifications"><a href="notifications"><i class="fa fa-bell"></i>Mes notifications
-            <div class="badge badge-warning">${nbNotifs}</div></a>
+      <ul id="side-main-menu" class="side-menu list-unstyled">           
+      	<li class="active"><a href="dashboard-admin"> <i class="fa fa-home"></i>Menu principal</a></li>
+      	<li class="users"><a href="adminstrate-users"> <i class="fa fa-users"></i>Administrer les utilisateurs</a></li>
+        <li class="activities"><a href="admin-activity"> <i class="fa fa-history"></i>Administrer les activités</a></li>
+        <li class="lieux"><a href="admin-places"><i class="fa fa-map-marker"></i>Administrer les lieux</a>
         </li>
       </ul>
     </div>
     <div class="admin-menu">
       <h5 class="sidenav-heading">Réglages</h5>
       <ul id="side-admin-menu" class="side-menu list-unstyled"> 
-        <li> <a href="profil-user"> <i class="fa fa-user"> </i>Profil</a></li>
+        <li class="profil"> <a href="profil-admin"> <i class="fa fa-user"> </i>Profil</a></li>
       </ul>
     </div>
   </div>

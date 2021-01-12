@@ -40,19 +40,55 @@ public class EditProfilServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Utilisateur currentUser = (Utilisateur) session.getAttribute("current_user");
         String id = request.getParameter("id");
+        SQLConnector connector = new SQLConnector();
         if(currentUser.getAdmin() && id !=null){
-            SQLConnector connector = new SQLConnector();
+         
             try {
                 request.setAttribute("user",connector.getUser(Integer.parseInt(id)));
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
+
+            try {
+                request.setAttribute("nbNotifs", connector.getNotifs(currentUser.getId()).size());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                request.setAttribute("nbPlace", connector.getPlacesUser(currentUser.getId()).size());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+       	   	 request.setAttribute("positif", connector.getState(currentUser));
+       	   } catch (SQLException e) {
+       	       e.printStackTrace();
+       	   }
+       	    
+            
             request.setAttribute("id",id);
         }
         else {
             request.setAttribute("user", currentUser);
             request.setAttribute("id", currentUser.getId());
         }
+        
+        try {
+            request.setAttribute("nbNotifs", connector.getNotifs(currentUser.getId()).size());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            request.setAttribute("nbPlace", connector.getPlacesUser(currentUser.getId()).size());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+   	   	 request.setAttribute("positif", connector.getState(currentUser));
+   	   } catch (SQLException e) {
+   	       e.printStackTrace();
+   	   }
+        
         this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/editProfil.jsp" ).forward( request, response );
     }
 

@@ -47,7 +47,7 @@ public class SignInAdminServlet extends HttpServlet {
            	 session.setAttribute("erreur",erreur);
     			session.setAttribute("current_user",user);
     			request.setAttribute("current_user",user);
-    			response.sendRedirect("/DevWeb2020_AppCovid/dashboard-admin-servlet");
+    			response.sendRedirect("/DevWeb2020_AppCovid/dashboard-admin");
 
 
             }
@@ -58,10 +58,8 @@ public class SignInAdminServlet extends HttpServlet {
         }
         else {
    		 session.setAttribute("erreur",erreur);
-   		 this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/signInUser.jsp" ).forward( request, response );
-   	}
+   		 this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/signInAdmin.jsp" ).forward( request, response );
+        }
         
-
-    
     }
 }
